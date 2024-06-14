@@ -18,7 +18,7 @@ public class ItemTable : ScriptableObject
             totalWeight += (int)itemTable[i].itemRarity;
     }
 
-    private Item GetNewItem()
+    private Item GetNewItem(List<Item> itemTable)
     {
         CalculateTotalWeight();
         int roll = UnityEngine.Random.Range(0, totalWeight);
@@ -46,7 +46,7 @@ public class ItemTable : ScriptableObject
 
         for (int i = 0; i < count; i++)
         {
-            Item item = GetNewItem();
+            Item item = GetNewItem(itemTableCopy);
             itemTableCopy.Remove(item);
             uniqueItems.Add(item);
         }

@@ -12,3 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630dbbda6d64a1445874adb409db68e3, type: 3}
   m_Name: ItemStats
   m_EditorClassIdentifier: 
+  movementSpeedModifier: 0
+  fireRateModifier: 0
+  critRate: 0
+  critDamage: 0
+  critHealChance: 0
+  rocketBananaAmount: 0
+  gambaReloadChance: 0
+  distanceDamageModifier: 0
+  minDistance: 0
+  stunRadius: 0
+  ammoDamageModifier: 0

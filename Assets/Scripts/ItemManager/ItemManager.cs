@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
+    public static ItemManager Instance;
     public List<Item> itemList;
+
+    [SerializeField] private Drone dronePrefab;
+    private Drone drone;
+    [SerializeField] private Transform droneFollowPos;
 
     public void InitItemManager()
     {
         itemList = new List<Item>();
+        Instance = this;
     }
 
     public void AddItem(Item itemToAdd)
@@ -59,5 +65,16 @@ public class ItemManager : MonoBehaviour
     {
         if (itemToCheck.itemStack <= 0)
             itemList.Remove(itemToCheck);
+    }
+
+    public void SpawnDrone()
+    {
+        drone = Instantiate(dronePrefab, transform.position, Quaternion.identity);
+        drone?.SetupDrone(droneFollowPos);
+    }
+
+    public void UpgradeDrone()
+    {
+        drone?.UpgradeDrone();
     }
 }

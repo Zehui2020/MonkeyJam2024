@@ -9,13 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e34a4bbe271a99147a16d162e78b2828, type: 3}
-  m_Name: LegendaryItem
+  m_Script: {fileID: 11500000, guid: 466c1bc00c4738247b678b493cb6654a, type: 3}
+  m_Name: GambaLoad
   m_EditorClassIdentifier: 
   itemStats: {fileID: 11400000, guid: 77167db11ac7d094a84655d88055015b, type: 2}
   itemRarity: 1
   itemType: 0
-  spriteIcon: {fileID: 21300000, guid: 844e0b939acf4c845999763b01147163, type: 3}
-  title: Legendary Item
-  description: Legendary Item Description
+  spriteIcon: {fileID: 0}
+  title: Gamba Load
+  description: Increases chance to automatically reload weapon upon hitting an enemy
+    by +8%
   itemStack: 0

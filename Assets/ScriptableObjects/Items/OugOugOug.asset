@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e34a4bbe271a99147a16d162e78b2828, type: 3}
-  m_Name: CommonItem
+  m_Script: {fileID: 11500000, guid: b0ca6764998c9ed47970d8bcbb5e8443, type: 3}
+  m_Name: OugOugOug
   m_EditorClassIdentifier: 
   itemStats: {fileID: 11400000, guid: 77167db11ac7d094a84655d88055015b, type: 2}
-  itemRarity: 18
+  itemRarity: 1
   itemType: 0
-  spriteIcon: {fileID: 21300000, guid: 844e0b939acf4c845999763b01147163, type: 3}
-  title: Common Item
-  description: Common Item Description
+  spriteIcon: {fileID: 0}
+  title: Oug. Oug. Oug.
+  description: Killing an enemy summons +5 banana rockets that seeks other enemies.
   itemStack: 0
