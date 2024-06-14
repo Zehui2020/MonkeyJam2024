@@ -19,12 +19,21 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     //Checks if player is near anything
     private bool isPlayerNearAnything;
+    //Checks if player is pressing W or S or nothing
+    private int isPlayerMoving;
+    //setting default and euqipped weapon
+    //Do Note: Please add the default weapon into the inventory
+    [SerializeField] Weapon defaultWeapon;
+    private Weapon equippedWeapon;
+
     //Script starts here
 
     //Code for initialising in Game Controller
     public void Initialise()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        equippedWeapon = defaultWeapon;
+        equippedWeapon.Initialise();
     }
     public void UpdatePlayerIsNearAnything()
     {
@@ -40,7 +49,7 @@ public class PlayerController : MonoBehaviour
     //Code to update player in Game Controller
     public void UpdatePlayer()
     {
-        rigidBody.velocity = new Vector2(Mathf.Clamp(rigidBody.velocity.x, -10f, 10f), Mathf.Clamp(rigidBody.velocity.y, -10f, 10f));
+        rigidBody.velocity = new Vector2(Mathf.Clamp(rigidBody.velocity.x, -10f, 10f), Mathf.Clamp(rigidBody.velocity.y, -10f, 5f));
         if (isPlayerNearAnything)
         {
             rigidBody.angularVelocity = Mathf.Clamp(rigidBody.angularVelocity, -60f, 60f);
@@ -49,14 +58,20 @@ public class PlayerController : MonoBehaviour
         {
             rigidBody.angularVelocity = Mathf.Clamp(rigidBody.angularVelocity, -60f * rotationAirForce, 60f * rotationAirForce);
         }
-        if (rigidBody.velocity.x > 0.05)
+        if (rigidBody.velocity.x > 0.05 && isPlayerMoving == 1)
         {
             transform.localScale = new Vector3(-2, 2, 0);
         }
-        else if (rigidBody.velocity.x < -0.05f)
+        else if (rigidBody.velocity.x < -0.05f && isPlayerMoving == -1)
         {
             transform.localScale = new Vector3(2, 2, 0);
         }
+        equippedWeapon.UpdateGun();
+    }
+    //Sets if player is pressing W or S or nothing
+    public void SetPlayerMovement(int _newIsPlayerMoving)
+    {
+        isPlayerMoving = _newIsPlayerMoving;
     }
     //Movement input from GameControlller
     public void Movement(MovementAxisCommand _movementAxisCommand)
@@ -64,6 +79,14 @@ public class PlayerController : MonoBehaviour
         if (!isBraking && isGrounded)
         {
             rigidBody.AddForce(new Vector2(_movementAxisCommand.HorizontalAxis * Time.deltaTime * speed, 0), ForceMode2D.Impulse);
+            if (_movementAxisCommand.HorizontalAxis < 0)
+            {
+                isPlayerMoving = -1;
+            }
+            else
+            {
+                isPlayerMoving = 1;
+            }
         }
     }
     //Braking input from GameControlller
@@ -74,10 +97,10 @@ public class PlayerController : MonoBehaviour
     //Jump input from GameController
     public void Jump()
     {
-        if (isGrounded)
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0, -1f), transform.localScale.y * 0.495f, ~(1<<3));
+        if (hit && isGrounded)
         {
-            rigidBody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-            isGrounded = false;
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
         }
     }
     //Setting boolean of braking
@@ -105,5 +128,17 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         isGrounded = false;
+    }
+
+    //Weapon Usage
+    public void UseWeapon()
+    {
+        equippedWeapon.Use("Player");
+    }
+    //Equipping a new weapon
+    public void EquipWeapon(Weapon newweapon)
+    {
+        equippedWeapon = newweapon;
+        newweapon.Initialise();
     }
 }

@@ -47,4 +47,9 @@ public class InputController : MonoBehaviour
     {
         return Input.GetAxis("Brake") != 0;
     }
+    //Attacking
+    public bool TryGetAttacking()
+    {
+        return Input.GetAxis("Fire1") != 0;
+    }
 }

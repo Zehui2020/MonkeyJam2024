@@ -7,7 +7,6 @@ public class GameController : MonoBehaviour
     //Serializing controller for main gameplay
     [SerializeField] PlayerController _playerController;
     [SerializeField] InputController _inputController;
-
     //Initialising conrollers
     void Start()
     {
@@ -17,6 +16,8 @@ public class GameController : MonoBehaviour
     //Updating controllers
     void Update()
     {
+        //Update Projectiles
+        ProjectileManager.instance.UpdateProjectile();
         //Updating player is near anything
         _playerController.UpdatePlayerIsNearAnything();
         //Getting Movement
@@ -24,6 +25,10 @@ public class GameController : MonoBehaviour
         if (_inputController.TryGetMovementAxisInput(out movementAxisCommand))
         {
             _playerController.Movement(movementAxisCommand);
+        }
+        else
+        {
+            _playerController.SetPlayerMovement(0);
         }
         //Getting Rotation
         RotationAxisCommand rotationAxisCommand;
@@ -45,6 +50,11 @@ public class GameController : MonoBehaviour
         if (_inputController.TryGetJump())
         {
             _playerController.Jump();
+        }
+        //Getting attack
+        if (_inputController.TryGetAttacking())
+        {
+            _playerController.UseWeapon();
         }
         //Updating Player
         _playerController.UpdatePlayer();
