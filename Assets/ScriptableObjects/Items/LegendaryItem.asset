@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e34a4bbe271a99147a16d162e78b2828, type: 3}
-  m_Name: PlaceholderItem
+  m_Name: LegendaryItem
   m_EditorClassIdentifier: 
   itemStats: {fileID: 11400000, guid: 77167db11ac7d094a84655d88055015b, type: 2}
-  itemRarity: 0
+  itemRarity: 1
   itemType: 0
   spriteIcon: {fileID: 21300000, guid: 844e0b939acf4c845999763b01147163, type: 3}
-  title: Placeholder Item
-  description: Placeholder Item Description
+  title: Legendary Item
+  description: Legendary Item Description
   itemStack: 0

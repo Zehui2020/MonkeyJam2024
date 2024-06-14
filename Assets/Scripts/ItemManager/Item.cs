@@ -7,7 +7,7 @@ public class Item : ScriptableObject
 {
     public ItemStats itemStats;
 
-    public enum Rarity { Common, Uncommon, Epic };
+    public enum Rarity { Common = 18 , Uncommon = 10, Legendary = 1 };
     public Rarity itemRarity;
 
     public enum ItemType {  };
