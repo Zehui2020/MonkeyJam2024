@@ -17074,7 +17074,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   speedLimit: 9
-  brakeForce: 1
+  brakeForce: 8
   jumpForce: 5.25
   rotationSpeed: 8
   rotationAirForce: 4.3
