@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 6343596494473426575}
   m_Layer: 0
   m_Name: Chest
-  m_TagString: Untagged
+  m_TagString: Chest
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -487,7 +487,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.44, y: 0.26}
+  m_Size: {x: 0.91, y: 0.55}
   m_EdgeRadius: 0
 --- !u!114 &6343596494473426575
 MonoBehaviour:
@@ -503,6 +503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPickups:
   - {fileID: 5786802528283431013, guid: dd252b5ac7c827c4d9a4ca760c0a9aac, type: 3}
-  cost: 0
+  - {fileID: 5786802528283431013, guid: a71bca5f425d32f49b7af7c57899b487, type: 3}
+  cost: 100
   costUI: {fileID: 3550102611726316194}
   costText: {fileID: 1481608081635888373}

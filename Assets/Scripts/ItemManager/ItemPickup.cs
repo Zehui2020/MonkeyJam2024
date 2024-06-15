@@ -6,7 +6,8 @@ public class ItemPickup : MonoBehaviour
 {
     public enum ItemPickupType
     { 
-        WEAPON
+        WEAPON,
+        ITEM
     }
     public ItemPickupType itemPickupType;
 
@@ -14,7 +15,8 @@ public class ItemPickup : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            // Open Up Screen
+            if (itemPickupType == ItemPickupType.ITEM)
+                ItemManager.Instance.OpenItemCardChoices();
         }
     }
 }

@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Items/PlaceholderItem")]
-public class PlaceholderItem : Item
+[CreateAssetMenu(menuName = "Items/FullestAuto")]
+public class FullestAuto : Item
 {
     public override void Initialize()
     {
         base.Initialize();
-        Debug.Log("ADDED ITEM!");
+        itemStats.ammoDamageModifier += 2;
     }
 
     public override void IncrementStack()
     {
         base.IncrementStack();
-        Debug.Log("STACKED ITEM!");
+        itemStats.ammoDamageModifier += 2;
     }
 }
