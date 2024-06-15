@@ -31,7 +31,8 @@ public abstract class EnemyEntity : Entity
 
     //Stats
     [SerializeField] protected int health;
-    [SerializeField] protected int speed;
+    [SerializeField] protected int speed; 
+    [SerializeField] protected float detectTargetRange = 5;
     protected bool isStunned;
 
     protected float counter;
