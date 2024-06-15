@@ -1203,7 +1203,7 @@ MonoBehaviour:
   brakeForce: 1
   jumpForce: 4.25
   rotationSpeed: 10
-  rotationAirForce: 5
+  rotationAirForce: 4
   defaultWeapon: {fileID: 1579620942}
 --- !u!50 &1616795002
 Rigidbody2D:
@@ -1334,7 +1334,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.04, y: 0.2}
+  m_Offset: {x: 0, y: 0.2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1345,7 +1345,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.83, y: 0.56}
+  m_Size: {x: 0.93, y: 0.65}
   m_EdgeRadius: 0
 --- !u!61 &1616795006
 BoxCollider2D:

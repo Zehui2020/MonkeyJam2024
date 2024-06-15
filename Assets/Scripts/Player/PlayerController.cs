@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
     }
     public void UpdatePlayerIsNearAnything()
     {
-        if (Physics2D.OverlapCircle(transform.position, 2, ~(1 << 3)))
+        if (Physics2D.OverlapCircle(transform.position, 1.25f, ~(1 << 3)))
         {
             isPlayerNearAnything = true;
         }
