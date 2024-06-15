@@ -8235,13 +8235,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8acafd9dca405a48adc76da05aa1adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  speedLimit: 8
+  speed: 0.2
+  speedLimit: 6
   brakeForce: 1
   jumpForce: 4.25
   rotationSpeed: 8
   rotationAirForce: 4.3
-  minGroundDist: 1.8
+  minGroundDist: 1.5
   groundLayer:
     serializedVersion: 2
     m_Bits: 128

@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private ParticleSystem dustTrail;
 
+    private RaycastHit2D rampHit;
+
     //Rigidbody of the bicycle
     private Rigidbody2D rigidBody;
     //Checks if bike is braking & will allow player to move forward or not
@@ -43,9 +45,21 @@ public class PlayerController : MonoBehaviour
     public void UpdatePlayer()
     {
         CheckGroundCollision();
+        SpeedControl();
         UpdateDustTrailPS();
 
-        rigidBody.velocity = new Vector2(Mathf.Clamp(rigidBody.velocity.x, -speedLimit, speedLimit), Mathf.Clamp(rigidBody.velocity.y, -10f, 5f));
+        Vector3 force;
+        // Adjust drag & force
+        if (isGrounded)
+            force = transform.right * speed * isPlayerMoving * 10f;
+        else
+            force = Vector3.zero;
+
+        // Move player
+        if (OnRamp())
+            rigidBody.AddForce(GetRampMoveDir() * speed, ForceMode2D.Force);
+        else
+            rigidBody.AddForce(force, ForceMode2D.Force);
 
         if (isGrounded)
             rigidBody.angularVelocity = Mathf.Clamp(rigidBody.angularVelocity, -60f, 60f);
@@ -156,6 +170,35 @@ public class PlayerController : MonoBehaviour
             var vel = dustTrail.velocityOverLifetime;
             ParticleSystem.MinMaxCurve xCurve = new ParticleSystem.MinMaxCurve(1, 5);
             vel.x = xCurve;
+        }
+    }
+
+    private bool OnRamp()
+    {
+        rampHit = Physics2D.Raycast(transform.position, Vector3.down, 100);
+
+        if (rampHit)
+        {
+            float angle = Vector3.Angle(Vector3.up, rampHit.normal);
+            return angle < 90 && angle != 0;
+        }
+        
+        return false;
+    }
+
+    private Vector3 GetRampMoveDir()
+    {
+        return Vector3.ProjectOnPlane(transform.right, rampHit.normal).normalized;
+    }
+
+    private void SpeedControl()
+    {
+        Vector2 currentVel = new Vector2(rigidBody.velocity.x, 0);
+
+        if (currentVel.magnitude > speedLimit)
+        {
+            Vector3 limitVel = currentVel.normalized * speedLimit;
+            rigidBody.velocity = new Vector2(limitVel.x, rigidBody.velocity.y);
         }
     }
 

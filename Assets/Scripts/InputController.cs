@@ -40,7 +40,7 @@ public class InputController : MonoBehaviour
     //Jump
     public bool TryGetJump()
     {
-        return Input.GetAxis("Jump") != 0;
+        return Input.GetKeyDown(KeyCode.Space);
     }
     //Braking
     public bool TryGetBraking()
