@@ -6313,8 +6313,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   dustTrail: {fileID: 289257643}
+  minFallAngle: 0
+  maxFallAngle: 0
   isGrounded: 1
-  defaultWeapon: {fileID: 2069536951944909244}
+  WeaponList: []
+  defaultWeapon: 0
 --- !u!212 &2085654035
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6469,6 +6472,7 @@ MonoBehaviour:
   _inputController: {fileID: 1183838669}
   _playerHealth: {fileID: 2085654032}
   _playerAnimation: {fileID: 2085654037}
+  _itemManager: {fileID: 0}
 --- !u!1001 &707304267604332422
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6520,6 +6524,10 @@ PrefabInstance:
     - target: {fileID: 6371370876826677156, guid: 1ff041c043dbd3249a50e9129925cfb4, type: 3}
       propertyPath: m_Name
       value: Sniper Rifle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6371370876826677156, guid: 1ff041c043dbd3249a50e9129925cfb4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6663,17 +6671,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7708773688687786359, guid: 64f2295c7da55f94e9e370cfb7222b35, type: 3}
   m_PrefabInstance: {fileID: 2069536951944909242}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2069536951944909244 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2911818237620537465, guid: 64f2295c7da55f94e9e370cfb7222b35, type: 3}
-  m_PrefabInstance: {fileID: 2069536951944909242}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09fec3d747d6fda4b94e53cbc0d5752b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &4005493706411706133
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6843,6 +6840,10 @@ PrefabInstance:
     - target: {fileID: 4029391401738370002, guid: ae64af4620e0c83429b69ff0eb2f6fbc, type: 3}
       propertyPath: m_Name
       value: Burst Rifle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4029391401738370002, guid: ae64af4620e0c83429b69ff0eb2f6fbc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7916990874213434088, guid: ae64af4620e0c83429b69ff0eb2f6fbc, type: 3}
       propertyPath: m_LocalPosition.x
