@@ -27,6 +27,15 @@ public class GroundEnemy : EnemyEntity
         _animator = GetComponentInChildren<Animator>();
 
         isGrounded = false;
+
+        if (_weapon != null )
+        {
+            _weapon.Initialise();
+        }
+        else
+        {
+            canDestroy = true;
+        }
     }
 
     public override void HandleUpdate(float _distortTime)
@@ -52,7 +61,9 @@ public class GroundEnemy : EnemyEntity
                 return;
             }
         }
-
+        //update weapon
+        _weapon.UpdateGun();
+        
         switch (state)
         {
             //Idle
@@ -97,11 +108,13 @@ public class GroundEnemy : EnemyEntity
                     //rotate
                     if (dir.x > 0.1f)
                     {
-                        _spriteRenderer.flipX = true;
+                        //_spriteRenderer.flipX = true;
+                        transform.localScale = new Vector3(-1, 1, 1);
                     }
                     else if (dir.x < -0.1f)
                     {
-                        _spriteRenderer.flipX = false;
+                        //_spriteRenderer.flipX = false;
+                        transform.localScale = new Vector3(1, 1, 1);
                     }
                 }
                 else
@@ -145,6 +158,14 @@ public class GroundEnemy : EnemyEntity
                 {
                     //update last seen position
                     targetLastSeenPos = targetTransform.position;
+
+                    //rotate weapon towards target
+                    Vector3 aimDir = (targetTransform.position - transform.position).normalized;
+                    float angle = Mathf.Atan2(aimDir.y, aimDir.x) * Mathf.Rad2Deg;
+                    _weapon.gameObject.transform.eulerAngles = new Vector3(0, 0, angle + (transform.localScale.x == -1 ? 0 : 180));
+
+                    //check to attack target
+                    CheckAttackTarget();
                 }
                 //Scream and start chasing
                 //go to last player position
@@ -161,6 +182,8 @@ public class GroundEnemy : EnemyEntity
                     idleTimer = Random.Range(2, 5);
                     //stop tracking
                     StopChase();
+                    //reset rotation
+                    _weapon.gameObject.transform.eulerAngles = Vector3.zero;
                     return;
                 }
                 else
@@ -176,11 +199,13 @@ public class GroundEnemy : EnemyEntity
                     //rotate
                     if (direction.x > 0.1f)
                     {
-                        _spriteRenderer.flipX = true;
+                        //_spriteRenderer.flipX = true;
+                        transform.localScale = new Vector3(-1, 1, 1);
                     }
                     else if (direction.x < -0.1f)
                     {
-                        _spriteRenderer.flipX = false;
+                        //_spriteRenderer.flipX = false;
+                        transform.localScale = new Vector3(1, 1, 1);
                     }
                 }
                 else
@@ -196,9 +221,9 @@ public class GroundEnemy : EnemyEntity
                 //check if need to jump
                 if (Mathf.Abs(path.vectorPath[currentChaseWaypoint].y - rb.position.y) >= 0.5f && Mathf.Abs(path.vectorPath[currentChaseWaypoint].x - rb.position.x) <= 2 && isGrounded)
                 {
-                    Debug.Log("Jump");
+                    //Debug.Log("Jump");
                     //jump
-                    rb.AddForce(transform.up * 200 * Time.deltaTime * _distortTime, ForceMode2D.Impulse);
+                    rb.AddForce(transform.up * 300 * Time.deltaTime * _distortTime, ForceMode2D.Impulse);
                 }
 
                 //check if reached waypoint
@@ -208,10 +233,6 @@ public class GroundEnemy : EnemyEntity
                     currentChaseWaypoint++;
                 }
 
-                break;
-            //Attack
-            case EnemyStates.Attack:
-                //In range, do attack
                 break;
             //Death
             case EnemyStates.Death:

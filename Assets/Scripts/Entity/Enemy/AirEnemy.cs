@@ -18,6 +18,15 @@ public class AirEnemy : EnemyEntity
         //animation
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _animator = GetComponentInChildren<Animator>();
+
+        if (_weapon != null)
+        {
+            _weapon.Initialise();
+        }
+        else
+        {
+            canDestroy = true;
+        }
     }
 
     public override void HandleUpdate(float _distortTime)
@@ -38,6 +47,9 @@ public class AirEnemy : EnemyEntity
                 return;
             }
         }
+
+        //update weapon
+        _weapon.UpdateGun();
 
         switch (state)
         {
@@ -76,11 +88,13 @@ public class AirEnemy : EnemyEntity
                 //rotate
                 if (dir.x > 0.1f)
                 {
-                    _spriteRenderer.flipX = true;
+                    //_spriteRenderer.flipX = true;
+                    transform.localScale = new Vector3(-1, 1, 1);
                 }
                 else if (dir.x < -0.1f)
                 {
-                    _spriteRenderer.flipX = false;
+                    //_spriteRenderer.flipX = false;
+                    transform.localScale = new Vector3(1, 1, 1);
                 }
                 dir.Normalize();
                 //move towards waypoint
@@ -117,6 +131,14 @@ public class AirEnemy : EnemyEntity
                 {
                     //update last seen position
                     targetLastSeenPos = targetTransform.position;
+
+                    //rotate weapon towards target
+                    Vector3 aimDir = (targetTransform.position - transform.position).normalized;
+                    float angle = Mathf.Atan2(aimDir.y, aimDir.x) * Mathf.Rad2Deg;
+                    _weapon.gameObject.transform.eulerAngles = new Vector3(0, 0, angle + (transform.localScale.x == -1 ? 0: 180));
+
+                    //check to attack
+                    CheckAttackTarget();
                 }
                 //Scream and start chasing
                 //go to last player position
@@ -131,6 +153,7 @@ public class AirEnemy : EnemyEntity
                     //Idle
                     state = EnemyStates.Idle;
                     idleTimer = Random.Range(4, 6);
+                    _weapon.gameObject.transform.eulerAngles = Vector3.zero;
                     //stop tracking
                     StopChase();
                     return;
@@ -143,11 +166,13 @@ public class AirEnemy : EnemyEntity
                 //rotate
                 if (direction.x > 0.1f)
                 {
-                    _spriteRenderer.flipX = true;
+                    //_spriteRenderer.flipX = true;
+                    transform.localScale = new Vector3(-1, 1, 1);
                 }
                 else if (direction.x < -0.1f)
                 {
-                    _spriteRenderer.flipX = false;
+                    //_spriteRenderer.flipX = false;
+                    transform.localScale = new Vector3(1, 1, 1);
                 }
                 direction.Normalize();
                 //rb.position += direction * speed * Time.deltaTime;
@@ -160,10 +185,6 @@ public class AirEnemy : EnemyEntity
                     currentChaseWaypoint++;
                 }
 
-                break;
-            //Attack
-            case EnemyStates.Attack:
-                //In range, do attack
                 break;
             //Death
             case EnemyStates.Death:
