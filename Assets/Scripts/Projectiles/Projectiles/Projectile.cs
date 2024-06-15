@@ -25,7 +25,7 @@ public abstract class Projectile : MonoBehaviour
         direction = newDirection;
         transform.position = newPosition;
         currAliveTime = aliveTime;
-        transform.right = -newDirection;
+        transform.right = (direction.x < 0) ? -newDirection : newDirection;
 
     }
 }

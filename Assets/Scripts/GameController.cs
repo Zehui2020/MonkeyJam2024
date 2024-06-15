@@ -8,11 +8,13 @@ public class GameController : MonoBehaviour
     [SerializeField] PlayerController _playerController;
     [SerializeField] InputController _inputController;
     [SerializeField] PlayerHealth _playerHealth;
+    [SerializeField] PlayerAnimation _playerAnimation;
     //Initialising conrollers
     void Start()
     {
         _playerController.Initialise();
         _playerHealth.Initialise();
+        
     }
 
     //Updating controllers
@@ -26,10 +28,12 @@ public class GameController : MonoBehaviour
         if (_inputController.TryGetMovementAxisInput(out movementAxisCommand))
         {
             _playerController.Movement(movementAxisCommand);
+            _playerAnimation.SetMoving(true);
         }
         else
         {
             _playerController.SetPlayerMovement(0);
+            _playerAnimation.SetMoving(false);
         }
         //Getting Rotation
         RotationAxisCommand rotationAxisCommand;
@@ -51,6 +55,11 @@ public class GameController : MonoBehaviour
         if (_inputController.TryGetJump())
         {
             _playerController.Jump();
+            _playerAnimation.SetJumping(true);
+        }
+        else
+        {
+            _playerAnimation.SetJumping(false);
         }
         //Getting attack
         if (_inputController.TryGetAttacking())
@@ -61,5 +70,7 @@ public class GameController : MonoBehaviour
         _playerController.UpdatePlayer();
         //Updating Player health
         _playerHealth.UpdatePlayerHealth();
+        //Updating Player Aniamtions
+        _playerAnimation.UpdatePlayerAnimation();
     }
 }

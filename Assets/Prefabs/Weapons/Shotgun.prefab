@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9214353222548061389
 Transform:
   m_ObjectHideFlags: 0
@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 4381352730524265177}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.33, y: -0.1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.65, y: 0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5609539768723609049}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 86a22dd40e811184e8b87d8c0c555bca, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f5b43ceb37ce3b84ebd20bceb3b5e69f, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,11 +98,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cb907e28b4c3b645b3fa2afd3bc76dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: Shotgun
   ammo: 3
   reloadTime: 0.75
   attackInterval: 0.5
   projectileType: 0
   barrel: {fileID: 7664873737554185843}
+  range: 0
 --- !u!1 &7664873737554185843
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +130,7 @@ Transform:
   m_GameObject: {fileID: 7664873737554185843}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.487, y: 0.092, z: 0}
+  m_LocalPosition: {x: -0.439, y: -0.083, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
