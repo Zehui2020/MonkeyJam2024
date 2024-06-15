@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float minGroundDist;
 
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private ParticleSystem dustTrail;
 
     //Rigidbody of the bicycle
     private Rigidbody2D rigidBody;
@@ -45,6 +46,7 @@ public class PlayerController : MonoBehaviour
     public void UpdatePlayer()
     {
         CheckGroundCollision();
+        UpdateDustTrailPS();
 
         rigidBody.velocity = new Vector2(Mathf.Clamp(rigidBody.velocity.x, -speedLimit, speedLimit), Mathf.Clamp(rigidBody.velocity.y, -10f, 5f));
 
@@ -73,6 +75,7 @@ public class PlayerController : MonoBehaviour
         if (!isBraking && isGrounded)
         {
             rigidBody.AddForce(new Vector2(_movementAxisCommand.HorizontalAxis * Time.deltaTime * speed, 0), ForceMode2D.Impulse);
+
             if (_movementAxisCommand.HorizontalAxis < 0)
             {
                 isPlayerMoving = -1;
@@ -126,6 +129,43 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
         else if (dist > minGroundDist)
             isGrounded = false;
+    }
+
+    private void UpdateDustTrailPS()
+    {
+        if (isGrounded)
+        {
+            float normalizedVelocity = Mathf.Clamp01(rigidBody.velocity.magnitude / speedLimit);
+            float emissionRate = Mathf.Lerp(0, 20, normalizedVelocity);
+
+            var em = dustTrail.emission;
+            em.enabled = true;
+            em.rateOverTime = emissionRate;
+        }
+        else
+        {
+            var em = dustTrail.emission;
+            em.enabled = false;
+        }
+
+        if (rigidBody.velocity.x > 0)
+        {
+            var vel = dustTrail.velocityOverLifetime;
+            ParticleSystem.MinMaxCurve xCurve = new ParticleSystem.MinMaxCurve(-1, -5);
+            vel.x = xCurve;
+        }
+        else
+        {
+            var vel = dustTrail.velocityOverLifetime;
+            ParticleSystem.MinMaxCurve xCurve = new ParticleSystem.MinMaxCurve(1, 5);
+            vel.x = xCurve;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Vector3 collisionPoint = collision.contacts[collision.contacts.Length - 1].point;
+        dustTrail.transform.position = new Vector3(collisionPoint.x, collisionPoint.y + 0.1f, collisionPoint.z);
     }
 
     //Weapon Usage
