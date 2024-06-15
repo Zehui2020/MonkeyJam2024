@@ -104,7 +104,7 @@ MonoBehaviour:
   attackInterval: 0.5
   projectileType: 0
   barrel: {fileID: 7664873737554185843}
-  range: 0
+  range: 15
 --- !u!1 &7664873737554185843
 GameObject:
   m_ObjectHideFlags: 0
