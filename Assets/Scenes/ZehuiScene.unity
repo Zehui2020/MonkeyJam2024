@@ -7099,6 +7099,7 @@ MonoBehaviour:
   - {fileID: 1854005158}
   - {fileID: 992034190}
   - {fileID: 505955212}
+  header: {fileID: 1660802090}
 --- !u!1001 &1032276786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17153,7 +17154,6 @@ MonoBehaviour:
   isGrounded: 0
   WeaponList:
   - {fileID: 1104161453}
-  defaultWeapon: 0
 --- !u!212 &2027420430
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17239,7 +17239,7 @@ MonoBehaviour:
   itemList: []
   dronePrefab: {fileID: 737631650}
   droneFollowPos: {fileID: 1937544026}
-  itemCardChoices: {fileID: 1010575936}
+  itemCardManager: {fileID: 1010575938}
 --- !u!114 &2027420434
 MonoBehaviour:
   m_ObjectHideFlags: 0

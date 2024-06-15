@@ -11,12 +11,15 @@ public class ItemPickup : MonoBehaviour
     }
     public ItemPickupType itemPickupType;
 
-    private void OnCollisionEnter2D(Collision2D col)
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.collider.CompareTag("Player"))
+        if (col.CompareTag("Player"))
         {
             if (itemPickupType == ItemPickupType.ITEM)
                 ItemManager.Instance.OpenItemCardChoices();
+
+            else if (itemPickupType == ItemPickupType.WEAPON)
+                ItemManager.Instance.OpenWeaponCardChoices();
 
             Destroy(gameObject);
         }
