@@ -14,8 +14,26 @@ public class TempPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontalAxis = -Input.GetAxisRaw("Rotation");
-        float verticalAxis = Input.GetAxisRaw("Horizontal");
+        float horizontalAxis = 0;
+        float verticalAxis = 0;
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            verticalAxis = 1;
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            verticalAxis = -1;
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        { horizontalAxis = 1; }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            horizontalAxis = -1;
+        }
+
+
         Vector3 dir = new Vector3 (horizontalAxis, verticalAxis, 0);
         transform.position += dir * speed * Time.deltaTime;
     }

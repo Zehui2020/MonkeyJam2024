@@ -1,37 +1,23 @@
 using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class GroundEnemy : EnemyEntity
+public class AirEnemy : EnemyEntity
 {
-    [Header("Ground Enemy")]
-    [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private float groundDistCheck;
-
-    bool isGrounded;
-
     public override void Init()
     {
         hasInit = true;
         state = EnemyEntity.EnemyStates.Idle;
-        idleTimer = Random.Range(2, 5);
+        idleTimer = Random.Range(4, 6);
         currWaypoint = 0;
 
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-
-        isGrounded = false;
     }
 
     public override void HandleUpdate(float _distortTime)
     {
-        //Ground check
-        isGrounded = Physics2D.Raycast(rb.position, -transform.up, groundDistCheck, groundLayer);
-        Debug.DrawRay(rb.position, -transform.up * groundDistCheck, Color.red, 0.5f);
-
-
         //check if stun
         if (isStunned)
         {
@@ -66,7 +52,7 @@ public class GroundEnemy : EnemyEntity
                 //see player if player is closer
                 //Can see player if get too close
                 Debug.Log("Scan");
-                Collider2D c = Physics2D.OverlapCircle(transform.position, detectTargetRange  + 1, playerLayer);
+                Collider2D c = Physics2D.OverlapCircle(transform.position, detectTargetRange + 1, playerLayer);
                 //detected player
                 if (c != null)
                 {
@@ -83,11 +69,10 @@ public class GroundEnemy : EnemyEntity
                 //Walk towards waypoints
                 //Get Direction
                 Vector3 dir = _waypoints[currWaypoint].position - transform.position;
-                dir.y = 0;
                 dir.Normalize();
                 //move towards waypoint
-                transform.position += dir * speed * Time.deltaTime * _distortTime;
-                //rb.AddForce(dir * speed * Time.deltaTime * _distortTime * 100);
+                //transform.position += dir * speed * Time.deltaTime * _distortTime;
+                rb.AddForce(dir * speed * Time.deltaTime * _distortTime);
                 //check if reach waypoint
                 if (Vector3.Distance(transform.position, _waypoints[currWaypoint].position) <= 0.5f)
                 {
@@ -95,7 +80,7 @@ public class GroundEnemy : EnemyEntity
                     state = EnemyStates.Idle;
                     //increment current  
                     currWaypoint = (currWaypoint + 1) % _waypoints.Length;
-                    idleTimer = Random.Range(2, 5);
+                    idleTimer = Random.Range(4, 6);
                 }
                 //Can see player if get too close
                 Collider2D c1 = Physics2D.OverlapCircle(transform.position, detectTargetRange, playerLayer);
@@ -132,7 +117,7 @@ public class GroundEnemy : EnemyEntity
                     reachedEndOfPath = true;
                     //Idle
                     state = EnemyStates.Idle;
-                    idleTimer = Random.Range(2, 5);
+                    idleTimer = Random.Range(4, 6);
                     //stop tracking
                     StopChase();
                     return;
@@ -142,17 +127,9 @@ public class GroundEnemy : EnemyEntity
                     reachedEndOfPath = false;
                 }
                 Vector2 direction = ((Vector2)path.vectorPath[currentChaseWaypoint] - rb.position);
-                direction.y = 0;
                 direction.Normalize();
-                rb.position += direction * speed * Time.deltaTime;
-                //rb.AddForce(direction * speed * Time.deltaTime * _distortTime * 100);
-
-                //check if need to jump
-                if (Mathf.Abs(path.vectorPath[currentChaseWaypoint].y - rb.position.y) >= 0.5f && Mathf.Abs(path.vectorPath[currentChaseWaypoint].x - rb.position.x) <= 2 && isGrounded)
-                {
-                    //jump
-                    rb.AddForce(transform.up * 200 * Time.deltaTime * _distortTime, ForceMode2D.Impulse);
-                }
+                //rb.position += direction * speed * Time.deltaTime;
+                rb.AddForce(direction * speed * Time.deltaTime * _distortTime);
 
                 //check if reached waypoint
                 if (Vector2.Distance(rb.position, (Vector2)path.vectorPath[currentChaseWaypoint]) <= 0.5f)
@@ -172,4 +149,6 @@ public class GroundEnemy : EnemyEntity
                 break;
         }
     }
+
+    
 }
