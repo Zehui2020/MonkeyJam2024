@@ -22,6 +22,10 @@ public class GroundEnemy : EnemyEntity
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
 
+        //Animation
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        _animator = GetComponentInChildren<Animator>();
+
         isGrounded = false;
     }
 
@@ -29,8 +33,8 @@ public class GroundEnemy : EnemyEntity
     {
         //Ground check
         isGrounded = Physics2D.Raycast(rb.position, -transform.up, groundDistCheck, groundLayer);
-        Debug.DrawRay(rb.position, -transform.up * groundDistCheck, Color.red, 0.5f);
-
+        //Debug.DrawRay(rb.position, -transform.up * groundDistCheck, Color.red, 0.5f);
+        Debug.Log("IsGrounded: " + isGrounded);
 
         //check if stun
         if (isStunned)
@@ -53,6 +57,8 @@ public class GroundEnemy : EnemyEntity
         {
             //Idle
             case EnemyStates.Idle:
+                //animation
+                _animator.SetBool("ISWALKING", false);
                 //Stand Still / Rest
                 counter += Time.deltaTime * _distortTime;
                 //prev: attack/Chase: look for player then go back to patrol
@@ -65,12 +71,12 @@ public class GroundEnemy : EnemyEntity
                 }
                 //see player if player is closer
                 //Can see player if get too close
-                Debug.Log("Scan");
+                //Debug.Log("Scan");
                 Collider2D c = Physics2D.OverlapCircle(transform.position, detectTargetRange  + 1, playerLayer);
                 //detected player
                 if (c != null)
                 {
-                    Debug.Log("Detected");
+                    //Debug.Log("Detected");
                     targetTransform = c.transform;
                     //chase player
                     state = EnemyStates.Chase;
@@ -84,7 +90,27 @@ public class GroundEnemy : EnemyEntity
                 //Get Direction
                 Vector3 dir = _waypoints[currWaypoint].position - transform.position;
                 dir.y = 0;
+                //Animation
+                if (dir.x != 0)
+                {
+                    _animator.SetBool("ISWALKING", true);
+                    //rotate
+                    if (dir.x > 0.1f)
+                    {
+                        _spriteRenderer.flipX = true;
+                    }
+                    else if (dir.x < -0.1f)
+                    {
+                        _spriteRenderer.flipX = false;
+                    }
+                }
+                else
+                {
+                    _animator.SetBool("ISWALKING", false);
+                }
                 dir.Normalize();
+                
+
                 //move towards waypoint
                 transform.position += dir * speed * Time.deltaTime * _distortTime;
                 //rb.AddForce(dir * speed * Time.deltaTime * _distortTime * 100);
@@ -112,10 +138,10 @@ public class GroundEnemy : EnemyEntity
                 break;
             //Chase
             case EnemyStates.Chase:
-                Debug.Log("Chase");
+                //Debug.Log("Chase");
 
                 //check target still in range
-                if (Vector3.Distance(targetTransform.position, transform.position) <= detectTargetRange)
+                if (Vector3.Distance(targetTransform.position, transform.position) <= detectTargetRange + 2)
                 {
                     //update last seen position
                     targetLastSeenPos = targetTransform.position;
@@ -143,13 +169,34 @@ public class GroundEnemy : EnemyEntity
                 }
                 Vector2 direction = ((Vector2)path.vectorPath[currentChaseWaypoint] - rb.position);
                 direction.y = 0;
+                //Animation
+                if (direction.x != 0)
+                {
+                    _animator.SetBool("ISWALKING", true);
+                    //rotate
+                    if (direction.x > 0.1f)
+                    {
+                        _spriteRenderer.flipX = true;
+                    }
+                    else if (direction.x < -0.1f)
+                    {
+                        _spriteRenderer.flipX = false;
+                    }
+                }
+                else
+                {
+                    _animator.SetBool("ISWALKING", false);
+                }
                 direction.Normalize();
+                
+
                 rb.position += direction * speed * Time.deltaTime;
                 //rb.AddForce(direction * speed * Time.deltaTime * _distortTime * 100);
 
                 //check if need to jump
                 if (Mathf.Abs(path.vectorPath[currentChaseWaypoint].y - rb.position.y) >= 0.5f && Mathf.Abs(path.vectorPath[currentChaseWaypoint].x - rb.position.x) <= 2 && isGrounded)
                 {
+                    Debug.Log("Jump");
                     //jump
                     rb.AddForce(transform.up * 200 * Time.deltaTime * _distortTime, ForceMode2D.Impulse);
                 }
@@ -170,6 +217,23 @@ public class GroundEnemy : EnemyEntity
             case EnemyStates.Death:
                 DeathStateUpdate(_distortTime);
                 break;
+        }
+
+        //jump / fall
+        if (rb.velocity.y > 0.05f)
+        {
+            _animator.SetBool("ISJUMPING", true);
+            _animator.SetBool("ISFALLING", false);
+        }
+        else if (rb.velocity.y < -0.05f)
+        {
+            _animator.SetBool("ISJUMPING", false);
+            _animator.SetBool("ISFALLING", true);
+        }
+        else
+        {
+            _animator.SetBool("ISJUMPING", false);
+            _animator.SetBool("ISFALLING", false);
         }
     }
 }
