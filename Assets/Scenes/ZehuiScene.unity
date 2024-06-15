@@ -772,7 +772,7 @@ GameObject:
   - component: {fileID: 121602985}
   - component: {fileID: 121602984}
   - component: {fileID: 121602983}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -860,9 +860,9 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 7
 --- !u!19719996 &121602985
 TilemapCollider2D:
@@ -3751,6 +3751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerController: {fileID: 2027420429}
   _inputController: {fileID: 609632187}
+  _playerHealth: {fileID: 2027420434}
 --- !u!4 &561944804
 Transform:
   m_ObjectHideFlags: 0
@@ -15787,7 +15788,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1915865008}
   - component: {fileID: 1915865007}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16276,6 +16277,7 @@ GameObject:
   - component: {fileID: 2027420430}
   - component: {fileID: 2027420429}
   - component: {fileID: 2027420432}
+  - component: {fileID: 2027420434}
   - component: {fileID: 2027420428}
   - component: {fileID: 2027420425}
   - component: {fileID: 2027420433}
@@ -16379,7 +16381,7 @@ MonoBehaviour:
   minGroundDist: 1.8
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
   dustTrail: {fileID: 1720033333}
   isGrounded: 1
   defaultWeapon: {fileID: 1104161453}
@@ -16531,6 +16533,20 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &2027420434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027420423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d43bea76aa4f7da4ab882d569d50556e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  iframes: 0
 --- !u!1001 &2078965563
 PrefabInstance:
   m_ObjectHideFlags: 0

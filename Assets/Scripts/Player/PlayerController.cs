@@ -30,15 +30,6 @@ public class PlayerController : MonoBehaviour
     //setting default and euqipped weapon
     [SerializeField] Weapon defaultWeapon;
     private Weapon equippedWeapon;
-    //Player health
-
-
-
-
-
-
-
-    //Script starts here
 
     //Code for initialising in Game Controller
     public void Initialise()
@@ -47,6 +38,7 @@ public class PlayerController : MonoBehaviour
         equippedWeapon = defaultWeapon;
         equippedWeapon.Initialise();
     }
+
     //Code to update player in Game Controller
     public void UpdatePlayer()
     {
@@ -102,7 +94,7 @@ public class PlayerController : MonoBehaviour
     public void Jump()
     {
         if (isGrounded)
-            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
+            rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
     //Setting boolean of braking
