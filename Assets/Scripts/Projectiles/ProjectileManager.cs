@@ -47,10 +47,13 @@ public class ProjectileManager : MonoBehaviour
             {
                 if (!list._listOfProjectiles[current].gameObject.activeSelf)
                 {
-                    list.start++;
-                    if (list.start >= list._listOfProjectiles.Count)
+                    if (current == list.start)
                     {
-                        list.start = 0;
+                        list.start++;
+                        if (list.start >= list._listOfProjectiles.Count)
+                        {
+                            list.start = 0;
+                        }
                     }
                 }
                 else

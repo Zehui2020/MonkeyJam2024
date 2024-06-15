@@ -14,6 +14,7 @@ public abstract class Projectile : MonoBehaviour
     //direction projectile moves to
     protected Vector3 direction;
 
+    [SerializeField] protected int damage;
     //updates the projectile (each projectile has their own update function)
     public abstract void UpdateProjectile();
 

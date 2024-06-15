@@ -25,6 +25,9 @@ public abstract class Weapon : MonoBehaviour
     //Where the projectile will spawn from
     [SerializeField] protected GameObject barrel;
 
+    //To detect range to attack player (enemy)
+    [SerializeField] float range;
+
     //Upgrade levels for different weapon levela
     int UpgradeLevel;
 

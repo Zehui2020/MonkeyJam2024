@@ -98,11 +98,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ae0dfeae67ab14186856e7b2acc023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: 
   ammo: 6
   reloadTime: 2
   attackInterval: 2
   projectileType: 2
   barrel: {fileID: 6412478992002544284}
+  range: 0
   moveBackForce: 3
 --- !u!1 &6412478992002544284
 GameObject:
