@@ -7,6 +7,8 @@ TagManager:
   - Canvas
   - BulletTracer
   - Chest
+  - Enemy
+  - Weapon
   layers:
   - Default
   - TransparentFX
@@ -14,7 +16,7 @@ TagManager:
   - Player
   - Water
   - UI
-  - 
+  - Weapon
   - 
   - 
   - 

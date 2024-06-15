@@ -28,7 +28,7 @@ public class Flamethrower : Weapon
                 currReloadTime = reloadTime;
             }
             Projectile proj = ProjectileManager.instance.GetProjectile(projectileType);
-            proj.Shoot(ownerName, transform.right * ((transform.lossyScale.x < 0) ? 1 : -1), barrel.transform.position + new Vector3(0, maxHeight - ((maxHeight - minHeight) / space) * currentSpace, 0));
+            proj.Shoot(ownerName, transform.right * ((transform.lossyScale.x < 0) ? 1 : -1), barrel.transform.position + (maxHeight - (maxHeight - minHeight) / space * currentSpace) * transform.up);
             currAttackInterval = attackInterval;
             currentSpace++;
             if (currentSpace >= space)

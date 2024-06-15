@@ -7,10 +7,12 @@ public class GameController : MonoBehaviour
     //Serializing controller for main gameplay
     [SerializeField] PlayerController _playerController;
     [SerializeField] InputController _inputController;
+    [SerializeField] PlayerHealth _playerHealth;
     //Initialising conrollers
     void Start()
     {
         _playerController.Initialise();
+        _playerHealth.Initialise();
     }
 
     //Updating controllers
@@ -58,5 +60,7 @@ public class GameController : MonoBehaviour
         }
         //Updating Player
         _playerController.UpdatePlayer();
+        //Updating Player health
+        _playerHealth.UpdatePlayerHealth();
     }
 }
