@@ -138,7 +138,15 @@ public class PlayerController : MonoBehaviour
     //Equipping a new weapon
     public void EquipWeapon(Weapon newweapon)
     {
-        equippedWeapon = newweapon;
-        newweapon.Initialise();
+        if (newweapon.GetName().Equals(equippedWeapon.GetName()))
+        {
+            equippedWeapon.Upgrade();
+        }
+        else
+        {
+            equippedWeapon = newweapon;
+            newweapon.Initialise();
+            UseWeapon();
+        }
     }
 }

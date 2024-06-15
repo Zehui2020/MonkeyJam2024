@@ -5,6 +5,8 @@ using UnityEngine;
 //Abstract class for weapns
 public abstract class Weapon : MonoBehaviour
 {
+    //Identifier of weapon
+    [SerializeField] string weaponName;
     //Ammo management
     [SerializeField] protected int ammo;
     protected int currAmmo;
@@ -55,4 +57,19 @@ public abstract class Weapon : MonoBehaviour
 
     //When any entity uses the Gun
     public abstract void Use(string ownerName);
+
+    //upgrading weapon
+    public void Upgrade()
+    {
+        if (UpgradeLevel < 2)
+        {
+            UpgradeLevel++;
+        }
+    }
+
+    //Getting weapon name
+    public string GetName()
+    {
+        return weaponName;
+    }
 }
