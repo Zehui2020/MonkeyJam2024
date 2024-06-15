@@ -6,12 +6,13 @@ using TMPro;
 
 public class ItemCard : MonoBehaviour
 {
-    private Item cardItem;
+    public Item cardItem;
     [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI itemName;
     [SerializeField] private TextMeshProUGUI itemDescription;
+    [SerializeField] private Animator cardAnimator;
 
-    public event System.Action<Item> OnSelectEvent;
+    public event System.Action<ItemCard> OnSelectEvent;
 
     public void SetupCard(Item item)
     {
@@ -21,8 +22,19 @@ public class ItemCard : MonoBehaviour
         itemDescription.text = item.description;
     }
 
+    public void SetSelectCardAnimation(bool select)
+    {
+        cardAnimator.SetBool("click", select);
+    }
+
+    public void OnConfirmCard()
+    {
+        cardAnimator.SetTrigger("confirm");
+    }
+
     public void SelectCard()
     {
-        OnSelectEvent?.Invoke(cardItem);
+        SetSelectCardAnimation(true);
+        OnSelectEvent?.Invoke(this);
     }
 }

@@ -7,7 +7,7 @@ public class ItemCardManager : MonoBehaviour
     [SerializeField] private ItemTable itemTable;
     [SerializeField] private List<ItemCard> itemCards = new List<ItemCard>();
 
-    private Item chosenItem;
+    private ItemCard chosenCard;
 
     public void SetupCards()
     {
@@ -20,15 +20,31 @@ public class ItemCardManager : MonoBehaviour
         }
     }
 
-    public void SetChosenItem(Item item)
+    public void SetChosenItem(ItemCard card)
     {
-        chosenItem = item;
+        chosenCard = card;
+        foreach (ItemCard itemCard in itemCards)
+        {
+            if (card.Equals(itemCard))
+                continue;
+
+            itemCard.SetSelectCardAnimation(false);
+        }
     }
 
     public void ConfirmItem()
     {
-        ItemManager.Instance.AddItem(chosenItem);
-        chosenItem = null;
+        StartCoroutine(OnConfirm());
+    }
+
+    private IEnumerator OnConfirm()
+    {
+        chosenCard.OnConfirmCard();
+        ItemManager.Instance.AddItem(chosenCard.cardItem);
+
+        yield return new WaitForSeconds(1f);
+
+        chosenCard = null;
         gameObject.SetActive(false);
     }
 
