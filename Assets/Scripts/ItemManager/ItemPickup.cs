@@ -17,6 +17,8 @@ public class ItemPickup : MonoBehaviour
         {
             if (itemPickupType == ItemPickupType.ITEM)
                 ItemManager.Instance.OpenItemCardChoices();
+
+            Destroy(gameObject);
         }
     }
 }
