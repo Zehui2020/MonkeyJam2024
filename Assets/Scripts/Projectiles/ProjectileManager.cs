@@ -8,6 +8,7 @@ using UnityEngine;
 public class ProjectileList
 {
     public List<Projectile> _listOfProjectiles;
+    public Projectile _projectilePrefab;
     public int start = 0;
     public int end = 0;
 }

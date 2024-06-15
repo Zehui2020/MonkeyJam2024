@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 14e9b46f46b296243ad31d12f2e3b899, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 23896bc8deee5614aafeeba285be95e4, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,7 +104,7 @@ MonoBehaviour:
   damage: 0
   explosionRadius: 20
   explosionGO: {fileID: 2586866447200285307}
-  explodeEffectTime: 10
+  explodeEffectTime: 1
 --- !u!61 &7136105403274482761
 BoxCollider2D:
   m_ObjectHideFlags: 0
