@@ -15,7 +15,7 @@ MonoBehaviour:
   itemStats: {fileID: 11400000, guid: 77167db11ac7d094a84655d88055015b, type: 2}
   itemRarity: 10
   itemType: 0
-  spriteIcon: {fileID: 0}
+  spriteIcon: {fileID: 1217448188, guid: bf61a3bb98100e54aa5ceccece1940db, type: 3}
   title: Safety Helmet
   description: Chance to heal on landing a crit hit +10%
   itemStack: 0

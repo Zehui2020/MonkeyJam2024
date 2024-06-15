@@ -15,7 +15,7 @@ MonoBehaviour:
   itemStats: {fileID: 11400000, guid: 77167db11ac7d094a84655d88055015b, type: 2}
   itemRarity: 1
   itemType: 0
-  spriteIcon: {fileID: 0}
+  spriteIcon: {fileID: -1511077794, guid: bf61a3bb98100e54aa5ceccece1940db, type: 3}
   title: Gamba Load
   description: Increases chance to automatically reload weapon upon hitting an enemy
     by +8%

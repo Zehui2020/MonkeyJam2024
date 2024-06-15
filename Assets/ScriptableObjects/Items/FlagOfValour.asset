@@ -15,7 +15,7 @@ MonoBehaviour:
   itemStats: {fileID: 11400000, guid: 77167db11ac7d094a84655d88055015b, type: 2}
   itemRarity: 1
   itemType: 0
-  spriteIcon: {fileID: 0}
-  title: "Flag Of Valour\t"
+  spriteIcon: {fileID: 1691139092, guid: bf61a3bb98100e54aa5ceccece1940db, type: 3}
+  title: Flag Of Valour
   description: Doing a flip stuns all enemies within a +2m radius.
   itemStack: 0

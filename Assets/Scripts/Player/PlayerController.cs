@@ -180,7 +180,7 @@ public class PlayerController : MonoBehaviour
         if (rampHit)
         {
             float angle = Vector3.Angle(Vector3.up, rampHit.normal);
-            return angle < 90 && angle != 0;
+            return angle < 90 && angle > 3;
         }
         
         return false;
