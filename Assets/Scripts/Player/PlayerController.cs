@@ -247,4 +247,10 @@ public class PlayerController : MonoBehaviour
             UseWeapon();
         }
     }
+
+    //Getting isGrounded
+    public bool GetGrounded()
+    {
+        return isGrounded;
+    }
 }

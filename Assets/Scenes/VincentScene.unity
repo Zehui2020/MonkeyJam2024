@@ -6376,7 +6376,7 @@ Transform:
   m_GameObject: {fileID: 2085654028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.27, y: -2.96, z: 0}
+  m_LocalPosition: {x: -3.27, y: -2.18, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6398,6 +6398,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2085654038}
+  _playerController: {fileID: 2085654034}
+  minAirTime: 0
 --- !u!95 &2085654038
 Animator:
   serializedVersion: 5

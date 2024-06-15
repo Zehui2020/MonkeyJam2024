@@ -5,15 +5,24 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     [SerializeField] Animator animator;
-
+    [SerializeField] PlayerController _playerController;
     bool isGrounded = false;
     bool isJump = false;
     bool isMoving = false;
     [SerializeField] float minAirTime;
-    float currAirTime ;
+    float currAirTime = 0 ;
     public void UpdatePlayerAnimation()
     {
+        isGrounded = _playerController.GetGrounded();
         if (!isGrounded)
+        {
+            
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("JumpUp"))
+            {
+                animator.Play("InAir");
+            }
+        }
+        else
         {
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("InAir"))
             {
@@ -23,14 +32,7 @@ public class PlayerAnimation : MonoBehaviour
             {
                 animator.Play("JumpUp");
             }
-        }
-        else if (!animator.GetCurrentAnimatorStateInfo(0).IsName("JumpUp"))
-        {
-            animator.Play("InAir");
-        }
-        else
-        {
-            if (isMoving)
+            else if (isMoving)
             {
                 animator.Play("Cycle");
             }
@@ -39,6 +41,7 @@ public class PlayerAnimation : MonoBehaviour
                 animator.Play("Idle");
             }
         }
+
     }
     public void SetMoving(bool _newIsMoving)
     {
