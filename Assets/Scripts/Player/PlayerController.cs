@@ -7,18 +7,24 @@ public class PlayerController : MonoBehaviour
 {
     //SerializeField Speed of Bike, BrakeForce, Jump Force, rotation AirForce & RotationSpeed of bike
     [SerializeField] float speed;
+    [SerializeField] float speedLimit;
     [SerializeField] float brakeForce;
     [SerializeField] float jumpForce;
     [SerializeField] float rotationSpeed;
     [SerializeField] float rotationAirForce;
+    [SerializeField] float minGroundDist;
+
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private ParticleSystem dustTrail;
+
     //Rigidbody of the bicycle
     private Rigidbody2D rigidBody;
     //Checks if bike is braking & will allow player to move forward or not
     private bool isBraking;
     //Checks if wheels are grounded
-    private bool isGrounded;
-    //Checks if player is near anything
-    private bool isPlayerNearAnything;
+    [SerializeField] private bool isGrounded;
+    ////Checks if player is near anything
+    //private bool isPlayerNearAnything;
     //Checks if player is pressing W or S or nothing
     private int isPlayerMoving;
     //setting default and euqipped weapon
@@ -41,50 +47,40 @@ public class PlayerController : MonoBehaviour
         equippedWeapon = defaultWeapon;
         equippedWeapon.Initialise();
     }
-    public void UpdatePlayerIsNearAnything()
-    {
-        if (Physics2D.OverlapCircle(transform.position, 1.25f, ~(1 << 3)))
-        {
-            isPlayerNearAnything = true;
-        }
-        else
-        {
-            isPlayerNearAnything = false;
-        }
-    }
     //Code to update player in Game Controller
     public void UpdatePlayer()
     {
-        rigidBody.velocity = new Vector2(Mathf.Clamp(rigidBody.velocity.x, -10f, 10f), Mathf.Clamp(rigidBody.velocity.y, -10f, 5f));
-        if (isPlayerNearAnything)
-        {
+        CheckGroundCollision();
+        UpdateDustTrailPS();
+
+        rigidBody.velocity = new Vector2(Mathf.Clamp(rigidBody.velocity.x, -speedLimit, speedLimit), Mathf.Clamp(rigidBody.velocity.y, -10f, 5f));
+
+        if (isGrounded)
             rigidBody.angularVelocity = Mathf.Clamp(rigidBody.angularVelocity, -60f, 60f);
-        }
         else
-        {
             rigidBody.angularVelocity = Mathf.Clamp(rigidBody.angularVelocity, -60f * rotationAirForce, 60f * rotationAirForce);
-        }
+
         if (rigidBody.velocity.x > 0.05 && isPlayerMoving == 1)
-        {
             transform.localScale = new Vector3(-2, 2, 0);
-        }
         else if (rigidBody.velocity.x < -0.05f && isPlayerMoving == -1)
-        {
             transform.localScale = new Vector3(2, 2, 0);
-        }
+
         equippedWeapon.UpdateGun();
     }
+
     //Sets if player is pressing W or S or nothing
     public void SetPlayerMovement(int _newIsPlayerMoving)
     {
         isPlayerMoving = _newIsPlayerMoving;
     }
+
     //Movement input from GameControlller
     public void Movement(MovementAxisCommand _movementAxisCommand)
     {
         if (!isBraking && isGrounded)
         {
             rigidBody.AddForce(new Vector2(_movementAxisCommand.HorizontalAxis * Time.deltaTime * speed, 0), ForceMode2D.Impulse);
+
             if (_movementAxisCommand.HorizontalAxis < 0)
             {
                 isPlayerMoving = -1;
@@ -95,29 +91,30 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
     //Braking input from GameControlller
     public void Braking()
     {
         rigidBody.AddForce(new Vector2(-rigidBody.velocity.x * Time.deltaTime * brakeForce, 0), ForceMode2D.Impulse);
     }
+
     //Jump input from GameController
     public void Jump()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0, -1f), transform.localScale.y * 0.495f, ~(1<<3));
-        if (hit && isGrounded)
-        {
+        if (isGrounded)
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
-        }
     }
+
     //Setting boolean of braking
     public void SetBraking(bool newBraking)
     {
         isBraking = newBraking;
     }
+
     //Adding torque for rotation of bike, rotation input from GameControlller
     public void Rotation(RotationAxisCommand rotationAxisCommand)
     {
-        if (isPlayerNearAnything)
+        if (isGrounded)
         {
             rigidBody.AddTorque(rotationAxisCommand.RotationAxis * Time.deltaTime * rotationSpeed, ForceMode2D.Impulse);
         }
@@ -126,14 +123,54 @@ public class PlayerController : MonoBehaviour
             rigidBody.AddTorque(rotationAxisCommand.RotationAxis * Time.deltaTime * rotationSpeed * rotationAirForce, ForceMode2D.Impulse);
         }
     }
-    //triggers for ground detection
-    private void OnTriggerStay2D(Collider2D collision)
+
+    public void CheckGroundCollision()
     {
-        isGrounded = true;
+        RaycastHit2D groundHit;
+        groundHit = Physics2D.Raycast(transform.position, Vector3.down, 100, groundLayer);
+
+        float dist = Vector3.Distance(transform.position, groundHit.point);
+        if (dist <= minGroundDist)
+            isGrounded = true;
+        else if (dist > minGroundDist)
+            isGrounded = false;
     }
-    private void OnTriggerExit2D(Collider2D other)
+
+    private void UpdateDustTrailPS()
     {
-        isGrounded = false;
+        if (isGrounded)
+        {
+            float normalizedVelocity = Mathf.Clamp01(rigidBody.velocity.magnitude / speedLimit);
+            float emissionRate = Mathf.Lerp(0, 20, normalizedVelocity);
+
+            var em = dustTrail.emission;
+            em.enabled = true;
+            em.rateOverTime = emissionRate;
+        }
+        else
+        {
+            var em = dustTrail.emission;
+            em.enabled = false;
+        }
+
+        if (rigidBody.velocity.x > 0)
+        {
+            var vel = dustTrail.velocityOverLifetime;
+            ParticleSystem.MinMaxCurve xCurve = new ParticleSystem.MinMaxCurve(-1, -5);
+            vel.x = xCurve;
+        }
+        else
+        {
+            var vel = dustTrail.velocityOverLifetime;
+            ParticleSystem.MinMaxCurve xCurve = new ParticleSystem.MinMaxCurve(1, 5);
+            vel.x = xCurve;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Vector3 collisionPoint = collision.contacts[collision.contacts.Length - 1].point;
+        dustTrail.transform.position = new Vector3(collisionPoint.x, collisionPoint.y + 0.1f, collisionPoint.z);
     }
 
     //Weapon Usage
@@ -141,6 +178,7 @@ public class PlayerController : MonoBehaviour
     {
         equippedWeapon.Use("Player");
     }
+
     //Equipping a new weapon
     public void EquipWeapon(Weapon newweapon)
     {

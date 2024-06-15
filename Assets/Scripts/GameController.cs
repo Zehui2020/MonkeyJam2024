@@ -18,8 +18,7 @@ public class GameController : MonoBehaviour
     {
         //Update Projectiles
         ProjectileManager.instance.UpdateProjectile();
-        //Updating player is near anything
-        _playerController.UpdatePlayerIsNearAnything();
+
         //Getting Movement
         MovementAxisCommand movementAxisCommand;
         if (_inputController.TryGetMovementAxisInput(out movementAxisCommand))
