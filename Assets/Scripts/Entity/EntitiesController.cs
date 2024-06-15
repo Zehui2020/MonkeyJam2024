@@ -47,7 +47,7 @@ public class EntitiesController : MonoBehaviour
             //check if entity has been initiated
             if (!e.hasInit)
             {
-                //check if pl
+                //check if entity is 
                 //initiate uninitiated entities
                 e.Init();
             }
