@@ -9,6 +9,8 @@ public class PlayerAnimation : MonoBehaviour
     bool isGrounded = false;
     bool isJump = false;
     bool isMoving = false;
+    [SerializeField] float minAirTime;
+    float currAirTime ;
     public void UpdatePlayerAnimation()
     {
         if (!isGrounded)
@@ -21,7 +23,14 @@ public class PlayerAnimation : MonoBehaviour
             {
                 animator.Play("JumpUp");
             }
-            else if (isMoving)
+        }
+        else if (!animator.GetCurrentAnimatorStateInfo(0).IsName("JumpUp"))
+        {
+            animator.Play("InAir");
+        }
+        else
+        {
+            if (isMoving)
             {
                 animator.Play("Cycle");
             }
@@ -29,10 +38,6 @@ public class PlayerAnimation : MonoBehaviour
             {
                 animator.Play("Idle");
             }
-        }
-        else if (!animator.GetCurrentAnimatorStateInfo(0).IsName("JumpUp"))
-        {
-            animator.Play("InAir");
         }
     }
     public void SetMoving(bool _newIsMoving)
