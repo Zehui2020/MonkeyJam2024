@@ -17140,7 +17140,7 @@ MonoBehaviour:
   speed: 1
   speedLimit: 9
   brakeForce: 8
-  jumpForce: 5.25
+  jumpForce: 5.5
   rotationSpeed: 8
   rotationAirForce: 4.3
   minGroundDist: 1.5
@@ -17151,7 +17151,9 @@ MonoBehaviour:
   minFallAngle: 150
   maxFallAngle: 270
   isGrounded: 0
-  defaultWeapon: {fileID: 1104161453}
+  WeaponList:
+  - {fileID: 1104161453}
+  defaultWeapon: 0
 --- !u!212 &2027420430
 SpriteRenderer:
   m_ObjectHideFlags: 0
