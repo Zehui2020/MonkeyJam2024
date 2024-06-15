@@ -11,6 +11,8 @@ public class ItemManager : MonoBehaviour
     private Drone drone;
     [SerializeField] private Transform droneFollowPos;
 
+    [SerializeField] private GameObject itemCardChoices;
+
     public void InitItemManager()
     {
         itemList = new List<Item>();
@@ -76,5 +78,10 @@ public class ItemManager : MonoBehaviour
     public void UpgradeDrone()
     {
         drone?.UpgradeDrone();
+    }
+
+    public void OpenItemCardChoices()
+    {
+        itemCardChoices.SetActive(true);
     }
 }
