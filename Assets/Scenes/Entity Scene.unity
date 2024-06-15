@@ -1722,6 +1722,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Air Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4841882345463711443, guid: ef168495654b47d46b250e9f76717c3f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6192449966029765908, guid: ef168495654b47d46b250e9f76717c3f, type: 3}
       propertyPath: _waypoints.Array.size
       value: 3
