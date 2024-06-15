@@ -75,4 +75,10 @@ public abstract class Weapon : MonoBehaviour
     {
         return weaponName;
     }
+
+    //Getting weapon upgrade level
+    public int GetUpgradeLevel()
+    {
+        return UpgradeLevel;
+    }
 }

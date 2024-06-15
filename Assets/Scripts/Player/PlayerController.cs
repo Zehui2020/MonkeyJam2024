@@ -39,7 +39,6 @@ public class PlayerController : MonoBehaviour
     private int isPlayerMoving;
     //setting weapons
     [SerializeField] List<Weapon> WeaponList;
-    [SerializeField] WeaponType defaultWeapon;
     private Weapon equippedWeapon;
 
     public enum WeaponType
@@ -58,9 +57,6 @@ public class PlayerController : MonoBehaviour
     public void Initialise()
     {
         rigidBody = GetComponent<Rigidbody2D>();
-        equippedWeapon = WeaponList[(int)defaultWeapon];
-        equippedWeapon.Initialise();
-        equippedWeapon.gameObject.SetActive(true);
     }
 
     //Code to update player in Game Controller
@@ -94,6 +90,7 @@ public class PlayerController : MonoBehaviour
         else if (rigidBody.velocity.x < -0.05f && isPlayerMoving == -1)
             transform.localScale = new Vector3(2, 2, 0);
 
+        if (equippedWeapon)
         equippedWeapon.UpdateGun();
     }
 
@@ -265,6 +262,7 @@ public class PlayerController : MonoBehaviour
     //Weapon Usage
     public void UseWeapon()
     {
+        if (equippedWeapon)
         equippedWeapon.Use("Player");
     }
 
@@ -281,7 +279,6 @@ public class PlayerController : MonoBehaviour
             equippedWeapon = WeaponList[(int)newweapon];
             equippedWeapon.Initialise();
             equippedWeapon.gameObject.SetActive(true);
-            UseWeapon();
         }
     }
 
@@ -289,5 +286,11 @@ public class PlayerController : MonoBehaviour
     public bool GetGrounded()
     {
         return isGrounded;
+    }
+
+    //Getting equipped weapon
+    public Weapon GetWeapon()
+    {
+        return equippedWeapon;
     }
 }
