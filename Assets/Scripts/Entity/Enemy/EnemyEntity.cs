@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using UnityEngine.Rendering.Universal;
 //Yi Jie
 //Base Enemy Stats and functions
 public abstract class EnemyEntity : Entity
@@ -44,6 +45,10 @@ public abstract class EnemyEntity : Entity
     protected bool reachedEndOfPath = false;
     protected Seeker seeker;
     protected Rigidbody2D rb;
+
+    //Animation
+    protected SpriteRenderer _spriteRenderer;
+    protected Animator _animator;
 
     //Fixed Data
     protected float STUNNEDDURATION = 3;

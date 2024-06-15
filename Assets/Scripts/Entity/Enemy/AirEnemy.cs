@@ -14,6 +14,10 @@ public class AirEnemy : EnemyEntity
 
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+
+        //animation
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        _animator = GetComponentInChildren<Animator>();
     }
 
     public override void HandleUpdate(float _distortTime)
@@ -69,6 +73,15 @@ public class AirEnemy : EnemyEntity
                 //Walk towards waypoints
                 //Get Direction
                 Vector3 dir = _waypoints[currWaypoint].position - transform.position;
+                //rotate
+                if (dir.x > 0.1f)
+                {
+                    _spriteRenderer.flipX = true;
+                }
+                else if (dir.x < -0.1f)
+                {
+                    _spriteRenderer.flipX = false;
+                }
                 dir.Normalize();
                 //move towards waypoint
                 //transform.position += dir * speed * Time.deltaTime * _distortTime;
@@ -100,7 +113,7 @@ public class AirEnemy : EnemyEntity
                 Debug.Log("Chase");
 
                 //check target still in range
-                if (Vector3.Distance(targetTransform.position, transform.position) <= detectTargetRange)
+                if (Vector3.Distance(targetTransform.position, transform.position) <= detectTargetRange + 2)
                 {
                     //update last seen position
                     targetLastSeenPos = targetTransform.position;
@@ -127,6 +140,15 @@ public class AirEnemy : EnemyEntity
                     reachedEndOfPath = false;
                 }
                 Vector2 direction = ((Vector2)path.vectorPath[currentChaseWaypoint] - rb.position);
+                //rotate
+                if (direction.x > 0.1f)
+                {
+                    _spriteRenderer.flipX = true;
+                }
+                else if (direction.x < -0.1f)
+                {
+                    _spriteRenderer.flipX = false;
+                }
                 direction.Normalize();
                 //rb.position += direction * speed * Time.deltaTime;
                 rb.AddForce(direction * speed * Time.deltaTime * _distortTime);
