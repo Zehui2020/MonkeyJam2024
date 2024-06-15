@@ -10,6 +10,7 @@ public class EntitiesController : MonoBehaviour
     //Variables
     //List of entities
     private List<Entity> _entities;
+    private List<Entity> _entitiesToDelete;
 
 
     //Singleton Instance
@@ -27,6 +28,7 @@ public class EntitiesController : MonoBehaviour
         }
 
         _entities = new List<Entity>();
+        _entitiesToDelete = new List<Entity>();
     }
 
     
@@ -48,7 +50,26 @@ public class EntitiesController : MonoBehaviour
                 e.Init();
             }
             //update entities
-            e.HandleUpdate();
+            e.HandleUpdate(1);
+
+            //check if entity needs to be deleted
+            if (e.canDestroy)
+            {
+                _entitiesToDelete.Add(e);
+            }
+        }
+
+        //delete all entities to destroy
+        bool clear = false;
+        foreach (Entity e in _entitiesToDelete)
+        {
+            _entities.Remove(e);
+            Destroy(e);
+            clear = true;
+        }
+        if (clear)
+        {
+            _entitiesToDelete.Clear();
         }
     }
 
