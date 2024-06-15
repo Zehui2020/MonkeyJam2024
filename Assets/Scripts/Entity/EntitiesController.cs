@@ -7,6 +7,7 @@ using UnityEngine;
 //Entities: Enemies, Obstacles
 public class EntitiesController : MonoBehaviour
 {
+    //[SerializeField] protected Weapon weapon;
     //Variables
     //List of entities
     private List<Entity> _entities;
