@@ -16,11 +16,16 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private ParticleSystem dustTrail;
+
     private bool isFallen = false;
+    [SerializeField] private float minFallAngle;
+    [SerializeField] private float maxFallAngle;
 
     private Coroutine jumpRoutine;
 
     private RaycastHit2D rampHit;
+
+    private IInteractable interactable;
 
     //Rigidbody of the bicycle
     private Rigidbody2D rigidBody;
@@ -47,6 +52,7 @@ public class PlayerController : MonoBehaviour
     //Code to update player in Game Controller
     public void UpdatePlayer()
     {
+        CheckFallenDown();
         CheckGroundCollision();
         SpeedControl();
         UpdateDustTrailPS();
@@ -110,7 +116,7 @@ public class PlayerController : MonoBehaviour
     //Jump input from GameController
     public void Jump()
     {
-        if (jumpRoutine == null)
+        if (jumpRoutine == null && !isFallen)
             jumpRoutine = StartCoroutine(JumpRoutine());
     }
 
@@ -153,9 +159,11 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
         else if (dist > minGroundDist)
             isGrounded = false;
+    }
 
-        groundHit = Physics2D.Raycast(transform.position, transform.up, 100, groundLayer);
-        if (groundHit && isGrounded)
+    private void CheckFallenDown()
+    {
+        if (transform.eulerAngles.z > minFallAngle && transform.eulerAngles.z < maxFallAngle)
             isFallen = true;
         else
             isFallen = false;
@@ -225,6 +233,19 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 collisionPoint = collision.contacts[collision.contacts.Length - 1].point;
         dustTrail.transform.position = new Vector3(collisionPoint.x, collisionPoint.y + 0.1f, collisionPoint.z);
+    }
+
+    public void SetInteractable(IInteractable interactable)
+    {
+        this.interactable = interactable;
+    }
+
+    public void OnInteract()
+    {
+        if (interactable == null)
+            return;
+
+        interactable.OnInteract();
     }
 
     //Weapon Usage

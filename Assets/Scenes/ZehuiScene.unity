@@ -4361,6 +4361,7 @@ MonoBehaviour:
   _inputController: {fileID: 609632187}
   _playerHealth: {fileID: 2027420434}
   _playerAnimation: {fileID: 2027420437}
+  _itemManager: {fileID: 2027420432}
 --- !u!4 &561944804
 Transform:
   m_ObjectHideFlags: 0
@@ -7429,7 +7430,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!224 &1087732257
 RectTransform:
@@ -17071,7 +17072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8acafd9dca405a48adc76da05aa1adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
+  speed: 1
   speedLimit: 8
   brakeForce: 1
   jumpForce: 5.25
@@ -17082,6 +17083,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   dustTrail: {fileID: 1720033333}
+  minFallAngle: 100
+  maxFallAngle: 250
   isGrounded: 1
   defaultWeapon: {fileID: 1104161453}
 --- !u!212 &2027420430
@@ -17124,7 +17127,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 50
   m_Sprite: {fileID: 21300000, guid: 2b594ce9a8183bd40a9ed842ce26ea77, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -17309,6 +17312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2027420436}
+  _playerController: {fileID: 2027420429}
   minAirTime: 0
 --- !u!1001 &2078965563
 PrefabInstance:

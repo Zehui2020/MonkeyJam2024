@@ -9,12 +9,13 @@ public class GameController : MonoBehaviour
     [SerializeField] InputController _inputController;
     [SerializeField] PlayerHealth _playerHealth;
     [SerializeField] PlayerAnimation _playerAnimation;
+    [SerializeField] ItemManager _itemManager;
     //Initialising conrollers
     void Start()
     {
         _playerController.Initialise();
         _playerHealth.Initialise();
-        
+        _itemManager.InitItemManager();
     }
 
     //Updating controllers
@@ -65,6 +66,11 @@ public class GameController : MonoBehaviour
         if (_inputController.TryGetAttacking())
         {
             _playerController.UseWeapon();
+        }
+        // Interact
+        if (_inputController.TryGetInteract())
+        {
+            _playerController.OnInteract();
         }
         //Updating Player
         _playerController.UpdatePlayer();

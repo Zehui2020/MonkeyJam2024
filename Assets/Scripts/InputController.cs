@@ -52,4 +52,9 @@ public class InputController : MonoBehaviour
     {
         return Input.GetAxis("Fire1") != 0;
     }
+    // Interact
+    public bool TryGetInteract()
+    {
+        return Input.GetAxis("Interact") != 0;
+    }
 }

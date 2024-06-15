@@ -11,9 +11,9 @@ public class ItemPickup : MonoBehaviour
     }
     public ItemPickupType itemPickupType;
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.CompareTag("Player"))
+        if (col.collider.CompareTag("Player"))
         {
             if (itemPickupType == ItemPickupType.ITEM)
                 ItemManager.Instance.OpenItemCardChoices();
