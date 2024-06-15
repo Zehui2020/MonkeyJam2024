@@ -22,9 +22,15 @@ public class PlayerController : MonoBehaviour
     //Checks if player is pressing W or S or nothing
     private int isPlayerMoving;
     //setting default and euqipped weapon
-    //Do Note: Please add the default weapon into the inventory
     [SerializeField] Weapon defaultWeapon;
     private Weapon equippedWeapon;
+    //Player health
+
+
+
+
+
+
 
     //Script starts here
 
