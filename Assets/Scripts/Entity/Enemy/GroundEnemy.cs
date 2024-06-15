@@ -241,12 +241,12 @@ public class GroundEnemy : EnemyEntity
         }
 
         //jump / fall
-        if (rb.velocity.y > 0.05f)
+        if (rb.velocity.y > 0.05f && state != EnemyStates.Death)
         {
             _animator.SetBool("ISJUMPING", true);
             _animator.SetBool("ISFALLING", false);
         }
-        else if (rb.velocity.y < -0.05f)
+        else if (rb.velocity.y < -0.05f && state != EnemyStates.Death)
         {
             _animator.SetBool("ISJUMPING", false);
             _animator.SetBool("ISFALLING", true);
