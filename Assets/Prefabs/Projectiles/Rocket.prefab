@@ -102,6 +102,7 @@ MonoBehaviour:
   speed: 3
   aliveTime: 5
   damage: 0
+  shouldBeFlipped: 1
   explosionRadius: 20
   explosionGO: {fileID: 2586866447200285307}
   explodeEffectTime: 1
