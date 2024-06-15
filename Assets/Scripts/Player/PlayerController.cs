@@ -37,16 +37,30 @@ public class PlayerController : MonoBehaviour
     //private bool isPlayerNearAnything;
     //Checks if player is pressing W or S or nothing
     private int isPlayerMoving;
-    //setting default and euqipped weapon
-    [SerializeField] Weapon defaultWeapon;
+    //setting weapons
+    [SerializeField] List<Weapon> WeaponList;
+    [SerializeField] WeaponType defaultWeapon;
     private Weapon equippedWeapon;
+
+    public enum WeaponType
+    {
+        Rifle,
+        Shotgun,
+        BurstRifle,
+        SniperRifle,
+        RocketLauncher,
+        Flamethrower,
+        Sword
+
+    }
 
     //Code for initialising in Game Controller
     public void Initialise()
     {
         rigidBody = GetComponent<Rigidbody2D>();
-        equippedWeapon = defaultWeapon;
+        equippedWeapon = WeaponList[(int)defaultWeapon];
         equippedWeapon.Initialise();
+        equippedWeapon.gameObject.SetActive(true);
     }
 
     //Code to update player in Game Controller
@@ -255,16 +269,18 @@ public class PlayerController : MonoBehaviour
     }
 
     //Equipping a new weapon
-    public void EquipWeapon(Weapon newweapon)
+    public void EquipWeapon(WeaponType newweapon)
     {
-        if (newweapon.GetName().Equals(equippedWeapon.GetName()))
+        if (equippedWeapon.GetName().Equals(WeaponList[(int)newweapon].GetName()))
         {
             equippedWeapon.Upgrade();
         }
         else
         {
-            equippedWeapon = newweapon;
-            newweapon.Initialise();
+            equippedWeapon.gameObject.SetActive(false);
+            equippedWeapon = WeaponList[(int)newweapon];
+            equippedWeapon.Initialise();
+            equippedWeapon.gameObject.SetActive(true);
             UseWeapon();
         }
     }

@@ -72,11 +72,15 @@ public class GameController : MonoBehaviour
         {
             _playerController.OnInteract();
         }
-        //Updating Player
-        _playerController.UpdatePlayer();
+        
         //Updating Player health
         _playerHealth.UpdatePlayerHealth();
         //Updating Player Aniamtions
         _playerAnimation.UpdatePlayerAnimation();
+    }
+    private void FixedUpdate()
+    {
+        //Updating Player
+        _playerController.UpdatePlayer();
     }
 }
