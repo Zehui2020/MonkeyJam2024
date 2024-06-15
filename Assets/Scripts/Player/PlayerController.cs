@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private ParticleSystem dustTrail;
+    private bool isFallen = false;
+
+    private Coroutine jumpRoutine;
 
     private RaycastHit2D rampHit;
 
@@ -83,7 +86,7 @@ public class PlayerController : MonoBehaviour
     //Movement input from GameControlller
     public void Movement(MovementAxisCommand _movementAxisCommand)
     {
-        if (!isBraking && isGrounded)
+        if (!isBraking && isGrounded && !isFallen)
         {
             rigidBody.AddForce(new Vector2(_movementAxisCommand.HorizontalAxis * Time.deltaTime * speed, 0), ForceMode2D.Impulse);
 
@@ -107,8 +110,18 @@ public class PlayerController : MonoBehaviour
     //Jump input from GameController
     public void Jump()
     {
+        if (jumpRoutine == null)
+            jumpRoutine = StartCoroutine(JumpRoutine());
+    }
+
+    private IEnumerator JumpRoutine()
+    {
         if (isGrounded)
             rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
+        yield return new WaitForSeconds(0.5f);
+
+        jumpRoutine = null;
     }
 
     //Setting boolean of braking
@@ -140,11 +153,17 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
         else if (dist > minGroundDist)
             isGrounded = false;
+
+        groundHit = Physics2D.Raycast(transform.position, transform.up, 100, groundLayer);
+        if (groundHit && isGrounded)
+            isFallen = true;
+        else
+            isFallen = false;
     }
 
     private void UpdateDustTrailPS()
     {
-        if (isGrounded)
+        if (isGrounded && !isFallen)
         {
             float normalizedVelocity = Mathf.Clamp01(rigidBody.velocity.magnitude / speedLimit);
             float emissionRate = Mathf.Lerp(0, 20, normalizedVelocity);
