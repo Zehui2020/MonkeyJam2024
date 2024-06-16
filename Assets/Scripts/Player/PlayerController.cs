@@ -61,9 +61,9 @@ public class PlayerController : MonoBehaviour
     public void Initialise()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        Instance = this;
         equippedWeapon = null;
         EquipWeapon(weaponType);
-        Instance = this;
     }
 
     //Code to update player in Game Controller

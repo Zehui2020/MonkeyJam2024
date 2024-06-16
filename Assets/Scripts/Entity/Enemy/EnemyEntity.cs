@@ -21,7 +21,6 @@ public abstract class EnemyEntity : Entity
         Idle,
         Patrol,
         Chase,
-        Attack,
         Death,
         TotalStates
     }
@@ -50,6 +49,10 @@ public abstract class EnemyEntity : Entity
     protected SpriteRenderer _spriteRenderer;
     protected Animator _animator;
 
+    //weapon
+    [SerializeField] private Transform weaponPos;
+    protected Weapon _weapon;
+
     //Fixed Data
     protected float STUNNEDDURATION = 3;
     protected float DEATHDURATION = 0.5f;
@@ -64,6 +67,8 @@ public abstract class EnemyEntity : Entity
             //to death state
             state = EnemyStates.Death;
             counter = 0;
+            //death anim
+            _animator.SetBool("ISDEAD", true);
         }
     }
 
@@ -78,7 +83,8 @@ public abstract class EnemyEntity : Entity
 
     protected void DeathStateUpdate(float _distortTime)
     {
-        //death anim
+        
+
         counter += Time.deltaTime * _distortTime;
         if (counter >= DEATHDURATION)
         {
@@ -112,5 +118,24 @@ public abstract class EnemyEntity : Entity
         //check if seeker is not currently calculating a path
         if (seeker.IsDone())
             seeker.StartPath(rb.position, targetLastSeenPos, OnPathComplete);
+    }
+
+    public void assignWeapon(GameObject _weaponToAdd)
+    {
+        GameObject obj = Instantiate(_weaponToAdd, weaponPos);
+        _weapon =  obj.GetComponent<Weapon>();
+        obj.transform.parent = weaponPos;
+    }
+
+    protected void CheckAttackTarget()
+    {
+        //check distance
+        float distanceToTarget = Vector2.Distance(rb.position, targetTransform.position);
+        //check if in range
+        if (distanceToTarget <= _weapon.range)
+        {
+            //attack
+            _weapon.Use("Enemy");
+        }
     }
 }
