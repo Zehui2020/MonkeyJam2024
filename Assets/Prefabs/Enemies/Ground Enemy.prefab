@@ -191,10 +191,15 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
+  shootLayerCheck:
+    serializedVersion: 2
+    m_Bits: 8
   _waypoints: []
   health: 0
   speed: 3
   detectTargetRange: 5
+  fireRate: 4
+  bulletSpeed: 10
   weaponPos: {fileID: 4018517166872864832}
   groundLayer:
     serializedVersion: 2

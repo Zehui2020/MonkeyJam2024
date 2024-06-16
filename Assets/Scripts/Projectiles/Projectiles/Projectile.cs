@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Projectile : MonoBehaviour
 {
+
     //speed of projectile
     [SerializeField] protected float speed;
     //how long the projectile lasts if it doesnt hit an enemy
@@ -29,6 +30,13 @@ public abstract class Projectile : MonoBehaviour
         currAliveTime = aliveTime;
         transform.right = (direction.x < 0 || shouldBeFlipped) ? -newDirection : newDirection;
         currDamage = damage;
+
+        //check if enemy
+        if (newOwnerName == "Enemy")
+        {
+            //slow down speed of bullet by half
+            direction *= 0.5f;
+        }
     }
     public virtual void Multiplier(float _multiplier)
     {

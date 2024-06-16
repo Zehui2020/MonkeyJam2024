@@ -47,8 +47,8 @@ public class EntitiesController : MonoBehaviour
             if (!e.hasInit)
             {
                 //check if entity is enemy entity
-                EnemyEntity enemyEntity = (EnemyEntity)e;
-                if (enemyEntity != null)
+                //EnemyEntity enemyEntity = (EnemyEntity)e;
+                if (e is EnemyEntity enemyEntity)
                 {
                     //assign random weapon
                     enemyEntity.assignWeapon(_weapons[UnityEngine.Random.Range(0, _weapons.Length)]);

@@ -164,8 +164,14 @@ public class GroundEnemy : EnemyEntity
                     float angle = Mathf.Atan2(aimDir.y, aimDir.x) * Mathf.Rad2Deg;
                     _weapon.gameObject.transform.eulerAngles = new Vector3(0, 0, angle + (transform.localScale.x == -1 ? 0 : 180));
 
-                    //check to attack target
-                    CheckAttackTarget();
+                    //check if obstacles in the way of enemy and player
+                    if (Physics2D.Raycast(_weapon.gameObject.transform.position, aimDir, 50, shootLayerCheck).collider.gameObject.tag == "Player")
+                    {
+                        //check to attack target
+                        CheckAttackTarget();
+                    }
+                    
+                    
                 }
                 //Scream and start chasing
                 //go to last player position
