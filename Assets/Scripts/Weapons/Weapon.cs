@@ -30,7 +30,7 @@ public abstract class Weapon : MonoBehaviour
 
     //Upgrade levels for different weapon levela
     //remove serializefield after debuggin
-    [SerializeField] protected int UpgradeLevel;
+    protected int UpgradeLevel;
 
     //script starts here
 
