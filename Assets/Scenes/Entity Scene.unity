@@ -1674,6 +1674,7 @@ MonoBehaviour:
   - {fileID: 4029391401738370002, guid: ae64af4620e0c83429b69ff0eb2f6fbc, type: 3}
   - {fileID: 371557777702016531, guid: 403ae36a316c40f4c8178f82bafb5f03, type: 3}
   - {fileID: 8531793972796535236, guid: 64f2295c7da55f94e9e370cfb7222b35, type: 3}
+  _entities: []
 --- !u!1001 &1545054619
 PrefabInstance:
   m_ObjectHideFlags: 0

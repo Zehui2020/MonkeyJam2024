@@ -47,6 +47,7 @@ public class EntitiesController : MonoBehaviour
             if (!e.hasInit)
             {
                 //check if entity is enemy entity
+                //EnemyEntity enemyEntity = (EnemyEntity)e;
                 if (e is EnemyEntity enemyEntity)
                 {
                     if (enemyEntity != null)

@@ -87,10 +87,15 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
+  shootLayerCheck:
+    serializedVersion: 2
+    m_Bits: 8
   _waypoints: []
   health: 0
   speed: 500
   detectTargetRange: 6
+  fireRate: 4
+  bulletSpeed: 10
   weaponPos: {fileID: 691198449428097454}
 --- !u!61 &7949584992780288124
 BoxCollider2D:

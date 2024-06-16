@@ -60,6 +60,7 @@ public class Crusher : Entity
     }
     public override void HandleUpdate(float _distortTime)
     {
+        Debug.Log("Update");
         //Debug.DrawRay(rb.position, -transform.up * 50, Color.red);
         switch (state)
         {
@@ -78,7 +79,7 @@ public class Crusher : Entity
                 break;
             case CrusherState.Fall:
                 //check if reach ground
-                RaycastHit2D hitGround = Physics2D.Raycast(rb.position, -transform.up, 1.6f, groundLayer);
+                RaycastHit2D hitGround = Physics2D.Raycast(rb.position, -transform.up, 1.45f, groundLayer);
                 if (hitGround.collider != null)
                 {
                     counter += Time.deltaTime * _distortTime;

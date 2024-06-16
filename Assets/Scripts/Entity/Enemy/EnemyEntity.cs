@@ -12,6 +12,7 @@ public abstract class EnemyEntity : Entity
 
     [Header("Enemy Entity")]
     [SerializeField] protected LayerMask playerLayer;
+    [SerializeField] protected LayerMask shootLayerCheck;
 
     //waypoints
     [SerializeField] protected Transform[] _waypoints;
@@ -36,6 +37,8 @@ public abstract class EnemyEntity : Entity
     [SerializeField] protected int health;
     [SerializeField] protected int speed; 
     [SerializeField] protected float detectTargetRange = 5;
+    [SerializeField] private float fireRate = 4;
+    [SerializeField] private float bulletSpeed = 10;
     protected bool isStunned;
 
     protected float counter;
