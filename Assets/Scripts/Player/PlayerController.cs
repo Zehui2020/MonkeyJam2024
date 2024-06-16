@@ -139,7 +139,8 @@ public class PlayerController : MonoBehaviour
     //Braking input from GameControlller
     public void Braking()
     {
-        rigidBody.AddForce(new Vector2(-rigidBody.velocity.x * Time.deltaTime * brakeForce, 0), ForceMode2D.Impulse);
+        if (isGrounded)
+            rigidBody.AddForce(new Vector2(-rigidBody.velocity.x * Time.deltaTime * brakeForce, 0), ForceMode2D.Impulse);
     }
 
     //Jump input from GameController
@@ -162,7 +163,8 @@ public class PlayerController : MonoBehaviour
     //Setting boolean of braking
     public void SetBraking(bool newBraking)
     {
-        isBraking = newBraking;
+        if (isGrounded)
+            isBraking = newBraking;
     }
 
     //Adding torque for rotation of bike, rotation input from GameControlller
@@ -236,7 +238,7 @@ public class PlayerController : MonoBehaviour
         if (rampHit)
         {
             float angle = Vector3.Angle(Vector3.up, rampHit.normal);
-            return angle < 90 && angle > 3;
+            return angle < -3 || angle > 3;
         }
 
         return false;
