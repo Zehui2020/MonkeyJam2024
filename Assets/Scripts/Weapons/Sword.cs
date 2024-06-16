@@ -42,7 +42,14 @@ public class Sword : Weapon
         if (currAttackInterval <= 0 && currAmmo > 0)
         {
             isUsing = true;
-            currAttackInterval = attackInterval;
+            if (UpgradeLevel < 2)
+            {
+                currAttackInterval = attackInterval;
+            }
+            else
+            {
+                currAttackInterval = attackInterval * 0.5f;
+            }
             currAttackTime = 0;
             ownerName = _ownerName;
         }
@@ -55,7 +62,14 @@ public class Sword : Weapon
             {
                 if (other.gameObject.CompareTag("Enemy"))
                 {
-                    other.gameObject.GetComponent<EnemyEntity>().Damage(damage);
+                    if (UpgradeLevel < 1)
+                    {
+                        other.gameObject.GetComponent<EnemyEntity>().Damage(damage);
+                    }
+                    else
+                    {
+                        other.gameObject.GetComponent<EnemyEntity>().Damage((int)(damage * 1.5f));
+                    }
                 }
             }
             else if (ownerName.Equals("Enemy"))

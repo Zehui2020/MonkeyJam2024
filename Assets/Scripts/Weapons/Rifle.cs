@@ -20,11 +20,25 @@ public class Rifle : Weapon
             currAmmo--;
             if (currAmmo == 0)
             {
-                currReloadTime = reloadTime;
+                if (UpgradeLevel < 2)
+                {
+                    currReloadTime = reloadTime;
+                }
+                else
+                {
+                    currReloadTime = reloadTime * 0.5f;
+                }
             }
             Projectile proj = ProjectileManager.instance.GetProjectile(projectileType);
             proj.Shoot(ownerName, transform.right * ((transform.lossyScale.x < 0) ? 1 : -1), barrel.transform.position);
-            currAttackInterval = attackInterval;
+            if (UpgradeLevel < 1)
+            {
+                currAttackInterval = attackInterval;
+            }
+            else
+            {
+                currAttackInterval = attackInterval * 0.5f;
+            }
         }
     }
 }

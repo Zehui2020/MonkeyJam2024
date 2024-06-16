@@ -29,12 +29,24 @@ public class Flamethrower : Weapon
             }
             Projectile proj = ProjectileManager.instance.GetProjectile(projectileType);
             proj.Shoot(ownerName, transform.right * ((transform.lossyScale.x < 0) ? 1 : -1), barrel.transform.position + (maxHeight - (maxHeight - minHeight) / space * currentSpace) * transform.up);
+            if (UpgradeLevel > 1)
+            {
+                proj.GetComponent<Flame>().SetFalseWhenHittingEnemy(false);
+            }
             currAttackInterval = attackInterval;
             currentSpace++;
             if (currentSpace >= space)
             {
                 currentSpace = 0;
             }
+        }
+    }
+    public override void Reload()
+    {
+        base.Reload();
+        if (UpgradeLevel > 0)
+        {
+            currAmmo += 25;
         }
     }
 }

@@ -29,7 +29,8 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] float range;
 
     //Upgrade levels for different weapon levela
-    int UpgradeLevel;
+    //remove serializefield after debuggin
+    [SerializeField] protected int UpgradeLevel;
 
     //script starts here
 
@@ -38,7 +39,7 @@ public abstract class Weapon : MonoBehaviour
     {
         currAmmo = ammo;
         currReloadTime = 0;
-        UpgradeLevel = 1;
+        UpgradeLevel = 0;
     }
 
     //updates the gun
@@ -49,7 +50,7 @@ public abstract class Weapon : MonoBehaviour
             currReloadTime -= Time.deltaTime;
             if (currReloadTime <= 0)
             {
-                currAmmo = ammo;
+                Reload();
             }
         }
         if (currAttackInterval > 0)
@@ -62,11 +63,12 @@ public abstract class Weapon : MonoBehaviour
     public abstract void Use(string ownerName);
 
     //upgrading weapon
-    public void Upgrade()
+    public virtual void Upgrade()
     {
         if (UpgradeLevel < 2)
         {
             UpgradeLevel++;
+            Reload();
         }
     }
 
@@ -80,5 +82,10 @@ public abstract class Weapon : MonoBehaviour
     public int GetUpgradeLevel()
     {
         return UpgradeLevel;
+    }
+
+    public virtual void Reload()
+    {
+        currAmmo = ammo;
     }
 }

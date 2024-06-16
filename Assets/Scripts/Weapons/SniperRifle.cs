@@ -20,10 +20,21 @@ public class SniperRifle : Weapon
             currAmmo--;
             if (currAmmo == 0)
             {
-                currReloadTime = reloadTime;
+                if (UpgradeLevel < 1)
+                {
+                    currReloadTime = reloadTime;
+                }
+                else
+                {
+                    currReloadTime = reloadTime * 0.5f;
+                }
             }
             Projectile proj = ProjectileManager.instance.GetProjectile(projectileType);
             proj.Shoot(ownerName, transform.right * ((transform.lossyScale.x < 0) ? 1 : -1), barrel.transform.position);
+            if (UpgradeLevel > 1)
+            {
+                proj.GetComponent<PiercingBullet>().SetDurability(5);
+            }
             currAttackInterval = attackInterval;
         }
     }

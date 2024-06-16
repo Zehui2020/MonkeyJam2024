@@ -22,12 +22,36 @@ public class Shotgun : Weapon
             {
                 currReloadTime = reloadTime;
             }
-            for (int projectilenum = 0; projectilenum < 3; projectilenum++)
+            if (UpgradeLevel < 2)
             {
-                Projectile proj = ProjectileManager.instance.GetProjectile(projectileType);
-                proj.Shoot(ownerName, transform.right * ((transform.lossyScale.x < 0) ? 1 : -1) + transform.up * 0.2f - transform.up * 0.2f * projectilenum, barrel.transform.position);
-                currAttackInterval = attackInterval;
+                for (int projectilenum = 0; projectilenum < 3; projectilenum++)
+                {
+                    Projectile proj = ProjectileManager.instance.GetProjectile(projectileType);
+                    proj.Shoot(ownerName, transform.right * ((transform.lossyScale.x < 0) ? 1 : -1) + transform.up * 0.2f - transform.up * 0.2f * projectilenum, barrel.transform.position);
+                    currAttackInterval = attackInterval;
+                }
             }
+            else
+            {
+                for (int projectilenum = 0; projectilenum < 5; projectilenum++)
+                {
+                    Projectile proj = ProjectileManager.instance.GetProjectile(projectileType);
+                    proj.Shoot(ownerName, transform.right * ((transform.lossyScale.x < 0) ? 1 : -1) + transform.up * 0.2f - transform.up * 0.1f * projectilenum, barrel.transform.position);
+                    currAttackInterval = attackInterval;
+                }
+            }
+        }
+    }
+    public override void Upgrade()
+    {
+        base.Upgrade();
+    }
+    public override void Reload()
+    {
+        base.Reload();
+        if (UpgradeLevel > 0)
+        {
+            currAmmo += 2;
         }
     }
 }

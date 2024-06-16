@@ -24,6 +24,7 @@ public class PiercingBullet : Projectile
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log(other.gameObject.tag);
         if (other.CompareTag("Weapon")) //ignore all weapons
         {
             return;
@@ -32,7 +33,14 @@ public class PiercingBullet : Projectile
         {
             if (other.gameObject.CompareTag("Enemy"))
             {
+                Debug.Log("damaging enemy");
                 other.gameObject.GetComponent<EnemyEntity>().Damage(damage);
+                currDurability--;
+                if (currDurability <= 0)
+                {
+                    gameObject.SetActive(false);
+                }
+                return;
             }
             else if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
@@ -44,16 +52,22 @@ public class PiercingBullet : Projectile
             if (other.gameObject.CompareTag("Player"))
             {
                 other.gameObject.GetComponent<PlayerHealth>().AddHealth(-1);
+                currDurability--;
+                if (currDurability <= 0)
+                {
+                    gameObject.SetActive(false);
+                }
+                return;
             }
             else if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
                 return;
             }
         }
-        currDurability--;
-        if (currDurability <= 0)
-        {
-            gameObject.SetActive(false);
-        }
+        gameObject.SetActive(false);
+    }
+    public void SetDurability(int _newDurability)
+    {
+        currDurability = _newDurability;
     }
 }

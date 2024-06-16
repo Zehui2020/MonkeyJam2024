@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Flame : Projectile
 {
+    private bool setFalseWhenHitEnemy;
     public override void UpdateProjectile()
     {
         currAliveTime -= Time.deltaTime;
@@ -14,7 +15,11 @@ public class Flame : Projectile
         }
         transform.position += speed * Time.deltaTime * direction;
     }
-
+    public override void Shoot(string newOwnerName, Vector3 newDirection, Vector3 newPosition)
+    {
+        base.Shoot(newOwnerName, newDirection, newPosition);
+        setFalseWhenHitEnemy = true;
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Weapon")) //ignore all weapons
@@ -26,6 +31,10 @@ public class Flame : Projectile
             if (other.gameObject.CompareTag("Enemy"))
             {
                 other.gameObject.GetComponent<EnemyEntity>().Damage(damage);
+                if (!setFalseWhenHitEnemy)
+                {
+                    return;
+                }
             }
             else if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
@@ -37,6 +46,10 @@ public class Flame : Projectile
             if (other.gameObject.CompareTag("Player"))
             {
                 other.gameObject.GetComponent<PlayerHealth>().AddHealth(-1);
+                if (!setFalseWhenHitEnemy)
+                {
+                    return;
+                }
             }
             else if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
@@ -44,5 +57,9 @@ public class Flame : Projectile
             }
         }
         gameObject.SetActive(false);
+    }
+    public void SetFalseWhenHittingEnemy(bool _newSetFalseWhenHittingEnemy)
+    {
+        setFalseWhenHitEnemy = _newSetFalseWhenHittingEnemy;
     }
 }
