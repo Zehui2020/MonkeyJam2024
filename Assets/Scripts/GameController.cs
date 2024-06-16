@@ -10,12 +10,18 @@ public class GameController : MonoBehaviour
     [SerializeField] PlayerHealth _playerHealth;
     [SerializeField] PlayerAnimation _playerAnimation;
     [SerializeField] ItemManager _itemManager;
+    [SerializeField] private ItemStats itemStats;
+    [SerializeField] private ItemTable itemTable;
+
     //Initialising conrollers
     void Start()
     {
         _playerController.Initialise();
         _playerHealth.Initialise();
         _itemManager.InitItemManager();
+
+        itemStats.ResetStats();
+        itemTable.ResetStacks();
     }
 
     //Updating controllers

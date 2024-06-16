@@ -12,6 +12,15 @@ public class ItemTable : ScriptableObject
     [NonSerialized]
     public int totalWeight = -1;
 
+    public void ResetStacks()
+    {
+        foreach (Item item in itemTable)
+            item.itemStack = 0;
+
+        foreach (Item item in weaponTable)
+            item.itemStack = 0;
+    }
+
     private void CalculateTotalWeight(List<Item> table)
     {
         totalWeight = 0;

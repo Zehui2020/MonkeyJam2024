@@ -22,6 +22,11 @@ public class Chest : MonoBehaviour, IInteractable
 
     private bool isOpened = false;
 
+    private void Start()
+    {
+        InitInteractable();
+    }
+
     public void InitInteractable()
     {
         costText.text = cost.ToString();

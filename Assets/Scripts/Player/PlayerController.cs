@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private ParticleSystem dustTrail;
+    [SerializeField] private ItemStats itemStats;
 
     private bool isFallen = false;
     [SerializeField] private float minFallAngle;
@@ -86,13 +87,13 @@ public class PlayerController : MonoBehaviour
         Vector3 force;
         // Adjust drag & force
         if (isGrounded)
-            force = transform.right * speed * isPlayerMoving * 10f;
+            force = Vector3.right * speed * itemStats.movementSpeedModifier * isPlayerMoving * 10f;
         else
             force = Vector3.zero;
 
         // Move player
         if (OnRamp())
-            rigidBody.AddForce(GetRampMoveDir() * speed, ForceMode2D.Force);
+            rigidBody.AddForce(GetRampMoveDir() * speed * itemStats.movementSpeedModifier, ForceMode2D.Force);
         else
             rigidBody.AddForce(force, ForceMode2D.Force);
 
@@ -121,7 +122,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!isBraking && isGrounded && !isFallen)
         {
-            rigidBody.AddForce(new Vector2(_movementAxisCommand.HorizontalAxis * Time.deltaTime * speed, 0), ForceMode2D.Impulse);
+            rigidBody.AddForce(new Vector2(_movementAxisCommand.HorizontalAxis * Time.deltaTime * speed * itemStats.movementSpeedModifier, 0), ForceMode2D.Impulse);
 
             if (_movementAxisCommand.HorizontalAxis < 0)
             {
@@ -200,7 +201,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isGrounded && !isFallen)
         {
-            float normalizedVelocity = Mathf.Clamp01(rigidBody.velocity.magnitude / speedLimit);
+            float normalizedVelocity = Mathf.Clamp01(rigidBody.velocity.magnitude / speedLimit * itemStats.movementSpeedModifier);
             float emissionRate = Mathf.Lerp(0, 20, normalizedVelocity);
 
             var em = dustTrail.emission;
@@ -242,16 +243,16 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 GetRampMoveDir()
     {
-        return Vector3.ProjectOnPlane(transform.right, rampHit.normal).normalized;
+        return Vector3.ProjectOnPlane(Vector3.right, rampHit.normal).normalized;
     }
 
     private void SpeedControl()
     {
         Vector2 currentVel = new Vector2(rigidBody.velocity.x, 0);
 
-        if (currentVel.magnitude > speedLimit)
+        if (currentVel.magnitude > speedLimit * itemStats.movementSpeedModifier)
         {
-            Vector3 limitVel = currentVel.normalized * speedLimit;
+            Vector3 limitVel = currentVel.normalized * speedLimit * itemStats.movementSpeedModifier;
             rigidBody.velocity = new Vector2(limitVel.x, rigidBody.velocity.y);
         }
     }
@@ -281,7 +282,17 @@ public class PlayerController : MonoBehaviour
 
     private void OnFlip()
     {
-        Debug.Log("FLIPPED");
+        if (itemStats.stunRadius <= 0)
+            return;
+
+        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, itemStats.stunRadius);
+        foreach (Collider2D col in cols)
+        {
+            if (!col.TryGetComponent<EnemyEntity>(out EnemyEntity enemy))
+                continue;
+
+            enemy.Stun();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
