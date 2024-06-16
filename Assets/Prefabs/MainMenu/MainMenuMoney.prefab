@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -1349363054, guid: bf61a3bb98100e54aa5ceccece1940db, type: 3}
+  m_Sprite: {fileID: -1318452612, guid: 863dd235043868543a820e62f502ab77, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,7 +97,7 @@ Animator:
   m_GameObject: {fileID: 2409423113062597262}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fd54346f695606a49abd616aa9015431, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0e6a9028a6921ef4b9eab6afec92c57b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -140,7 +140,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0029328465}
+  m_Offset: {x: -0.0015950203, y: -0.003425181}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -151,7 +151,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7184489, y: 0.3841068}
+  m_Size: {x: 0.71997976, y: 0.4087096}
   m_EdgeRadius: 0
 --- !u!114 &-1216769297887091272
 MonoBehaviour:
@@ -166,3 +166,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyPopup: {fileID: 1294386309585622398, guid: dd45c1594cb7766499f4d927e3cb7052, type: 3}
+  animator: {fileID: 5480899012932831538}

@@ -58,7 +58,7 @@ public class ScrollGrid : MonoBehaviour
         for (int i = 0; i < spawnAmount; i++)
         {
             GameObject money = Instantiate(moneyPrefab, moneySpawnPoints[i]);
-            money.transform.position = Vector3.zero;
+            money.transform.localPosition = Vector3.zero;
         }
     }
 

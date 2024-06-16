@@ -13,6 +13,8 @@ public class Chest : MonoBehaviour, IInteractable
     [SerializeField] private TextMeshProUGUI costText;
     [SerializeField] private float itemLaunchForce;
 
+    [SerializeField] private Animator animator;
+
     public enum ChestType 
     {
         TutorialChest,
@@ -48,6 +50,16 @@ public class Chest : MonoBehaviour, IInteractable
         if (isOpened)
             return;
 
+        StartCoroutine(InteractRoutine());
+    }
+
+    private IEnumerator InteractRoutine()
+    {
+        animator.SetTrigger("open");
+        isOpened = true;
+
+        yield return new WaitForSeconds(0.4f);
+
         if (chestType == ChestType.TutorialChest)
         {
             Rigidbody2D item = Instantiate(tutorialItemPickup, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
@@ -60,7 +72,6 @@ public class Chest : MonoBehaviour, IInteractable
             item.AddForce(transform.up * itemLaunchForce, ForceMode2D.Impulse);
         }
 
-        isOpened = true;
         costUI.SetActive(false);
     }
 

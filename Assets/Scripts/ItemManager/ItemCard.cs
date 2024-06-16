@@ -12,14 +12,32 @@ public class ItemCard : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemDescription;
     [SerializeField] private Animator cardAnimator;
 
+    [SerializeField] private Image cardBG;
+    [SerializeField] private Sprite commonCard;
+    [SerializeField] private Sprite rareCard;
+    [SerializeField] private Sprite legendaryCard;
+
     public event System.Action<ItemCard> OnSelectEvent;
 
     public void SetupCard(Item item)
     {
         cardItem = item;
         itemImage.sprite = item.spriteIcon;
-        itemName.text = item.GetTitle();
+        itemName.text = item.title;
         itemDescription.text = item.GetDescription();
+
+        switch (item.itemRarity)
+        {
+            case Item.Rarity.Common:
+                cardBG.sprite = commonCard;
+                break;
+            case Item.Rarity.Uncommon:
+                cardBG.sprite = rareCard;
+                break;
+            case Item.Rarity.Legendary:
+                cardBG.sprite = legendaryCard;
+                break;
+        }
     }
 
     public void SetSelectCardAnimation(bool select)

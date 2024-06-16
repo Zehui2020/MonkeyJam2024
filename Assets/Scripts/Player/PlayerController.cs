@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private bool isFallen = false;
     [SerializeField] private float minFallAngle;
     [SerializeField] private float maxFallAngle;
+    [SerializeField] private GameObject welshFlag;
 
     private Coroutine jumpRoutine;
     private Coroutine checkFlipRoutine = null;
@@ -72,6 +73,11 @@ public class PlayerController : MonoBehaviour
         CheckGroundCollision();
         SpeedControl();
         UpdateDustTrailPS();
+
+        if (itemStats.stunRadius > 0)
+            welshFlag.SetActive(true);
+        else
+            welshFlag.SetActive(false);
 
         if (!isGrounded && checkFlipRoutine == null)
             checkFlipRoutine = StartCoroutine(CheckFlip());

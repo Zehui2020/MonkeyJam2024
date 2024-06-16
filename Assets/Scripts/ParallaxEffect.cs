@@ -24,6 +24,6 @@ public class ParallaxEffect : MonoBehaviour
             startPos -= length;
 
         float dist = cam.transform.position.x * parallaxEffect;
-        transform.position = new Vector3(startPos + dist, transform.position.y, transform.position.z);
+        transform.position = new Vector3(startPos + dist, Camera.main.transform.position.y, transform.position.z);
     }
 }
