@@ -121,4 +121,9 @@ public abstract class Weapon : MonoBehaviour
     {
         damageMultiplier += _increment;
     }
+
+    public string GetAmmoString()
+    {
+        return currAmmo.ToString() + " / " + (ammo * itemStats.magSizeModifier).ToString();
+    }
 }

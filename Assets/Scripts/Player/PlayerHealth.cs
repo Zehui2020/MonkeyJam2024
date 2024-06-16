@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public Sprite[] _sprites;
+    public Image[] _images;
 
     [SerializeField] int maxHealth;
     private int currHealth;
@@ -29,13 +32,14 @@ public class PlayerHealth : MonoBehaviour
     {
         currIFrames = 0;
         currHealth = maxHealth;
+        HandleUI();
     }
     public void UpdatePlayerHealth()
     {
         if (currIFrames > 0)
         {
             currIFrames -= Time.deltaTime;
-            playerSprite.color = new Color(0.5f,0,0);
+            playerSprite.color = new Color(0.5f,1,1);
             if (currIFrames <= 0)
             {
                 playerSprite.color = Color.white;
@@ -58,13 +62,33 @@ public class PlayerHealth : MonoBehaviour
                 entityAudioController.PlayAudio("playerhurt");
             }
 
-            currHealth += _increment;
+            currHealth = (currHealth + _increment) % (maxHealth + 1);
             if (currHealth <= 0)
             {
                 Lose();
                 
             }
+            HandleUI();
             currIFrames = iframes;
+        }
+    }
+
+    //Handle UI
+    void HandleUI()
+    {
+        int lostHealth = maxHealth - currHealth;
+        for (int i = 0; i < maxHealth; i++)
+        {
+            if (i < lostHealth)
+            {
+                //set black heart
+                _images[i].sprite = _sprites[0];
+            }
+            else
+            {
+                //set red
+                _images[i].sprite = _sprites[1];
+            }
         }
     }
 

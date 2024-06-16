@@ -141,7 +141,7 @@ public class AirEnemy : EnemyEntity
                 //transform.position += dir * speed * Time.deltaTime * _distortTime;
                 rb.AddForce(dir * speed * Time.deltaTime * _distortTime);
                 //check if reach waypoint
-                if (Vector3.Distance(transform.position, _waypoints[currWaypoint].position) <= 0.5f)
+                if (Vector3.Distance(transform.position, _waypoints[currWaypoint].position) <= 1.2f)
                 {
                     //go to idle mode
                     state = EnemyStates.Idle;
