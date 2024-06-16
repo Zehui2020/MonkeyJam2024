@@ -10,6 +10,9 @@ public class GroundEnemy : EnemyEntity
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float groundDistCheck;
 
+    [SerializeField] private float stepTimer;
+    private float stepTime;
+
     bool isGrounded;
 
     public override void Init()
@@ -26,7 +29,18 @@ public class GroundEnemy : EnemyEntity
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _animator = GetComponentInChildren<Animator>();
 
+        stepTime = 0;
+
         isGrounded = false;
+
+        //sound
+        entityAudioController = GetComponent<EntityAudioController>();
+        //check if don't have component
+        if (entityAudioController == null)
+        {
+            //add component
+            entityAudioController = gameObject.AddComponent<EntityAudioController>();
+        }
 
         if (_weapon != null )
         {
@@ -44,6 +58,13 @@ public class GroundEnemy : EnemyEntity
         isGrounded = Physics2D.Raycast(rb.position, -transform.up, groundDistCheck, groundLayer);
         //Debug.DrawRay(rb.position, -transform.up * groundDistCheck, Color.red, 0.5f);
         Debug.Log("IsGrounded: " + isGrounded);
+
+        if (isGrounded && _animator.GetBool("ISFALLING"))
+        {
+            //if just landed
+            //play landing sound
+            entityAudioController.PlayAudio("land");
+        }
 
         //check if stun
         if (isStunned)
@@ -70,6 +91,7 @@ public class GroundEnemy : EnemyEntity
             case EnemyStates.Idle:
                 //animation
                 _animator.SetBool("ISWALKING", false);
+                stepTime = 0;
                 //Stand Still / Rest
                 counter += Time.deltaTime * _distortTime;
                 //prev: attack/Chase: look for player then go back to patrol
@@ -122,7 +144,15 @@ public class GroundEnemy : EnemyEntity
                     _animator.SetBool("ISWALKING", false);
                 }
                 dir.Normalize();
-                
+
+                //sound
+                stepTime += Time.deltaTime * _distortTime;
+                if (stepTime > stepTimer)
+                {
+                    stepTime = 0;
+                    entityAudioController.PlayAudio("footstep", true);
+                }
+
 
                 //move towards waypoint
                 transform.position += dir * speed * Time.deltaTime * _distortTime;
@@ -152,6 +182,14 @@ public class GroundEnemy : EnemyEntity
             //Chase
             case EnemyStates.Chase:
                 //Debug.Log("Chase");
+
+                //sound
+                stepTime += Time.deltaTime * _distortTime;
+                if (stepTime > stepTimer)
+                {
+                    stepTime = 0;
+                    entityAudioController.PlayAudio("footstep", true);
+                }
 
                 //check target still in range
                 if (Vector3.Distance(targetTransform.position, transform.position) <= detectTargetRange + 2)
@@ -230,6 +268,8 @@ public class GroundEnemy : EnemyEntity
                     //Debug.Log("Jump");
                     //jump
                     rb.AddForce(transform.up * 300 * Time.deltaTime * _distortTime, ForceMode2D.Impulse);
+                    //sound
+                    entityAudioController.PlayAudio("jump");
                 }
 
                 //check if reached waypoint

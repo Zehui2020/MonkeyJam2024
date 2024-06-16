@@ -87,7 +87,7 @@ public class AudioManager : MonoBehaviour
     }
 
     //try to play audio
-    public bool Play(string _soundName, List<SoundEntity> _sounds)
+    public bool Play(string _soundName, List<SoundEntity> _sounds, bool willStopPrev)
     {
         //Find audio in list
         foreach (var sound in _sounds)
@@ -96,21 +96,22 @@ public class AudioManager : MonoBehaviour
             if (sound.name == _soundName)
             {
                 //play sound
-                PlayAudio(sound.source);
+                PlayAudio(sound.source, willStopPrev);
                 return true;
             }
         }
         return false;
     }
 
-    void PlayAudio(AudioSource _audioSource)
+    void PlayAudio(AudioSource _audioSource, bool willStopPrev)
     {
         //check if still playing
         if (_audioSource.isPlaying)
         {
-            return;
+            if (!willStopPrev)
+                return;
             //stop playing
-            //_audioSource.Stop();
+            _audioSource.Stop();
         }
         _audioSource.Play();
     }

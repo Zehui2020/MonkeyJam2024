@@ -226,7 +226,6 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
-  - component: {fileID: 519420029}
   - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
@@ -235,14 +234,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -856,6 +847,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35cd0cc94b1f6394eb0fd53387a4d80e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1443322649
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1017970032127258945, guid: beaf19fb83e906345bfe84c7b2ac2409, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017970032127258945, guid: beaf19fb83e906345bfe84c7b2ac2409, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017970032127258945, guid: beaf19fb83e906345bfe84c7b2ac2409, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017970032127258945, guid: beaf19fb83e906345bfe84c7b2ac2409, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017970032127258945, guid: beaf19fb83e906345bfe84c7b2ac2409, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017970032127258945, guid: beaf19fb83e906345bfe84c7b2ac2409, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017970032127258945, guid: beaf19fb83e906345bfe84c7b2ac2409, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017970032127258945, guid: beaf19fb83e906345bfe84c7b2ac2409, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017970032127258945, guid: beaf19fb83e906345bfe84c7b2ac2409, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017970032127258945, guid: beaf19fb83e906345bfe84c7b2ac2409, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170889824734496412, guid: beaf19fb83e906345bfe84c7b2ac2409, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: beaf19fb83e906345bfe84c7b2ac2409, type: 3}
 --- !u!1 &1517590047
 GameObject:
   m_ObjectHideFlags: 0
@@ -1719,7 +1767,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1540376573}
   - component: {fileID: 1540376574}
-  - component: {fileID: 1540376575}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -1759,182 +1806,6 @@ MonoBehaviour:
   - {fileID: 371557777702016531, guid: 403ae36a316c40f4c8178f82bafb5f03, type: 3}
   - {fileID: 8531793972796535236, guid: 64f2295c7da55f94e9e370cfb7222b35, type: 3}
   _entities: []
---- !u!114 &1540376575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1540376572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05fa0148b9ad5d34983e8a7dcb9ae64d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-  sounds:
-  - name: cycling
-    clip: {fileID: 8300000, guid: b15a55274703bce44974f35817b7f3f9, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 0
-  - name: playerhurt
-    clip: {fileID: 8300000, guid: 4d9f9f17a67fdb847896f20572fab2b0, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 0
-  - name: jump
-    clip: {fileID: 8300000, guid: 3af71fddb7e7936438d7702b18695259, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 1
-  - name: land
-    clip: {fileID: 8300000, guid: 31ba73bf79e80e146927f0086f073dfe, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 1
-  - name: lose
-    clip: {fileID: 8300000, guid: 69996f8b801deaf4499ecd3383115d01, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 0
-  - name: win
-    clip: {fileID: 8300000, guid: b1f1c78b42410dd4bb2ac7b79727a91f, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 0
-  - name: flap
-    clip: {fileID: 8300000, guid: 24532a5fd286063429d7a31ec937d575, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 1
-  - name: footstep
-    clip: {fileID: 8300000, guid: ab27703d7006c61429d7c1469194ceb5, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 1
-  - name: enemyhurt
-    clip: {fileID: 8300000, guid: 66fb9416111248a40b1bc9c19a04f097, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 1
-  - name: enemydeath
-    clip: {fileID: 8300000, guid: 19e1be1ad40527942a4553eb8c39d350, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 1
-  - name: chestopen
-    clip: {fileID: 8300000, guid: 466c4779ba4542d41842d139155c8dbe, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 0
-  - name: crusherrise
-    clip: {fileID: 8300000, guid: 1e79278fb0ee41545bdffbc342f3743b, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 1
-  - name: crusherfall
-    clip: {fileID: 8300000, guid: e5ac6177c3d80c448a09748c80ebb01a, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 1
-  - name: coin
-    clip: {fileID: 8300000, guid: 96e9da1cfef6c3149ae636ad80f9359d, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 0
-  - name: pressureplate
-    clip: {fileID: 8300000, guid: c9e2b1d8d8c150148af67cb65d0a16df, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 1
-  - name: select
-    clip: {fileID: 8300000, guid: da867f5d935a6de499723557568116d5, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 0
-  - name: spike
-    clip: {fileID: 8300000, guid: e59300e2a27318f4baf3652061496f1b, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 1
-  - name: droneshot
-    clip: {fileID: 8300000, guid: 5352676d3d0cc3049bc24cbbf6d91c3b, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 1
-  - name: explode
-    clip: {fileID: 8300000, guid: cc79a294009c5524f8a2ee62641e2ec9, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 1
-  - name: flamethrower
-    clip: {fileID: 8300000, guid: 3b66359d91a058e498a48579cc188582, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 1
-  - name: melee
-    clip: {fileID: 8300000, guid: a342b02f6f2abaf48b04eed83b39b6c1, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 1
-  - name: rifle
-    clip: {fileID: 8300000, guid: 6ceb0552822e4064c8532c1f3f87e33f, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 1
-  - name: rocket
-    clip: {fileID: 8300000, guid: 71036ec415d92d544925e98b45278730, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 1
-  - name: rocketlauncher
-    clip: {fileID: 8300000, guid: 91d4cefa3be93184480668106f4ebe34, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 1
-  - name: shotgun
-    clip: {fileID: 8300000, guid: cad55d9012b38fd4cac1cee75a2e8878, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 1
-  - name: sniper
-    clip: {fileID: 8300000, guid: 5bc95e550923d4d41ab843ba75133ae3, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 1
-  - name: stun
-    clip: {fileID: 8300000, guid: 4a01e32ec12936e4a8e4fda780a9cf0c, type: 3}
-    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
-    pitch: 1
-    loop: 0
-    is3D: 1
 --- !u!1001 &1545054619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1990,6 +1861,10 @@ PrefabInstance:
     - target: {fileID: 4841882345463711443, guid: ef168495654b47d46b250e9f76717c3f, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6192449966029765908, guid: ef168495654b47d46b250e9f76717c3f, type: 3}
+      propertyPath: flapTimer
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6192449966029765908, guid: ef168495654b47d46b250e9f76717c3f, type: 3}
       propertyPath: _waypoints.Array.size
@@ -2060,3 +1935,4 @@ SceneRoots:
   - {fileID: 1199693385}
   - {fileID: 1545054619}
   - {fileID: 1052341981}
+  - {fileID: 1443322649}

@@ -7,17 +7,17 @@ public class EntityAudioController : MonoBehaviour
     //hold all sounds
     private List<SoundEntity> sounds = new List<SoundEntity>();
     
-    public void PlayAudio(string  audioName)
+    public void PlayAudio(string  audioName, bool willStopPrev = false)
     {
         //playaudio
-        if(!AudioManager.Instance.Play(audioName, sounds))
+        if(!AudioManager.Instance.Play(audioName, sounds, willStopPrev))
         {
             //failed to play audio
             //add audio
             if (AudioManager.Instance.RequestAddAudio(audioName, this))
             {
                 //request to play audio if audio exists
-                PlayAudio(audioName);
+                PlayAudio(audioName, willStopPrev);
             }
         }
     }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 30589849681945600}
   - component: {fileID: 8143479027110926597}
   - component: {fileID: 1416817829870095454}
+  - component: {fileID: 2061380111441553375}
   m_Layer: 8
   m_Name: Crusher
   m_TagString: Untagged
@@ -129,6 +130,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   hurtPlayerCollider: {fileID: 5752531153147914938}
+--- !u!114 &2061380111441553375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422469531528783748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35cd0cc94b1f6394eb0fd53387a4d80e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3362241177776517672
 GameObject:
   m_ObjectHideFlags: 0

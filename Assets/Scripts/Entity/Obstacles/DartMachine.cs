@@ -23,6 +23,15 @@ public class DartMachine : Entity
     {
         hasInit = true;
         counter = 0;
+
+        //sound
+        entityAudioController = GetComponent<EntityAudioController>();
+        //check if don't have component
+        if (entityAudioController == null)
+        {
+            //add component
+            entityAudioController = gameObject.AddComponent<EntityAudioController>();
+        }
     }
 
     public override void HandleUpdate(float _distortTime)
@@ -31,6 +40,7 @@ public class DartMachine : Entity
 
         if (counter > fireRate) 
         {
+            entityAudioController.PlayAudio("dart");
             //reset
             counter = 0;
             //fire projectile

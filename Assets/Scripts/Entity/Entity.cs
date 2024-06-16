@@ -7,6 +7,9 @@ public abstract class Entity : MonoBehaviour
     public bool hasInit;
     public bool canDestroy; // entity is in a state where it needs to be removed or deleted
 
+    //sound
+    protected EntityAudioController entityAudioController; 
+
     private void Start()
     {
         canDestroy = false;
