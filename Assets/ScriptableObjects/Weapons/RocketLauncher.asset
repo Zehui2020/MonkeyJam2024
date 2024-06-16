@@ -22,4 +22,4 @@ MonoBehaviour:
   weaponType: 4
   description1: Bullet Speed increased by 100% (from 3 to 6)
   description2: Blast Diameter increased by 25% (from 20 to 25)
-  description3: 
+  description3: Damage increase by 10%

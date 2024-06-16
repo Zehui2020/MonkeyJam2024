@@ -24,4 +24,4 @@ MonoBehaviour:
   weaponType: 5
   description1: Increased Ammo Capacity by 25% (from 100 to 125)
   description2: Fire does not disappear upon hitting an enemy
-  description3: 
+  description3: Damage increase by 10%

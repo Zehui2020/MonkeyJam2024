@@ -24,4 +24,4 @@ MonoBehaviour:
   weaponType: 3
   description1: Reload Speed decreased by 50% (from 2s to 1s)
   description2: Piercing bullet now pierces through 5 enemies
-  description3: 
+  description3: Damage increase by 10%

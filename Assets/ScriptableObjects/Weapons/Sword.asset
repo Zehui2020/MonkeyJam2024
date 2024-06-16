@@ -22,4 +22,4 @@ MonoBehaviour:
   weaponType: 6
   description1: Damage increase by 50% (from 10 to 15)
   description2: Fire interval decreased by 50% (From 0.5s to 0.25)
-  description3: 
+  description3: Damage increase by 10%

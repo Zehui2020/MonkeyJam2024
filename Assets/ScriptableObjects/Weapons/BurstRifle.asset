@@ -22,4 +22,4 @@ MonoBehaviour:
   weaponType: 2
   description1: Bulles / Shot increased from 3 to 4
   description2: Shoots an additional wave of bullets (from 1 to 2)
-  description3: 
+  description3: Damage increase by 10%

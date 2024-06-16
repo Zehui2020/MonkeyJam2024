@@ -22,4 +22,4 @@ MonoBehaviour:
   weaponType: 1
   description1: Max Ammo Capacity increased by 2 (From 3 to 5)
   description2: Bullets shot at a time increased from 3 to 5
-  description3: 
+  description3: Damage increase by 10%

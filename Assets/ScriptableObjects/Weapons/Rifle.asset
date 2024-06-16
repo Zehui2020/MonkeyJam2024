@@ -22,4 +22,4 @@ MonoBehaviour:
   weaponType: 0
   description1: Fire interval decreased by 50% (From 0.25s to 0.125s)
   description2: Reload time decreased by 50% (From 1.25s to 0.75s)
-  description3: 
+  description3: Damage increase by 10%
