@@ -44,11 +44,11 @@ public class Sword : Weapon
             isUsing = true;
             if (UpgradeLevel < 2)
             {
-                currAttackInterval = attackInterval;
+                currAttackInterval = attackInterval * itemStats.fireRateModifier;
             }
             else
             {
-                currAttackInterval = attackInterval * 0.5f;
+                currAttackInterval = attackInterval * 0.5f * itemStats.fireRateModifier;
             }
             currAttackTime = 0;
             ownerName = _ownerName;

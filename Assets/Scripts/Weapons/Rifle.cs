@@ -18,7 +18,7 @@ public class Rifle : Weapon
         }
         else
         {
-            if (currAmmo != ammo)
+            if (currAmmo != Mathf.CeilToInt(ammo * itemStats.magSizeModifier))
             {
                 Reload();
             }
@@ -52,11 +52,11 @@ public class Rifle : Weapon
             proj.Multiplier(damageMultiplier);
             if (UpgradeLevel < 1)
             {
-                currAttackInterval = attackInterval;
+                currAttackInterval = attackInterval * itemStats.fireRateModifier;
             }
             else
             {
-                currAttackInterval = attackInterval * 0.5f;
+                currAttackInterval = attackInterval * 0.5f * itemStats.fireRateModifier;
             }
         }
         currAutoReloadTime = autoReloadTime;

@@ -19,7 +19,7 @@ public class RocketLauncher : Weapon
         }
         else
         {
-            if (currAmmo != ammo)
+            if (currAmmo != Mathf.CeilToInt(ammo * itemStats.magSizeModifier))
             {
                 Reload();
             }
@@ -52,7 +52,7 @@ public class RocketLauncher : Weapon
                     proj.GetComponent<Rocket>().SetExplosionRadius(25);
                 }
             }
-            currAttackInterval = attackInterval;
+            currAttackInterval = attackInterval * itemStats.fireRateModifier;
             GetComponentInParent<Rigidbody2D>().AddForce((transform.parent.position - (transform.position + transform.right * ((transform.lossyScale.x < 0) ? 1 : -1))).normalized * moveBackForce, ForceMode2D.Impulse);
         }
         currAutoReloadTime = autoReloadTime;

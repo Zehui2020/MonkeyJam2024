@@ -8,11 +8,6 @@ public class CrateOfBananaRockets : MonoBehaviour
     [SerializeField] private Transform rocketSpawnPoint;
     [SerializeField] private float spawnInterval;
 
-    private void Start()
-    {
-        StartCoroutine(SpawnRockets(5));
-    }
-
     public void SetupCrate(int rocketSpawnCount)
     {
         StartCoroutine(SpawnRockets(rocketSpawnCount));

@@ -23,7 +23,7 @@ public class Flamethrower : Weapon
         }
         else
         {
-            if (currAmmo != ammo)
+            if (currAmmo != Mathf.CeilToInt(ammo * itemStats.magSizeModifier))
             {
                 Reload();
             }
@@ -52,7 +52,7 @@ public class Flamethrower : Weapon
             {
                 proj.GetComponent<Flame>().SetFalseWhenHittingEnemy(false);
             }
-            currAttackInterval = attackInterval;
+            currAttackInterval = attackInterval * itemStats.fireRateModifier;
             currentSpace++;
             if (currentSpace >= space)
             {

@@ -8,12 +8,12 @@ public class MildZero : Item
     public override void Initialize()
     {
         base.Initialize();
-        itemStats.fireRateModifier += 0.15f;
+        itemStats.fireRateModifier -= 0.15f;
     }
 
     public override void IncrementStack()
     {
         base.IncrementStack();
-        itemStats.movementSpeedModifier += 0.15f;
+        itemStats.movementSpeedModifier -= 0.15f;
     }
 }

@@ -7,6 +7,9 @@ using UnityEngine.Rendering.Universal;
 //Base Enemy Stats and functions
 public abstract class EnemyEntity : Entity
 {
+    [SerializeField] private CrateOfBananaRockets crateOfBananaRockets;
+    [SerializeField] private ItemStats itemStats;
+
     [Header("Enemy Entity")]
     [SerializeField] protected LayerMask playerLayer;
 
@@ -59,7 +62,29 @@ public abstract class EnemyEntity : Entity
 
     public void Damage(int _amt)
     {
+        // Check for crit hit
+        int randNum = Random.Range(0, 100);
+        if (randNum < itemStats.critRate)
+        {
+            _amt = Mathf.CeilToInt(_amt * itemStats.critDamage);
+
+            // Safety Helmet Effect (heal on crit)
+            randNum = Random.Range(0, 100);
+            if (randNum < itemStats.critHealChance)
+                GameController.Instance._playerHealth.AddHealth(1);
+        }
+
+        // Check for metal pipe item (deal more damage at close range)
+        float distance = Vector3.Distance(PlayerController.Instance.transform.position, transform.position);
+        if (distance <= itemStats.minDistance)
+            _amt = (int)(_amt * itemStats.distanceDamageModifier);
+
         health -= _amt;
+
+        // Check for gamba load item (% chance to instantly reload on damaging enemy)
+        randNum = Random.Range(0, 100);
+        if (randNum < itemStats.gambaReloadChance)
+            PlayerController.Instance.InstantlyReload();
 
         //check health amount
         if (health <= 0 && state != EnemyStates.Death)
@@ -69,6 +94,16 @@ public abstract class EnemyEntity : Entity
             counter = 0;
             //death anim
             _animator.SetBool("ISDEAD", true);
+
+            // Oug. Oug. Oug. item (spawn banana rockets)
+            if (itemStats.rocketBananaAmount == 0)
+                return;
+
+            CrateOfBananaRockets crate = Instantiate(crateOfBananaRockets, 
+                new Vector3(transform.position.x, transform.position.y - _spriteRenderer.bounds.size.y, transform.position.z), 
+                Quaternion.identity);
+
+            crate.SetupCrate(itemStats.rocketBananaAmount);
         }
     }
 

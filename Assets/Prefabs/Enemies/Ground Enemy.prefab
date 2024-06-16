@@ -188,6 +188,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasInit: 0
   canDestroy: 0
+  crateOfBananaRockets: {fileID: 504417923978656782, guid: 03fa2c6df4a92a541af60efabbd4c0f9, type: 3}
+  itemStats: {fileID: 11400000, guid: 77167db11ac7d094a84655d88055015b, type: 2}
   playerLayer:
     serializedVersion: 2
     m_Bits: 8

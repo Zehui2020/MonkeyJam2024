@@ -56,7 +56,7 @@ public class BurstRifle : Weapon
         }
         else
         {
-            if (currAmmo != ammo)
+            if (currAmmo != Mathf.CeilToInt(ammo * itemStats.magSizeModifier))
             {
                 Reload();
             }

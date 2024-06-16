@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34f945f0c8b7c5499e6a1223efbbb46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemStats: {fileID: 11400000, guid: 77167db11ac7d094a84655d88055015b, type: 2}
   weaponName: Flamethrower
   ammo: 100
   reloadTime: 1

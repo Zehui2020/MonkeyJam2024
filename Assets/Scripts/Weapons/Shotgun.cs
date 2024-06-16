@@ -18,7 +18,7 @@ public class Shotgun : Weapon
         }
         else
         {
-            if (currAmmo != ammo)
+            if (currAmmo != Mathf.CeilToInt(ammo * itemStats.magSizeModifier))
             {
                 Reload();
             }
@@ -47,7 +47,7 @@ public class Shotgun : Weapon
                     Projectile proj = ProjectileManager.instance.GetProjectile(projectileType);
                     proj.Shoot(ownerName, transform.right * ((transform.lossyScale.x < 0) ? 1 : -1) + transform.up * 0.2f - transform.up * 0.2f * projectilenum, barrel.transform.position);
                     proj.Multiplier(damageMultiplier);
-                    currAttackInterval = attackInterval;
+                    currAttackInterval = attackInterval * itemStats.fireRateModifier;
                 }
             }
             else
@@ -57,7 +57,7 @@ public class Shotgun : Weapon
                     Projectile proj = ProjectileManager.instance.GetProjectile(projectileType);
                     proj.Shoot(ownerName, transform.right * ((transform.lossyScale.x < 0) ? 1 : -1) + transform.up * 0.2f - transform.up * 0.1f * projectilenum, barrel.transform.position);
                     proj.Multiplier(damageMultiplier);
-                    currAttackInterval = attackInterval;
+                    currAttackInterval = attackInterval * itemStats.fireRateModifier;
                 }
             }
            

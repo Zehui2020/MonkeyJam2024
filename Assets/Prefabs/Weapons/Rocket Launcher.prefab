@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ae0dfeae67ab14186856e7b2acc023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemStats: {fileID: 11400000, guid: 77167db11ac7d094a84655d88055015b, type: 2}
   weaponName: RocketLauncher
   ammo: 6
   reloadTime: 2

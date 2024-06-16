@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeedModifier: 1
   fireRateModifier: 1
+  magSizeModifier: 1
   critRate: 5
   critDamage: 2
   critHealChance: 0
   rocketBananaAmount: 0
   gambaReloadChance: 0
   distanceDamageModifier: 1
-  minDistance: 3
-  stunRadius: 0
-  ammoDamageModifier: 0
+  minDistance: 7
+  stunRadius: 194

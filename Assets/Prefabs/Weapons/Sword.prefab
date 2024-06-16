@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9121301458842782329}
-  - component: {fileID: 5973260069585881996}
   - component: {fileID: 7100740190100618238}
+  - component: {fileID: 5973260069585881996}
   m_Layer: 3
   m_Name: Sword
   m_TagString: Weapon
@@ -34,29 +34,6 @@ Transform:
   - {fileID: 1357829795344020526}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5973260069585881996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1345435010844242395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1817b2bb1938b004e9498c8aed2c97d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponName: Sword
-  ammo: 1
-  reloadTime: 0
-  attackInterval: 0.5
-  projectileType: 0
-  barrel: {fileID: 0}
-  range: 2
-  maxangle: 75
-  minangle: -75
-  atkSpd: 5
-  damage: 10
 --- !u!61 &7100740190100618238
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -102,6 +79,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9753866, y: 0.335438}
   m_EdgeRadius: 0
+--- !u!114 &5973260069585881996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345435010844242395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1817b2bb1938b004e9498c8aed2c97d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemStats: {fileID: 11400000, guid: 77167db11ac7d094a84655d88055015b, type: 2}
+  weaponName: Sword
+  ammo: 1
+  reloadTime: 0
+  attackInterval: 0.5
+  projectileType: 0
+  barrel: {fileID: 0}
+  range: 2
+  autoReloadTime: 0
+  damageMultiplier: 0
+  maxangle: 75
+  minangle: -75
+  atkSpd: 5
+  damage: 10
 --- !u!1 &1808083019266006056
 GameObject:
   m_ObjectHideFlags: 0

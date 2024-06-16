@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public static GameController Instance;
+
     //Serializing controller for main gameplay
     [SerializeField] PlayerController _playerController;
     [SerializeField] InputController _inputController;
-    [SerializeField] PlayerHealth _playerHealth;
+    [SerializeField] public PlayerHealth _playerHealth;
     [SerializeField] PlayerAnimation _playerAnimation;
     [SerializeField] ItemManager _itemManager;
     [SerializeField] private ItemStats itemStats;
     [SerializeField] private ItemTable itemTable;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     //Initialising conrollers
     void Start()

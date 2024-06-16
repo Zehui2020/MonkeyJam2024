@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09fec3d747d6fda4b94e53cbc0d5752b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemStats: {fileID: 11400000, guid: 77167db11ac7d094a84655d88055015b, type: 2}
   weaponName: Rifle
   ammo: 6
   reloadTime: 1.25

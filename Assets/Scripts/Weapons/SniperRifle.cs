@@ -18,7 +18,7 @@ public class SniperRifle : Weapon
         }
         else
         {
-            if (currAmmo != ammo)
+            if (currAmmo != Mathf.CeilToInt(ammo * itemStats.magSizeModifier))
             {
                 Reload();
             }
@@ -54,7 +54,7 @@ public class SniperRifle : Weapon
             {
                 proj.GetComponent<PiercingBullet>().SetDurability(5);
             }
-            currAttackInterval = attackInterval;
+            currAttackInterval = attackInterval * itemStats.fireRateModifier;
         }
         currAutoReloadTime = autoReloadTime;
     }

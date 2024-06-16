@@ -17945,8 +17945,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a6d2dfe279f63ed498d7a8b4eb802b14, type: 2}
-  m_sharedMaterial: {fileID: -8643231059364855071, guid: a6d2dfe279f63ed498d7a8b4eb802b14, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -18592,8 +18592,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a6d2dfe279f63ed498d7a8b4eb802b14, type: 2}
-  m_sharedMaterial: {fileID: -8643231059364855071, guid: a6d2dfe279f63ed498d7a8b4eb802b14, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -18865,8 +18865,8 @@ MonoBehaviour:
 
     and you can go FAAAST'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a6d2dfe279f63ed498d7a8b4eb802b14, type: 2}
-  m_sharedMaterial: {fileID: -8643231059364855071, guid: a6d2dfe279f63ed498d7a8b4eb802b14, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -19155,6 +19155,8 @@ MonoBehaviour:
   _playerHealth: {fileID: 2027420434}
   _playerAnimation: {fileID: 2027420437}
   _itemManager: {fileID: 2027420432}
+  itemStats: {fileID: 11400000, guid: 77167db11ac7d094a84655d88055015b, type: 2}
+  itemTable: {fileID: 11400000, guid: e3e7a6a27c2c4914a8cfa872e1349ef2, type: 2}
 --- !u!4 &561944804
 Transform:
   m_ObjectHideFlags: 0
@@ -19864,8 +19866,8 @@ MonoBehaviour:
 
     Get those pesky enemies that is in a higher ledge!'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a6d2dfe279f63ed498d7a8b4eb802b14, type: 2}
-  m_sharedMaterial: {fileID: -8643231059364855071, guid: a6d2dfe279f63ed498d7a8b4eb802b14, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -20453,8 +20455,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press W/S to move left & right
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a6d2dfe279f63ed498d7a8b4eb802b14, type: 2}
-  m_sharedMaterial: {fileID: -8643231059364855071, guid: a6d2dfe279f63ed498d7a8b4eb802b14, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -23322,8 +23324,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press Shift to brake quickly, allows you to<br>quickly break momentum
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a6d2dfe279f63ed498d7a8b4eb802b14, type: 2}
-  m_sharedMaterial: {fileID: -8643231059364855071, guid: a6d2dfe279f63ed498d7a8b4eb802b14, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -23868,8 +23870,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a6d2dfe279f63ed498d7a8b4eb802b14, type: 2}
-  m_sharedMaterial: {fileID: -8643231059364855071, guid: a6d2dfe279f63ed498d7a8b4eb802b14, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -29951,8 +29953,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a6d2dfe279f63ed498d7a8b4eb802b14, type: 2}
-  m_sharedMaterial: {fileID: -8643231059364855071, guid: a6d2dfe279f63ed498d7a8b4eb802b14, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -30087,8 +30089,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a6d2dfe279f63ed498d7a8b4eb802b14, type: 2}
-  m_sharedMaterial: {fileID: -8643231059364855071, guid: a6d2dfe279f63ed498d7a8b4eb802b14, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -31167,6 +31169,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   dustTrail: {fileID: 1720033333}
+  itemStats: {fileID: 11400000, guid: 77167db11ac7d094a84655d88055015b, type: 2}
   minFallAngle: 150
   maxFallAngle: 270
   isGrounded: 1
@@ -31592,8 +31595,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a6d2dfe279f63ed498d7a8b4eb802b14, type: 2}
-  m_sharedMaterial: {fileID: -8643231059364855071, guid: a6d2dfe279f63ed498d7a8b4eb802b14, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

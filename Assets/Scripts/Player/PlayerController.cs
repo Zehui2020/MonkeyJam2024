@@ -353,4 +353,10 @@ public class PlayerController : MonoBehaviour
             equippedWeapon.StartReload();
         }
     }
+
+    public void InstantlyReload()
+    {
+        if (equippedWeapon)
+            equippedWeapon.Reload();
+    }
 }

@@ -6289,7 +6289,7 @@ MonoBehaviour:
   itemList: []
   dronePrefab: {fileID: 0}
   droneFollowPos: {fileID: 123059482}
-  itemCardChoices: {fileID: 0}
+  itemCardManager: {fileID: 0}
 --- !u!114 &2085654034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6313,11 +6313,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   dustTrail: {fileID: 289257643}
+  itemStats: {fileID: 0}
   minFallAngle: 0
   maxFallAngle: 0
   isGrounded: 1
   WeaponList: []
-  defaultWeapon: 0
 --- !u!212 &2085654035
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6472,7 +6472,9 @@ MonoBehaviour:
   _inputController: {fileID: 1183838669}
   _playerHealth: {fileID: 2085654032}
   _playerAnimation: {fileID: 2085654037}
-  _itemManager: {fileID: 0}
+  _itemManager: {fileID: 2085654033}
+  itemStats: {fileID: 11400000, guid: 77167db11ac7d094a84655d88055015b, type: 2}
+  itemTable: {fileID: 11400000, guid: e3e7a6a27c2c4914a8cfa872e1349ef2, type: 2}
 --- !u!1001 &707304267604332422
 PrefabInstance:
   m_ObjectHideFlags: 0

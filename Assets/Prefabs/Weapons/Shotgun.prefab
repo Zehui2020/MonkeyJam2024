@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cb907e28b4c3b645b3fa2afd3bc76dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemStats: {fileID: 11400000, guid: 77167db11ac7d094a84655d88055015b, type: 2}
   weaponName: Shotgun
   ammo: 3
   reloadTime: 1

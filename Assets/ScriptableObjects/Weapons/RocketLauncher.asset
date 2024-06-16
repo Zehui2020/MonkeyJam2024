@@ -16,7 +16,7 @@ MonoBehaviour:
   itemRarity: 1
   itemType: 0
   spriteIcon: {fileID: 21300000, guid: 7fa7ba18ec8417940909bb08ca70d940, type: 3}
-  title: Rocket Launcher
+  title: Launcher
   description: Shoots a rocket that explodes. High recoil.
   itemStack: 0
   weaponType: 4

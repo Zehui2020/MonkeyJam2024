@@ -5,6 +5,8 @@ using UnityEngine;
 //Abstract class for weapns
 public abstract class Weapon : MonoBehaviour
 {
+    [SerializeField] protected ItemStats itemStats;
+
     //Identifier of weapon
     [SerializeField] string weaponName;
     //Ammo management
@@ -42,7 +44,7 @@ public abstract class Weapon : MonoBehaviour
     //initialise weapon
     public virtual void Initialise()
     {
-        currAmmo = ammo;
+        currAmmo = Mathf.CeilToInt(ammo * itemStats.magSizeModifier);
         currReloadTime = 0;
         UpgradeLevel = 0;
     }
@@ -96,7 +98,7 @@ public abstract class Weapon : MonoBehaviour
 
     public virtual void Reload()
     {
-        currAmmo = ammo;
+        currAmmo = Mathf.CeilToInt(ammo * itemStats.magSizeModifier);
     }
     public void StartReload()
     {

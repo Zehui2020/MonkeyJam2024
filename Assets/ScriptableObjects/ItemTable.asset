@@ -15,8 +15,8 @@ MonoBehaviour:
   itemTable:
   - {fileID: 11400000, guid: ac7bdfdfd2dd60c4686d2a67ce3cdc5b, type: 2}
   - {fileID: 11400000, guid: 093128239fdc6924b850d8b88a9ff3b3, type: 2}
+  - {fileID: 11400000, guid: ea875d7ff8b6b1e49aca58dae9abc225, type: 2}
   - {fileID: 11400000, guid: 25d3fa9a2e06351488148e5cffa1bc9a, type: 2}
-  - {fileID: 11400000, guid: 769c5b7dcefb1fc4984cecefd7bb39da, type: 2}
   - {fileID: 11400000, guid: ba771a737bf18244dab3554a2dd8211c, type: 2}
   - {fileID: 11400000, guid: 0ca65079ea7adba4487c615974e01b6f, type: 2}
   - {fileID: 11400000, guid: 1e4712ec9eec8634cb2791ea5532d9ad, type: 2}
