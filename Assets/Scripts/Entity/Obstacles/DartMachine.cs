@@ -44,22 +44,23 @@ public class DartMachine : Entity
             //reset
             counter = 0;
             //fire projectile
-            GameObject new_obj = Instantiate(_projectile, firePos.position, Quaternion.identity);
+            Projectile proj = ProjectileManager.instance.GetProjectile(ProjectileManager.ProjectileType.Bullet);
             
+
             //rotate object
-            //originally looking left
+            //originally looking downward
             switch (_direction)
             {
                 /*case ShootDirection.Left:
                     break;*/
                 case ShootDirection.Right:
-                    new_obj.transform.right = -transform.right;
+                    proj.Shoot("Enemy", transform.right, transform.position);
                     break;
                 case ShootDirection.Up:
-                    new_obj.transform.right = -transform.up;
+                    proj.Shoot("Enemy", transform.up, transform.position);
                     break;
                 case ShootDirection.Down:
-                    new_obj.transform.right = transform.up;
+                    proj.Shoot("Enemy", -transform.up, transform.position);
                     break;
                 default:
                     break;

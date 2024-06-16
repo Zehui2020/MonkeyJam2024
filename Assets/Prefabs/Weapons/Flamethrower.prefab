@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2052990085721508430}
   - component: {fileID: 6302655092538119514}
   - component: {fileID: 2160318415503118828}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Flamethrower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3761183121081240645}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
