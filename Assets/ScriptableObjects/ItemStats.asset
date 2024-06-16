@@ -22,4 +22,4 @@ MonoBehaviour:
   gambaReloadChance: 0
   distanceDamageModifier: 1
   minDistance: 7
-  stunRadius: 194
+  stunRadius: 0

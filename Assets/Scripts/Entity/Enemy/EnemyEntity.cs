@@ -99,8 +99,8 @@ public abstract class EnemyEntity : Entity
             if (itemStats.rocketBananaAmount == 0)
                 return;
 
-            CrateOfBananaRockets crate = Instantiate(crateOfBananaRockets, 
-                new Vector3(transform.position.x, transform.position.y - _spriteRenderer.bounds.size.y, transform.position.z), 
+            CrateOfBananaRockets crate = Instantiate(crateOfBananaRockets,
+                transform.position, 
                 Quaternion.identity);
 
             crate.SetupCrate(itemStats.rocketBananaAmount);
