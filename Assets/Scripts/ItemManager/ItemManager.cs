@@ -80,6 +80,13 @@ public class ItemManager : MonoBehaviour
         drone?.UpgradeDrone();
     }
 
+    public void OpenTutorialCardChoices(Item weapon)
+    {
+        itemCardManager.gameObject.SetActive(true);
+        itemCardManager.SetupTutorialWeaponPickup(weapon);
+    }
+
+
     public void OpenItemCardChoices()
     {
         itemCardManager.gameObject.SetActive(true);

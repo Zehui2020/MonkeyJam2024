@@ -11,12 +11,24 @@ public class ItemCardManager : MonoBehaviour
 
     private ItemCard chosenCard;
 
+    public void SetupTutorialWeaponPickup(Item weaponItem)
+    {
+        header.text = "Select Your Weapon";
+
+        itemCards[1].SetupCard(weaponItem);
+        itemCards[1].OnSelectEvent += SetChosenItem;
+
+        itemCards[0].gameObject.SetActive(false);
+        itemCards[2].gameObject.SetActive(false);
+    }
+
     public void SetupItemCards()
     {
         List<Item> items = itemTable.GetUniqueItems(itemCards.Count);
 
         for (int i = 0; i < itemCards.Count; i++)
         {
+            itemCards[i].gameObject.SetActive(true);
             itemCards[i].SetupCard(items[i]);
             itemCards[i].OnSelectEvent += SetChosenItem;
         }
@@ -30,6 +42,7 @@ public class ItemCardManager : MonoBehaviour
 
         for (int i = 0; i < itemCards.Count; i++)
         {
+            itemCards[i].gameObject.SetActive(true);
             itemCards[i].SetupCard(items[i]);
             itemCards[i].OnSelectEvent += SetChosenItem;
         }
@@ -58,6 +71,7 @@ public class ItemCardManager : MonoBehaviour
     {
         chosenCard.OnConfirmCard();
         ItemManager.Instance.AddItem(chosenCard.cardItem);
+        Debug.Log("CALLED");
 
         yield return new WaitForSeconds(1f);
 

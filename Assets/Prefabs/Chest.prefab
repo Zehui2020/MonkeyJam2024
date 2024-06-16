@@ -501,6 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77bfcdf15b26ca54790a4f10691c4021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorialItemPickup: {fileID: -4514907668694819367, guid: 5bc0f5708d26d3e49aa07aa247cc5306, type: 3}
   itemPickups:
   - {fileID: 5786802528283431013, guid: dd252b5ac7c827c4d9a4ca760c0a9aac, type: 3}
   - {fileID: 5786802528283431013, guid: a71bca5f425d32f49b7af7c57899b487, type: 3}
@@ -508,3 +509,4 @@ MonoBehaviour:
   costUI: {fileID: 3550102611726316194}
   costText: {fileID: 1481608081635888373}
   itemLaunchForce: 5
+  chestType: 1

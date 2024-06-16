@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxFallAngle;
 
     private Coroutine jumpRoutine;
+    private Coroutine checkFlipRoutine = null;
 
     private RaycastHit2D rampHit;
 
@@ -73,6 +74,14 @@ public class PlayerController : MonoBehaviour
         CheckGroundCollision();
         SpeedControl();
         UpdateDustTrailPS();
+
+        if (!isGrounded && checkFlipRoutine == null)
+            checkFlipRoutine = StartCoroutine(CheckFlip());
+        else if (isGrounded && checkFlipRoutine != null)
+        {
+            StopCoroutine(checkFlipRoutine);
+            checkFlipRoutine = null;
+        }
 
         Vector3 force;
         // Adjust drag & force
@@ -245,6 +254,34 @@ public class PlayerController : MonoBehaviour
             Vector3 limitVel = currentVel.normalized * speedLimit;
             rigidBody.velocity = new Vector2(limitVel.x, rigidBody.velocity.y);
         }
+    }
+
+    private IEnumerator CheckFlip()
+    {
+        float accumulatedRotation = 0f;
+        float lastFrameRotation = 0f;
+
+        while (true)
+        {
+            float currentRotation = transform.eulerAngles.z;
+            float deltaRotation = Mathf.DeltaAngle(lastFrameRotation, currentRotation);
+
+            accumulatedRotation += Mathf.Abs(deltaRotation);
+            lastFrameRotation = currentRotation;
+
+            if (accumulatedRotation >= 340f)
+            {
+                accumulatedRotation = 0f;
+                OnFlip();
+            }
+
+            yield return null;
+        }
+    }
+
+    private void OnFlip()
+    {
+        Debug.Log("FLIPPED");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
