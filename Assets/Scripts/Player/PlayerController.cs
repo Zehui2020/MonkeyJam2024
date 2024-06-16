@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 //Class that handles player movement, inputs & physics
@@ -29,6 +30,10 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private int money;
     [SerializeField] private TextMeshProUGUI moneyText;
+
+    //UI
+    [SerializeField] Image gunImage;
+    [SerializeField] private TextMeshProUGUI gunText;
 
     private Coroutine jumpRoutine;
     private Coroutine checkFlipRoutine = null;
@@ -88,12 +93,13 @@ public class PlayerController : MonoBehaviour
     //Code to update player in Game Controller
     public void UpdatePlayer()
     {
+        HandleGunUI();
         CheckFallenDown();
         CheckGroundCollision();
         SpeedControl();
         UpdateDustTrailPS();
 
-        moneyText.text = money.ToString();
+        moneyText.text = ": " + money.ToString();
 
         if (itemStats.stunRadius > 0)
             welshFlag.SetActive(true);
@@ -436,5 +442,21 @@ public class PlayerController : MonoBehaviour
     {
         if (equippedWeapon)
             equippedWeapon.Reload();
+    }
+
+    public void HandleGunUI()
+    {
+        if (equippedWeapon == null)
+        {
+            //no gun
+            gunImage.sprite = null;
+            gunText.text = "";
+        }
+        else
+        {
+            //have gun
+            gunImage.sprite = equippedWeapon.gameObject.GetComponent<SpriteRenderer>().sprite;
+            gunText.text = equippedWeapon.GetName() + "\n" + equippedWeapon.GetUpgradeLevel().ToString() + "\n" + equippedWeapon.GetAmmoString();
+        }
     }
 }
