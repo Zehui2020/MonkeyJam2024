@@ -12,6 +12,17 @@ public class Shotgun : Weapon
     public override void UpdateGun()
     {
         base.UpdateGun();
+        if (currAutoReloadTime > 0)
+        {
+            currAutoReloadTime -= Time.deltaTime;
+        }
+        else
+        {
+            if (currAmmo != ammo)
+            {
+                Reload();
+            }
+        }
     }
     public override void Use(string ownerName)
     {
@@ -22,12 +33,20 @@ public class Shotgun : Weapon
             {
                 currReloadTime = reloadTime;
             }
+            else
+            {
+                if (currReloadTime > 0)
+                {
+                    currReloadTime = 0;
+                }
+            }
             if (UpgradeLevel < 2)
             {
                 for (int projectilenum = 0; projectilenum < 3; projectilenum++)
                 {
                     Projectile proj = ProjectileManager.instance.GetProjectile(projectileType);
                     proj.Shoot(ownerName, transform.right * ((transform.lossyScale.x < 0) ? 1 : -1) + transform.up * 0.2f - transform.up * 0.2f * projectilenum, barrel.transform.position);
+                    proj.Multiplier(damageMultiplier);
                     currAttackInterval = attackInterval;
                 }
             }
@@ -37,10 +56,13 @@ public class Shotgun : Weapon
                 {
                     Projectile proj = ProjectileManager.instance.GetProjectile(projectileType);
                     proj.Shoot(ownerName, transform.right * ((transform.lossyScale.x < 0) ? 1 : -1) + transform.up * 0.2f - transform.up * 0.1f * projectilenum, barrel.transform.position);
+                    proj.Multiplier(damageMultiplier);
                     currAttackInterval = attackInterval;
                 }
             }
+           
         }
+        currAutoReloadTime = autoReloadTime;
     }
     public override void Upgrade()
     {

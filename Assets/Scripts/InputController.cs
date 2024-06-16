@@ -57,4 +57,10 @@ public class InputController : MonoBehaviour
     {
         return Input.GetAxis("Interact") != 0;
     }
+
+    // Reload
+    public bool TryGetReload()
+    {
+        return Input.GetAxis("Reload") != 0;
+    }
 }

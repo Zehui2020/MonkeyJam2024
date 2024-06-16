@@ -72,7 +72,11 @@ public class GameController : MonoBehaviour
         {
             _playerController.OnInteract();
         }
-        
+        //Reloading
+        if (_inputController.TryGetReload())
+        {
+            _playerController.Reload();
+        }
         //Updating Player health
         _playerHealth.UpdatePlayerHealth();
         //Updating Player Aniamtions

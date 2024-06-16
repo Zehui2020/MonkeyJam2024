@@ -15,6 +15,7 @@ public abstract class Projectile : MonoBehaviour
     protected Vector3 direction;
 
     [SerializeField] protected int damage;
+    protected int currDamage;
     [SerializeField] protected bool shouldBeFlipped;
     //updates the projectile (each projectile has their own update function)
     public abstract void UpdateProjectile();
@@ -27,5 +28,10 @@ public abstract class Projectile : MonoBehaviour
         transform.position = newPosition;
         currAliveTime = aliveTime;
         transform.right = (direction.x < 0 || shouldBeFlipped) ? -newDirection : newDirection;
+        currDamage = damage;
+    }
+    public virtual void Multiplier(float _multiplier)
+    {
+        currDamage = (int)(currDamage * _multiplier);
     }
 }
