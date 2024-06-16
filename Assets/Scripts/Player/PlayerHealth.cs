@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] int maxHealth;
     private int currHealth;
     [SerializeField] float iframes;
+    [SerializeField] SpriteRenderer playerSprite;
     private float currIFrames;
 
     public void Initialise()
@@ -20,6 +21,11 @@ public class PlayerHealth : MonoBehaviour
         if (currIFrames > 0)
         {
             currIFrames -= Time.deltaTime;
+            playerSprite.color = new Color(0.5f,0,0);
+            if (currIFrames <= 0)
+            {
+                playerSprite.color = Color.white;
+            }
         }
     }
     public void AddHealth(int _increment){
@@ -29,8 +35,9 @@ public class PlayerHealth : MonoBehaviour
             if (currHealth <= 0)
             {
                 Lose();
-                currIFrames = iframes;
+                
             }
+            currIFrames = iframes;
         }
     }
 

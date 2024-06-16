@@ -34,6 +34,10 @@ public class Flamethrower : Weapon
         if (currAttackInterval <= 0 && currAmmo > 0)
         {
             currAmmo--;
+            if (ownerName == "Enemy")
+            {
+                currAmmo = 0;
+            }
             if (currAmmo == 0)
             {
                 currReloadTime = reloadTime;

@@ -5,34 +5,23 @@ using UnityEngine;
 
 public class BananaRocket : MonoBehaviour
 {
-    //Pathfindingd
-    private Path path;
-    [SerializeField] private Seeker seeker;
+    //Pathfinding
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float moveSpeed;
     [SerializeField] private int damage;
 
     private Transform target;
-    private int currentChaseWaypoint = 0;
 
     private void Update()
     {
         FindTarget();
-        seeker.StartPath(rb.position, target.position, OnPathComplete);
 
-        if (path == null)
-            return;
-
-        Vector2 dir = ((Vector2)path.vectorPath[currentChaseWaypoint] - rb.position);
-
+        Vector2 dir = ((Vector2)target.position - rb.position);
         float scaleX = transform.localScale.x;
-        if (dir.x < 0)
+        if (dir.x > 0)
             transform.localScale = new Vector3(scaleX > 0 ? -scaleX : scaleX, transform.localScale.y, transform.localScale.z);
-        else if (dir.x > 0)
+        else if (dir.x < 0)
             transform.localScale = new Vector3(Mathf.Abs(scaleX), transform.localScale.y, transform.localScale.z);
-
-        if (Vector2.Distance(rb.position, (Vector2)path.vectorPath[currentChaseWaypoint]) <= 0.5f)
-            currentChaseWaypoint++;
 
         transform.position = Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * moveSpeed);
     }
@@ -57,26 +46,12 @@ public class BananaRocket : MonoBehaviour
 
         target = closestEntity.transform;
     }
-
-    private void OnPathComplete(Path p)
-    {
-        //check if path has any errors
-        if (!p.error)
-        {
-            //no error = create/assign new path
-            path = p;
-            currentChaseWaypoint = 0;
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Enemy"))
-        {
-            if (!col.TryGetComponent<EnemyEntity>(out EnemyEntity enemy))
-                return;
+        if (!col.TryGetComponent<EnemyEntity>(out EnemyEntity enemy))
+            return;
 
-            enemy.Damage(damage);
-        }
+        enemy.Damage(damage);
+        Destroy(gameObject);
     }
 }
