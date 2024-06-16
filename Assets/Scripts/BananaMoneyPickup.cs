@@ -8,9 +8,25 @@ public class BananaMoneyPickup : MonoBehaviour
     [SerializeField] private MoneyPopup moneyPopup;
     [SerializeField] private Animator moneyAnimator;
 
+    private EntityAudioController entityAudioController;
+
+    private void Start()
+    {
+        //sound
+        entityAudioController = GetComponent<EntityAudioController>();
+        //check if don't have component
+        if (entityAudioController == null)
+        {
+            //add component
+            entityAudioController = gameObject.AddComponent<EntityAudioController>();
+        }
+    }
+
     private void OnPickup()
     {
         PlayerController.Instance.AddMoney(moneyAmount);
+        // Add money
+        entityAudioController.PlayAudio("coin");
         MoneyPopup popup = Instantiate(moneyPopup, transform.position, Quaternion.identity);
         popup.SetAmount(moneyAmount);
         StartCoroutine(DestroyRoutine());

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -4885607820510854718}
   - component: {fileID: 5786802528283431013}
   - component: {fileID: 78530005442310947}
+  - component: {fileID: 5334116669254533081}
   m_Layer: 0
   m_Name: WeaponPickup
   m_TagString: Untagged
@@ -218,3 +219,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5334116669254533081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5059096717705371788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35cd0cc94b1f6394eb0fd53387a4d80e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

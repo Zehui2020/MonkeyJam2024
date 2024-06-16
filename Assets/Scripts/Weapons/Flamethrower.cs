@@ -29,10 +29,13 @@ public class Flamethrower : Weapon
             }
         }
     }
-    public override void Use(string ownerName)
+    public override bool Use(string ownerName)
     {
+        bool hasAttacked = false;
         if (currAttackInterval <= 0 && currAmmo > 0)
         {
+            hasAttacked = true;
+            entityAudioController.PlayAudio("flamethrower");
             currAmmo--;
             if (ownerName == "Enemy")
             {
@@ -64,9 +67,11 @@ public class Flamethrower : Weapon
             }
         }
         currAutoReloadTime = autoReloadTime;
+        return hasAttacked;
     }
     public override void Reload()
     {
+        entityAudioController.StopAudio("flamethrower");
         base.Reload();
         if (UpgradeLevel > 0)
         {

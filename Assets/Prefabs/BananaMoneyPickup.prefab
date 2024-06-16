@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1095509197736229377}
   - component: {fileID: 8806558086621916148}
   - component: {fileID: 95714249476101123}
+  - component: {fileID: 3913230917233261302}
   m_Layer: 0
   m_Name: BananaMoneyPickup
   m_TagString: Untagged
@@ -168,6 +169,18 @@ MonoBehaviour:
   moneyAmount: 1
   moneyPopup: {fileID: 1294386309585622398, guid: dd45c1594cb7766499f4d927e3cb7052, type: 3}
   moneyAnimator: {fileID: 1095509197736229377}
+--- !u!114 &3913230917233261302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5057354762793334797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35cd0cc94b1f6394eb0fd53387a4d80e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6504252508754975486
 GameObject:
   m_ObjectHideFlags: 0

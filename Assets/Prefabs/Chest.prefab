@@ -370,6 +370,7 @@ GameObject:
   - component: {fileID: 5913285291138440541}
   - component: {fileID: 2637396875298624171}
   - component: {fileID: 6343596494473426575}
+  - component: {fileID: 5533171335707311509}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Chest
@@ -533,3 +534,15 @@ MonoBehaviour:
   itemLaunchForce: 5
   animator: {fileID: 8612729425271200225}
   chestType: 1
+--- !u!114 &5533171335707311509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5913310658986705059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35cd0cc94b1f6394eb0fd53387a4d80e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

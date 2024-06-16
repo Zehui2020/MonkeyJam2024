@@ -37,10 +37,13 @@ public class Sword : Weapon
             }
         }
     }
-    public override void Use(string _ownerName)
+    public override bool Use(string _ownerName)
     {
+        bool hasAttacked = false;
         if (currAttackInterval <= 0 && currAmmo > 0)
         {
+            hasAttacked = true;
+            entityAudioController.PlayAudio("melee", true);
             isUsing = true;
             if (UpgradeLevel < 2)
             {
@@ -53,6 +56,7 @@ public class Sword : Weapon
             currAttackTime = 0;
             ownerName = _ownerName;
         }
+        return hasAttacked;
     }
     public void OnTriggerEnter2D(Collider2D other)
     {

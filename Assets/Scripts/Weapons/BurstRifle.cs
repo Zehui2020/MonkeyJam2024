@@ -62,10 +62,13 @@ public class BurstRifle : Weapon
             }
         }
     }
-    public override void Use(string _ownerName)
+    public override bool Use(string _ownerName)
     {
+        bool hasAttacked = false;
         if (currAttackInterval <= 0 && currAmmo > 0)
         {
+            hasAttacked = true;
+            entityAudioController.PlayAudio("rifle", true);
             currAmmo--;
             if (ownerName == "Enemy")
             {
@@ -89,5 +92,6 @@ public class BurstRifle : Weapon
             
         }
         currAutoReloadTime = autoReloadTime;
+        return hasAttacked;
     }
 }

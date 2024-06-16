@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -4885607820510854718}
   - component: {fileID: 78530005442310947}
   - component: {fileID: 9217302334060759759}
+  - component: {fileID: 4072740192248807013}
   m_Layer: 0
   m_Name: Tutorial Weapon Pickup
   m_TagString: Untagged
@@ -206,6 +207,7 @@ Rigidbody2D:
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!114 &9217302334060759759
+--- !u!114 &4072740192248807013
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -218,3 +220,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemToGive: {fileID: 11400000, guid: 7c0f97a823f33ce4392f8e1c97a42d6f, type: 2}
+  m_Script: {fileID: 11500000, guid: 35cd0cc94b1f6394eb0fd53387a4d80e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

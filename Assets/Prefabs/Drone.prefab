@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 7565139103837289650}
   - component: {fileID: 3887016507939183646}
   - component: {fileID: 8371997669192469749}
+  - component: {fileID: 784321327212820994}
   m_Layer: 0
   m_Name: Drone
   m_TagString: Untagged
@@ -223,6 +224,18 @@ MonoBehaviour:
   reloadSlider: {fileID: 3612874523759134059}
   projectile: {fileID: 1038126098125364029, guid: 268f162f59935244c9179ec232e1d4e7, type: 3}
   firePoint: {fileID: 2093287184332597722}
+--- !u!114 &784321327212820994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002765626597129379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35cd0cc94b1f6394eb0fd53387a4d80e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2617287227932319397
 GameObject:
   m_ObjectHideFlags: 0

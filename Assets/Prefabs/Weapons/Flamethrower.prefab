@@ -111,6 +111,18 @@ MonoBehaviour:
   minHeight: -1
   maxHeight: 1
   space: 3
+--- !u!114 &-6899178904600438418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371557777702016531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35cd0cc94b1f6394eb0fd53387a4d80e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5110415645127981617
 GameObject:
   m_ObjectHideFlags: 0

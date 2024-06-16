@@ -25,10 +25,13 @@ public class RocketLauncher : Weapon
             }
         }
     }
-    public override void Use(string ownerName)
+    public override bool Use(string ownerName)
     {
+        bool hasAttacked = false;
         if (currAttackInterval <= 0 && currAmmo > 0)
         {
+            hasAttacked = true;
+            entityAudioController.PlayAudio("rocketlauncher", true);
             currAmmo--;
             if (ownerName == "Enemy")
             {
@@ -60,5 +63,6 @@ public class RocketLauncher : Weapon
             GetComponentInParent<Rigidbody2D>().AddForce((transform.parent.position - (transform.position + transform.right * ((transform.lossyScale.x < 0) ? 1 : -1))).normalized * moveBackForce, ForceMode2D.Impulse);
         }
         currAutoReloadTime = autoReloadTime;
+        return hasAttacked;
     }
 }

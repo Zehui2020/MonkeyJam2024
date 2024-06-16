@@ -12,6 +12,20 @@ public class BananaRocket : MonoBehaviour
 
     private Transform target;
 
+    private EntityAudioController entityAudioController;
+
+    private void Start()
+    {
+        //sound
+        entityAudioController = GetComponent<EntityAudioController>();
+        //check if don't have component
+        if (entityAudioController == null)
+        {
+            //add component
+            entityAudioController = gameObject.AddComponent<EntityAudioController>();
+        }
+    }
+
     private void Update()
     {
         FindTarget();
@@ -50,8 +64,10 @@ public class BananaRocket : MonoBehaviour
     {
         if (!col.TryGetComponent<EnemyEntity>(out EnemyEntity enemy))
             return;
-
-        enemy.Damage(damage);
-        Destroy(gameObject);
+            
+            enemy.Damage(damage);
+            entityAudioController.PlayAudio("explode");
+            Destroy(gameObject);
+        }
     }
 }

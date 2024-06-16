@@ -41,12 +41,24 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected float damageMultiplier;
     //script starts here
 
+    //sound
+    protected EntityAudioController entityAudioController;
+
     //initialise weapon
     public virtual void Initialise()
     {
         currAmmo = Mathf.CeilToInt(ammo * itemStats.magSizeModifier);
         currReloadTime = 0;
         UpgradeLevel = 0;
+
+        //sound
+        entityAudioController = GetComponent<EntityAudioController>();
+        //check if don't have component
+        if (entityAudioController == null)
+        {
+            //add component
+            entityAudioController = gameObject.AddComponent<EntityAudioController>();
+        }
     }
 
     //updates the gun
@@ -67,7 +79,7 @@ public abstract class Weapon : MonoBehaviour
     }
 
     //When any entity uses the Gun
-    public abstract void Use(string ownerName);
+    public abstract bool Use(string ownerName);
 
     //upgrading weapon
     public virtual void Upgrade()
@@ -98,6 +110,7 @@ public abstract class Weapon : MonoBehaviour
 
     public virtual void Reload()
     {
+        entityAudioController.PlayAudio("reload");
         currAmmo = Mathf.CeilToInt(ammo * itemStats.magSizeModifier);
     }
     public void StartReload()
