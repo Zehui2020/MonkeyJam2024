@@ -524,7 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77bfcdf15b26ca54790a4f10691c4021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialItemPickup: {fileID: 9217302334060759759, guid: 5da69d5bf81f2cd43beed75b636621cf, type: 3}
+  tutorialItemPickup: {fileID: 4072740192248807013, guid: 5da69d5bf81f2cd43beed75b636621cf, type: 3}
   itemPickups:
   - {fileID: 5786802528283431013, guid: dd252b5ac7c827c4d9a4ca760c0a9aac, type: 3}
   - {fileID: 5786802528283431013, guid: a71bca5f425d32f49b7af7c57899b487, type: 3}

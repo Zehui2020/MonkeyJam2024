@@ -68,6 +68,5 @@ public class BananaRocket : MonoBehaviour
             enemy.Damage(damage);
             entityAudioController.PlayAudio("explode");
             Destroy(gameObject);
-        }
     }
 }

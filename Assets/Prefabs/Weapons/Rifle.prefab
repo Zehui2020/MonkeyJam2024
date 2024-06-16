@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 7708773688687786359}
   - component: {fileID: 8511512247710199133}
   - component: {fileID: 2911818237620537465}
+  - component: {fileID: -275912553564591847}
   m_Layer: 6
   m_Name: Rifle
   m_TagString: Untagged
@@ -105,7 +106,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: 077126a8927cb9f4ab03c0e6a4074584, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

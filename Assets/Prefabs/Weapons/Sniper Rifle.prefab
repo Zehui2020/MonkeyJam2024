@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4220421982762015493}
   - component: {fileID: 4136977693412118285}
   - component: {fileID: 1600117696029752545}
+  - component: {fileID: -4573121716086118660}
   m_Layer: 6
   m_Name: Sniper Rifle
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: 6da9530f0d1982f459db7bfca37604e1, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

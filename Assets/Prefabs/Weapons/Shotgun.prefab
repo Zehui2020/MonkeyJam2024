@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9214353222548061389}
   - component: {fileID: 8748204594712342701}
   - component: {fileID: 1923065659018876936}
+  - component: {fileID: -1567284885590993699}
   m_Layer: 6
   m_Name: Shotgun
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: bf09c070a2c490247b29684336751f6a, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9121301458842782329}
   - component: {fileID: 7100740190100618238}
   - component: {fileID: 5973260069585881996}
+  - component: {fileID: -8407784953103845591}
   m_Layer: 6
   m_Name: Sword
   m_TagString: Weapon
@@ -189,7 +190,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 11
   m_Sprite: {fileID: 21300000, guid: 6540fbcda8658224594fd877095ba118, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
