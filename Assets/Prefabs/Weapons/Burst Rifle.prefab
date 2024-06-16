@@ -136,6 +136,7 @@ MonoBehaviour:
   projectileType: 0
   barrel: {fileID: 3618170987865172119}
   range: 15
-  UpgradeLevel: 0
+  autoReloadTime: 2.5
+  damageMultiplier: 1
   maxShootingInterval: 0.1
   bulletCount: 3

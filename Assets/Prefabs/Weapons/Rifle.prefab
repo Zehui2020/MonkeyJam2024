@@ -136,3 +136,5 @@ MonoBehaviour:
   projectileType: 0
   barrel: {fileID: 2834488682710742020}
   range: 15
+  autoReloadTime: 2.5
+  damageMultiplier: 1

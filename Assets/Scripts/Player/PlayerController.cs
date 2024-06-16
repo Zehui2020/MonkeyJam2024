@@ -345,4 +345,12 @@ public class PlayerController : MonoBehaviour
     {
         return equippedWeapon;
     }
+
+    public void Reload()
+    {
+        if (equippedWeapon)
+        {
+            equippedWeapon.StartReload();
+        }
+    }
 }

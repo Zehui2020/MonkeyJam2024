@@ -105,6 +105,8 @@ MonoBehaviour:
   projectileType: 3
   barrel: {fileID: 5110415645127981617}
   range: 15
+  autoReloadTime: 2
+  damageMultiplier: 1
   minHeight: -1
   maxHeight: 1
   space: 3

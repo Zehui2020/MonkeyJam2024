@@ -27,12 +27,15 @@ public class BurstRifle : Weapon
                 {
                     Debug.Log("shoot");
                     proj.Shoot(ownerName, transform.right * ((transform.lossyScale.x < 0) ? 1 : -1), barrel.transform.position);
+                    proj.Multiplier(damageMultiplier);
                 }
                 else
                 {
                     proj.Shoot(ownerName, transform.right * ((transform.lossyScale.x < 0) ? 1 : -1), barrel.transform.position + transform.up * 0.1f);
+                    proj.Multiplier(damageMultiplier);
                     proj = ProjectileManager.instance.GetProjectile(projectileType);
                     proj.Shoot(ownerName, transform.right * ((transform.lossyScale.x < 0) ? 1 : -1), barrel.transform.position + -transform.up * 0.1f);
+                    proj.Multiplier(damageMultiplier);
                 }
                 shootingInterval = maxShootingInterval;
                 currBulletCount++;
@@ -47,6 +50,17 @@ public class BurstRifle : Weapon
                 shootingInterval -= Time.deltaTime;
             }
         }
+        if (currAutoReloadTime > 0)
+        {
+            currAutoReloadTime -= Time.deltaTime;
+        }
+        else
+        {
+            if (currAmmo != ammo)
+            {
+                Reload();
+            }
+        }
     }
     public override void Use(string _ownerName)
     {
@@ -57,10 +71,19 @@ public class BurstRifle : Weapon
             {
                 currReloadTime = reloadTime;
             }
+            else
+            {
+                if (currReloadTime > 0)
+                {
+                    currReloadTime = 0;
+                }
+            }
             isShooting = true;
             currBulletCount = 0;
             ownerName = _ownerName;
             shootingInterval = 0;
+            
         }
+        currAutoReloadTime = autoReloadTime;
     }
 }

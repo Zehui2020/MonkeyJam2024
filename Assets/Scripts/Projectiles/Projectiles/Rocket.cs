@@ -20,7 +20,7 @@ public class Rocket : Projectile
             {
 
                 explosionGO.SetActive(true);
-                explosionGO.GetComponent<Explosion>().Explode(currExplosionRadius, transform.position, ownerName,damage);
+                explosionGO.GetComponent<Explosion>().Explode(currExplosionRadius, transform.position, ownerName, currDamage);
                 hasExploded = true;
                 currExplodeEffectTime = explodeEffectTime;
             }

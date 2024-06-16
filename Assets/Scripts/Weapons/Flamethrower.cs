@@ -17,6 +17,17 @@ public class Flamethrower : Weapon
     public override void UpdateGun()
     {
         base.UpdateGun();
+        if (currAutoReloadTime > 0)
+        {
+            currAutoReloadTime -= Time.deltaTime;
+        }
+        else
+        {
+            if (currAmmo != ammo)
+            {
+                Reload();
+            }
+        }
     }
     public override void Use(string ownerName)
     {
@@ -27,8 +38,16 @@ public class Flamethrower : Weapon
             {
                 currReloadTime = reloadTime;
             }
+            else
+            {
+                if (currReloadTime > 0)
+                {
+                    currReloadTime = 0;
+                }
+            }
             Projectile proj = ProjectileManager.instance.GetProjectile(projectileType);
             proj.Shoot(ownerName, transform.right * ((transform.lossyScale.x < 0) ? 1 : -1), barrel.transform.position + (maxHeight - (maxHeight - minHeight) / space * currentSpace) * transform.up);
+            proj.Multiplier(damageMultiplier);
             if (UpgradeLevel > 1)
             {
                 proj.GetComponent<Flame>().SetFalseWhenHittingEnemy(false);
@@ -40,6 +59,7 @@ public class Flamethrower : Weapon
                 currentSpace = 0;
             }
         }
+        currAutoReloadTime = autoReloadTime;
     }
     public override void Reload()
     {

@@ -34,7 +34,7 @@ public class PiercingBullet : Projectile
             if (other.gameObject.CompareTag("Enemy"))
             {
                 Debug.Log("damaging enemy");
-                other.gameObject.GetComponent<EnemyEntity>().Damage(damage);
+                other.gameObject.GetComponent<EnemyEntity>().Damage(currDamage);
                 currDurability--;
                 if (currDurability <= 0)
                 {
