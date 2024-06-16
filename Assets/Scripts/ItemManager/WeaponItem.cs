@@ -19,6 +19,7 @@ public class WeaponItem : Item
     public override void Initialize()
     {
         base.Initialize();
+        base.IncrementStack();
         PlayerController.Instance.EquipWeapon(weaponType);
     }
 

@@ -9,14 +9,19 @@ public class BananaRocket : MonoBehaviour
     private Path path;
     [SerializeField] private Seeker seeker;
     [SerializeField] private Rigidbody2D rb;
-
     [SerializeField] private float moveSpeed;
+    [SerializeField] private int damage;
+
     private Transform target;
     private int currentChaseWaypoint = 0;
 
     private void Update()
     {
-        seeker.StartPath(rb.position, PlayerController.Instance.transform.position, OnPathComplete);
+        FindTarget();
+        seeker.StartPath(rb.position, target.position, OnPathComplete);
+
+        if (path == null)
+            return;
 
         Vector2 dir = ((Vector2)path.vectorPath[currentChaseWaypoint] - rb.position);
 
@@ -29,7 +34,28 @@ public class BananaRocket : MonoBehaviour
         if (Vector2.Distance(rb.position, (Vector2)path.vectorPath[currentChaseWaypoint]) <= 0.5f)
             currentChaseWaypoint++;
 
-        transform.position = Vector3.MoveTowards(transform.position, PlayerController.Instance.transform.position, Time.deltaTime * moveSpeed);
+        transform.position = Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * moveSpeed);
+    }
+
+    private void FindTarget()
+    {
+        Entity closestEntity = null;
+        float closestDistance = float.MaxValue;
+
+        foreach (Entity entity in EntitiesController.Instance._entities)
+        {
+            if (entity is EnemyEntity enemyEntity)
+            {
+                float distance = Vector3.Distance(transform.position, enemyEntity.transform.position);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestEntity = enemyEntity;
+                }
+            }
+        }
+
+        target = closestEntity.transform;
     }
 
     private void OnPathComplete(Path p)
@@ -47,7 +73,10 @@ public class BananaRocket : MonoBehaviour
     {
         if (col.CompareTag("Enemy"))
         {
-            // Damage enemy
+            if (!col.TryGetComponent<EnemyEntity>(out EnemyEntity enemy))
+                return;
+
+            enemy.Damage(damage);
         }
     }
 }

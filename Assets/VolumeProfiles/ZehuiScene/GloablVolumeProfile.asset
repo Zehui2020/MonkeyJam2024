@@ -15,13 +15,13 @@ MonoBehaviour:
   active: 1
   ChromaticAberrationIntensity:
     m_OverrideState: 1
-    m_Value: 0.00001
+    m_Value: 0.00182
   CRTCurvature:
     m_OverrideState: 1
-    m_Value: 0.117
+    m_Value: 0.109
   CRTScanLineStrength:
     m_OverrideState: 1
-    m_Value: 0.478
+    m_Value: 0.341
   CRTGrayscaleStrength:
     m_OverrideState: 1
     m_Value: 0

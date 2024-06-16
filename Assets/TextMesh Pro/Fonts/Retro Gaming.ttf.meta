@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dc9b96ecfd9a25f4ca168c6e9e625345
+guid: ca7836a9cfa503349831dde1b69754c1
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Pixelify Sans
+  - Retro Gaming
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
