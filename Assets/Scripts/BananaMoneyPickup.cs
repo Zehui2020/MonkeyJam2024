@@ -10,7 +10,7 @@ public class BananaMoneyPickup : MonoBehaviour
 
     private void OnPickup()
     {
-        // Add money
+        PlayerController.Instance.AddMoney(moneyAmount);
         MoneyPopup popup = Instantiate(moneyPopup, transform.position, Quaternion.identity);
         popup.SetAmount(moneyAmount);
         StartCoroutine(DestroyRoutine());

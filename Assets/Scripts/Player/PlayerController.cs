@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 //Class that handles player movement, inputs & physics
 public class PlayerController : MonoBehaviour
@@ -25,6 +26,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float minFallAngle;
     [SerializeField] private float maxFallAngle;
     [SerializeField] private GameObject welshFlag;
+
+    [SerializeField] private int money;
+    [SerializeField] private TextMeshProUGUI moneyText;
 
     private Coroutine jumpRoutine;
     private Coroutine checkFlipRoutine = null;
@@ -73,6 +77,8 @@ public class PlayerController : MonoBehaviour
         CheckGroundCollision();
         SpeedControl();
         UpdateDustTrailPS();
+
+        moneyText.text = money.ToString();
 
         if (itemStats.stunRadius > 0)
             welshFlag.SetActive(true);
@@ -345,6 +351,21 @@ public class PlayerController : MonoBehaviour
         equippedWeapon = WeaponList[(int)newweapon];
         equippedWeapon.Initialise();
         equippedWeapon.gameObject.SetActive(true);
+    }
+
+    public int GetMoney()
+    {
+        return money;
+    }
+
+    public void AddMoney(int amount)
+    {
+        money += amount;
+    }
+
+    public void DeductMoney(int amount)
+    {
+        money -= amount;
     }
 
     //Getting isGrounded

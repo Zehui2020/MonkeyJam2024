@@ -47,7 +47,7 @@ public class Chest : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        if (isOpened)
+        if (isOpened || PlayerController.Instance.GetMoney() < cost)
             return;
 
         StartCoroutine(InteractRoutine());
@@ -57,6 +57,7 @@ public class Chest : MonoBehaviour, IInteractable
     {
         animator.SetTrigger("open");
         isOpened = true;
+        PlayerController.Instance.DeductMoney(cost);
 
         yield return new WaitForSeconds(0.4f);
 
