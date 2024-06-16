@@ -39,7 +39,7 @@ public class PlayerHealth : MonoBehaviour
         if (currIFrames > 0)
         {
             currIFrames -= Time.deltaTime;
-            playerSprite.color = new Color(0.5f,0,0);
+            playerSprite.color = new Color(0.5f,1,1);
             if (currIFrames <= 0)
             {
                 playerSprite.color = Color.white;
