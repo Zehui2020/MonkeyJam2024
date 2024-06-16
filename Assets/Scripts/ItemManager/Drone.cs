@@ -22,10 +22,21 @@ public class Drone : MonoBehaviour
 
     private GameObject target;
 
+    private EntityAudioController entityAudioController;
+
     private void Start()
     {
         ammoCount = magSize;
         reloadSlider.gameObject.SetActive(false);
+
+        //sound
+        entityAudioController = GetComponent<EntityAudioController>();
+        //check if don't have component
+        if (entityAudioController == null)
+        {
+            //add component
+            entityAudioController = gameObject.AddComponent<EntityAudioController>();
+        }
     }
 
     public enum DroneState
@@ -106,7 +117,7 @@ public class Drone : MonoBehaviour
 
             yield return null;
         }
-
+        entityAudioController.PlayAudio("reload");
         ammoCount = magSize;
         reloadSlider.gameObject.SetActive(false);
         ChangeState(DroneState.IDLE);
@@ -115,6 +126,8 @@ public class Drone : MonoBehaviour
 
     private IEnumerator ShootRoutine()
     {
+        //shoot sound
+        entityAudioController.PlayAudio("droneshot");
         GameObject newProjectile = Instantiate(projectile, firePoint.position, Quaternion.identity);
         newProjectile.TryGetComponent<Rigidbody2D>(out Rigidbody2D projectileRB);
         projectileRB.AddForce(-(transform.position - target.transform.position).normalized * 20, ForceMode2D.Impulse);

@@ -66,6 +66,7 @@ public class BurstRifle : Weapon
     {
         if (currAttackInterval <= 0 && currAmmo > 0)
         {
+            entityAudioController.PlayAudio("rifle", true);
             currAmmo--;
             if (currAmmo == 0)
             {

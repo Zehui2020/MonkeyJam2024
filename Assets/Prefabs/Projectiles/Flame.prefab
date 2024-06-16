@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6610894256825755388}
   - component: {fileID: 1605772345253097085}
   - component: {fileID: 7566446604990394032}
+  - component: {fileID: 8276169039002738038}
   m_Layer: 0
   m_Name: Flame
   m_TagString: Untagged
@@ -101,6 +102,7 @@ MonoBehaviour:
   speed: 3
   aliveTime: 1
   damage: 1
+  shouldBeFlipped: 0
 --- !u!61 &7566446604990394032
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -146,3 +148,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.56553847, y: 0.8002381}
   m_EdgeRadius: 0
+--- !u!114 &8276169039002738038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8822894323416930407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35cd0cc94b1f6394eb0fd53387a4d80e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -226,3 +226,21 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     is3D: 1
+  - name: hitfloor
+    clip: {fileID: 8300000, guid: 6e1ffd7ddad24814083f8895da25f98a, type: 3}
+    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
+    pitch: 1
+    loop: 0
+    is3D: 1
+  - name: heal
+    clip: {fileID: 8300000, guid: d59c01aca29280748a31b1c65427eef1, type: 3}
+    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
+    pitch: 1
+    loop: 0
+    is3D: 1
+  - name: fire
+    clip: {fileID: 8300000, guid: d958edf8b21f40c49a5f1d8a341ddde0, type: 3}
+    mixerGroup: {fileID: -7214519435831098775, guid: ba5c3024bde8c63459366053a0df52a0, type: 2}
+    pitch: 1
+    loop: 0
+    is3D: 1

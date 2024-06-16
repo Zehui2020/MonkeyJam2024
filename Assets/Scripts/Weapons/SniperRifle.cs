@@ -28,6 +28,7 @@ public class SniperRifle : Weapon
     {
         if (currAttackInterval <= 0 && currAmmo > 0)
         {
+            entityAudioController.PlayAudio("sniper", true);
             currAmmo--;
             if (currAmmo == 0)
             {

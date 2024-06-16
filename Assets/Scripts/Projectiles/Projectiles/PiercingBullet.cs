@@ -64,6 +64,7 @@ public class PiercingBullet : Projectile
                 return;
             }
         }
+        entityAudioController.PlayAudio("hitfloor");
         gameObject.SetActive(false);
     }
     public void SetDurability(int _newDurability)

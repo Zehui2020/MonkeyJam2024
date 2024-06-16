@@ -29,6 +29,7 @@ public class RocketLauncher : Weapon
     {
         if (currAttackInterval <= 0 && currAmmo > 0)
         {
+            entityAudioController.PlayAudio("rocketlauncher", true);
             currAmmo--;
             if (currAmmo == 0)
             {

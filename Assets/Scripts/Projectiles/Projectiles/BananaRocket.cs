@@ -15,6 +15,20 @@ public class BananaRocket : MonoBehaviour
     private Transform target;
     private int currentChaseWaypoint = 0;
 
+    private EntityAudioController entityAudioController;
+
+    private void Start()
+    {
+        //sound
+        entityAudioController = GetComponent<EntityAudioController>();
+        //check if don't have component
+        if (entityAudioController == null)
+        {
+            //add component
+            entityAudioController = gameObject.AddComponent<EntityAudioController>();
+        }
+    }
+
     private void Update()
     {
         FindTarget();
@@ -22,6 +36,8 @@ public class BananaRocket : MonoBehaviour
 
         if (path == null)
             return;
+
+        entityAudioController.PlayAudio("rocket");
 
         Vector2 dir = ((Vector2)path.vectorPath[currentChaseWaypoint] - rb.position);
 
@@ -77,6 +93,7 @@ public class BananaRocket : MonoBehaviour
                 return;
 
             enemy.Damage(damage);
+            entityAudioController.PlayAudio("explode");
         }
     }
 }

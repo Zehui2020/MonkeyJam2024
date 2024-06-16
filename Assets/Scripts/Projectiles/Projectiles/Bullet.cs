@@ -43,6 +43,8 @@ public class Bullet : Projectile
                 return;
             }
         }
+        entityAudioController.PlayAudio("hitfloor");
         gameObject.SetActive(false);
+        
     }
 }

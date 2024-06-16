@@ -7,6 +7,7 @@ public class Flame : Projectile
     private bool setFalseWhenHitEnemy;
     public override void UpdateProjectile()
     {
+        entityAudioController.PlayAudio("fire");
         currAliveTime -= Time.deltaTime;
         if (currAliveTime <= 0)
         {
@@ -56,6 +57,8 @@ public class Flame : Projectile
                 return;
             }
         }
+        //turn off sound
+        entityAudioController.StopAudio("fire");
         gameObject.SetActive(false);
     }
     public void SetFalseWhenHittingEnemy(bool _newSetFalseWhenHittingEnemy)

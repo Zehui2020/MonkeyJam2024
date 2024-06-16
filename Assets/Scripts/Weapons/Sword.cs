@@ -41,6 +41,7 @@ public class Sword : Weapon
     {
         if (currAttackInterval <= 0 && currAmmo > 0)
         {
+            entityAudioController.PlayAudio("melee", true);
             isUsing = true;
             if (UpgradeLevel < 2)
             {

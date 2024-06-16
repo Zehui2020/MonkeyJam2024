@@ -57,12 +57,27 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private EntityAudioController entityAudioController;
+
+    bool isFalling;
+
     //Code for initialising in Game Controller
     public void Initialise()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         Instance = this;
         equippedWeapon = null;
+
+        isFalling = false;
+
+        //sound
+        entityAudioController = GetComponent<EntityAudioController>();
+        //check if don't have component
+        if (entityAudioController == null)
+        {
+            //add component
+            entityAudioController = gameObject.AddComponent<EntityAudioController>();
+        }
     }
 
     //Code to update player in Game Controller
@@ -107,6 +122,16 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(scaleX > 0 ? -scaleX : scaleX, transform.localScale.y, transform.localScale.z);
         else if (rigidBody.velocity.x < -0.05f && isPlayerMoving == -1)
             transform.localScale = new Vector3(Mathf.Abs(scaleX), transform.localScale.y, transform.localScale.z);
+        //player not moving
+        if (isPlayerMoving == 0)
+        {
+            entityAudioController.StopAudio("cycling");
+        }
+        //player is moving
+        else
+        {
+            entityAudioController.PlayAudio("cycling");
+        }
 
         if (equippedWeapon)
         equippedWeapon.UpdateGun();
@@ -152,10 +177,15 @@ public class PlayerController : MonoBehaviour
     private IEnumerator JumpRoutine()
     {
         if (isGrounded)
+        {
+            
             rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
+            
 
         yield return new WaitForSeconds(0.5f);
-
+        //jump sound
+        entityAudioController.PlayAudio("jump", true);
         jumpRoutine = null;
     }
 
@@ -185,9 +215,23 @@ public class PlayerController : MonoBehaviour
 
         float dist = Vector3.Distance(transform.position, groundHit.point);
         if (dist <= minGroundDist)
+        {
             isGrounded = true;
+            //check if is falling
+            if (isFalling)
+            {
+                isFalling = false;
+                //play fall sound
+                entityAudioController.PlayAudio("land");
+            }
+        }
+            
         else if (dist > minGroundDist)
+        {
             isGrounded = false;
+            isFalling = true;
+        }
+            
     }
 
     private void CheckFallenDown()

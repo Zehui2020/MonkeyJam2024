@@ -13,6 +13,8 @@ public class Chest : MonoBehaviour, IInteractable
     [SerializeField] private TextMeshProUGUI costText;
     [SerializeField] private float itemLaunchForce;
 
+    private EntityAudioController entityAudioController;
+
     public enum ChestType 
     {
         TutorialChest,
@@ -25,6 +27,15 @@ public class Chest : MonoBehaviour, IInteractable
     private void Start()
     {
         InitInteractable();
+
+        //sound
+        entityAudioController = GetComponent<EntityAudioController>();
+        //check if don't have component
+        if (entityAudioController == null)
+        {
+            //add component
+            entityAudioController = gameObject.AddComponent<EntityAudioController>();
+        }
     }
 
     public void InitInteractable()
@@ -47,7 +58,8 @@ public class Chest : MonoBehaviour, IInteractable
     {
         if (isOpened)
             return;
-
+        //sound
+        entityAudioController.PlayAudio("chestopen");
         if (chestType == ChestType.TutorialChest)
         {
             Rigidbody2D item = Instantiate(tutorialItemPickup, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();

@@ -28,6 +28,7 @@ public class Shotgun : Weapon
     {
         if (currAttackInterval <= 0 && currAmmo > 0)
         {
+            entityAudioController.PlayAudio("shotgun", true);
             currAmmo--;
             if (currAmmo == 0)
             {

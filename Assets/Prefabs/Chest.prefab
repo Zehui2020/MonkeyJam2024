@@ -151,8 +151,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 100
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a6d2dfe279f63ed498d7a8b4eb802b14, type: 2}
-  m_sharedMaterial: {fileID: -8643231059364855071, guid: a6d2dfe279f63ed498d7a8b4eb802b14, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -369,6 +369,7 @@ GameObject:
   - component: {fileID: 5913285291138440541}
   - component: {fileID: 2637396875298624171}
   - component: {fileID: 6343596494473426575}
+  - component: {fileID: 5533171335707311509}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Chest
@@ -510,3 +511,15 @@ MonoBehaviour:
   costText: {fileID: 1481608081635888373}
   itemLaunchForce: 5
   chestType: 1
+--- !u!114 &5533171335707311509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5913310658986705059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35cd0cc94b1f6394eb0fd53387a4d80e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -33,6 +33,7 @@ public class Flamethrower : Weapon
     {
         if (currAttackInterval <= 0 && currAmmo > 0)
         {
+            entityAudioController.PlayAudio("flamethrower");
             currAmmo--;
             if (currAmmo == 0)
             {
@@ -63,6 +64,7 @@ public class Flamethrower : Weapon
     }
     public override void Reload()
     {
+        entityAudioController.StopAudio("flamethrower");
         base.Reload();
         if (UpgradeLevel > 0)
         {

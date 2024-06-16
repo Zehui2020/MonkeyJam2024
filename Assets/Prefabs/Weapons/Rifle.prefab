@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 7708773688687786359}
   - component: {fileID: 8511512247710199133}
   - component: {fileID: 2911818237620537465}
+  - component: {fileID: -275912553564591847}
   m_Layer: 3
   m_Name: Rifle
   m_TagString: Untagged
@@ -139,3 +140,15 @@ MonoBehaviour:
   range: 15
   autoReloadTime: 2.5
   damageMultiplier: 1
+--- !u!114 &-275912553564591847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8531793972796535236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35cd0cc94b1f6394eb0fd53387a4d80e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
