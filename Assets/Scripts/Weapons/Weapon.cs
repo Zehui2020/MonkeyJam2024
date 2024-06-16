@@ -26,7 +26,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected GameObject barrel;
 
     //To detect range to attack player (enemy)
-    [SerializeField] float range;
+    [SerializeField] public float range;
 
     //Upgrade levels for different weapon levela
     //remove serializefield after debuggin

@@ -7,7 +7,7 @@ using UnityEngine;
 //Entities: Enemies, Obstacles
 public class EntitiesController : MonoBehaviour
 {
-    [SerializeField] protected Weapon[] _weapons;
+    [SerializeField] protected GameObject[] _weapons;
     //Variables
     //List of entities
     private List<Entity> _entities;
@@ -47,7 +47,13 @@ public class EntitiesController : MonoBehaviour
             //check if entity has been initiated
             if (!e.hasInit)
             {
-                //check if entity is 
+                //check if entity is enemy entity
+                EnemyEntity enemyEntity = (EnemyEntity)e;
+                if (enemyEntity != null)
+                {
+                    //assign random weapon
+                    enemyEntity.assignWeapon(_weapons[UnityEngine.Random.Range(0, _weapons.Length)]);
+                }
                 //initiate uninitiated entities
                 e.Init();
             }
