@@ -71,6 +71,7 @@ public class ItemCardManager : MonoBehaviour
     {
         chosenCard.OnConfirmCard();
         ItemManager.Instance.AddItem(chosenCard.cardItem);
+        Time.timeScale = 1;
 
         yield return new WaitForSeconds(1f);
 

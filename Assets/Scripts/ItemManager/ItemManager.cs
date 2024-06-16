@@ -82,6 +82,7 @@ public class ItemManager : MonoBehaviour
 
     public void OpenTutorialCardChoices(Item weapon)
     {
+        Time.timeScale = 0;
         itemCardManager.gameObject.SetActive(true);
         itemCardManager.SetupTutorialWeaponPickup(weapon);
     }
@@ -89,12 +90,14 @@ public class ItemManager : MonoBehaviour
 
     public void OpenItemCardChoices()
     {
+        Time.timeScale = 0;
         itemCardManager.gameObject.SetActive(true);
         itemCardManager.SetupItemCards();
     }
 
     public void OpenWeaponCardChoices()
     {
+        Time.timeScale = 0;
         itemCardManager.gameObject.SetActive(true);
         itemCardManager.SetupWeaponCards();
     }

@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
         else if (rigidBody.velocity.x < -0.05f && isPlayerMoving == -1)
             transform.localScale = new Vector3(Mathf.Abs(scaleX), transform.localScale.y, transform.localScale.z);
         //player not moving
-        if (isPlayerMoving == 0)
+        if (isPlayerMoving == 0 || !isGrounded)
         {
             entityAudioController.StopAudio("cycling");
         }
@@ -194,11 +194,11 @@ public class PlayerController : MonoBehaviour
             
             rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
-            
 
-        yield return new WaitForSeconds(0.5f);
         //jump sound
         entityAudioController.PlayAudio("jump", true);
+
+        yield return new WaitForSeconds(0.5f);
         jumpRoutine = null;
     }
 

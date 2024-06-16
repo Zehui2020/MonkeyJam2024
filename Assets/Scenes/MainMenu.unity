@@ -3654,6 +3654,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1476159430}
   parallaxEffect: 0.375
+  followCamPosY: 0
 --- !u!212 &451212429
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4512,6 +4513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1476159430}
   parallaxEffect: 0.5
+  followCamPosY: 0
 --- !u!212 &631728183
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4715,6 +4717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1476159430}
   parallaxEffect: 0
+  followCamPosY: 0
 --- !u!212 &663526717
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6106,6 +6109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1476159430}
   parallaxEffect: 0.125
+  followCamPosY: 0
 --- !u!212 &963949803
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7187,6 +7191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1476159430}
   parallaxEffect: 0
+  followCamPosY: 0
 --- !u!212 &1197413489
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7826,6 +7831,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1476159430}
   parallaxEffect: 0.875
+  followCamPosY: 0
 --- !u!212 &1457985985
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8096,6 +8102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1476159430}
   parallaxEffect: 0.625
+  followCamPosY: 0
 --- !u!212 &1537398637
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13978,6 +13985,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1476159430}
   parallaxEffect: 0.25
+  followCamPosY: 0
 --- !u!212 &1948263556
 SpriteRenderer:
   m_ObjectHideFlags: 0
