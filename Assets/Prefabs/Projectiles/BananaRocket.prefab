@@ -4934,6 +4934,7 @@ MonoBehaviour:
   seeker: {fileID: 8843495401473717347}
   rb: {fileID: 1947666794893225548}
   moveSpeed: 8
+  damage: 2
 --- !u!50 &1947666794893225548
 Rigidbody2D:
   serializedVersion: 4

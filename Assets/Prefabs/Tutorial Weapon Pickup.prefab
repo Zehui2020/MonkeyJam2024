@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7316106567248428872}
   - component: {fileID: 9028706645077680126}
-  - component: {fileID: -4514907668694819367}
   - component: {fileID: 3205656618454382989}
   - component: {fileID: -4885607820510854718}
   - component: {fileID: 78530005442310947}
+  - component: {fileID: 9217302334060759759}
   m_Layer: 0
-  m_Name: TutorialWeaponPickup
+  m_Name: Tutorial Weapon Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 5bd1bd18e1fb41d458f0ebd2c8aa00a5, type: 3}
-  m_Color: {r: 0.58787614, g: 1, b: 0.2396226, a: 1}
+  m_Color: {r: 0.0082166195, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -88,19 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-4514907668694819367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5059096717705371788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d91806cbc1d4e724c900e6902c2b1dae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemToGive: {fileID: 11400000, guid: 7c0f97a823f33ce4392f8e1c97a42d6f, type: 2}
 --- !u!61 &3205656618454382989
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -116,7 +103,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -218,3 +205,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &9217302334060759759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5059096717705371788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91806cbc1d4e724c900e6902c2b1dae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemToGive: {fileID: 11400000, guid: 7c0f97a823f33ce4392f8e1c97a42d6f, type: 2}

@@ -19,7 +19,7 @@ public class CrateOfBananaRockets : MonoBehaviour
 
         for (int i = 0; i < rocketSpawnCount; i++)
         {
-            Instantiate(bananaRocket, rocketSpawnPoint.position, Quaternion.identity);
+            Debug.Log(Instantiate(bananaRocket, rocketSpawnPoint.position, Quaternion.identity));
             yield return new WaitForSeconds(spawnInterval);
         }
     }
