@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5912414987287830520}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 7916990874213434088}
   - component: {fileID: 7401621970482618008}
   - component: {fileID: 7203683622113917315}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Burst Rifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

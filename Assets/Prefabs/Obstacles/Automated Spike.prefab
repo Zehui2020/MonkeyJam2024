@@ -158,7 +158,8 @@ MonoBehaviour:
   damage: 1
   deactiveTime: 2
   activeTime: 2
-  trapMode: 0
+  isActive: 0
+  trapMode: 1
 --- !u!61 &5170248673204364815
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -188,7 +189,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0024616122, y: -0.30033982}

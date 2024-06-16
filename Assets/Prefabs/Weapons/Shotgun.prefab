@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9214353222548061389}
   - component: {fileID: 8748204594712342701}
   - component: {fileID: 1923065659018876936}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5609539768723609049}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

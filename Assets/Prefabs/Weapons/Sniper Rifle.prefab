@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4220421982762015493}
   - component: {fileID: 4136977693412118285}
   - component: {fileID: 1600117696029752545}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Sniper Rifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3301274421252146871}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
