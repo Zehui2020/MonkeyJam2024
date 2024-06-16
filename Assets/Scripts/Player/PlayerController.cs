@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     //SerializeField Speed of Bike, BrakeForce, Jump Force, rotation AirForce & RotationSpeed of bike
     [SerializeField] float speed;
     [SerializeField] float speedLimit;
+    [SerializeField] float rampSpeedModifier;
     [SerializeField] float brakeForce;
     [SerializeField] float jumpForce;
     [SerializeField] float rotationSpeed;
@@ -89,7 +90,10 @@ public class PlayerController : MonoBehaviour
 
         // Move player
         if (OnRamp())
-            rigidBody.AddForce(GetRampMoveDir() * speed * itemStats.movementSpeedModifier, ForceMode2D.Force);
+        {
+            rigidBody.AddForce(GetRampMoveDir() * speed * itemStats.movementSpeedModifier * rampSpeedModifier * isPlayerMoving, ForceMode2D.Force);
+            Debug.Log("CALLED");
+        }
         else
             rigidBody.AddForce(force, ForceMode2D.Force);
 
@@ -98,10 +102,11 @@ public class PlayerController : MonoBehaviour
         else
             rigidBody.angularVelocity = Mathf.Clamp(rigidBody.angularVelocity, -60f * rotationAirForce, 60f * rotationAirForce);
 
+        float scaleX = transform.localScale.x;
         if (rigidBody.velocity.x > 0.05 && isPlayerMoving == 1)
-            transform.localScale = new Vector3(-2, 2, 0);
+            transform.localScale = new Vector3(scaleX > 0 ? -scaleX : scaleX, transform.localScale.y, transform.localScale.z);
         else if (rigidBody.velocity.x < -0.05f && isPlayerMoving == -1)
-            transform.localScale = new Vector3(2, 2, 0);
+            transform.localScale = new Vector3(Mathf.Abs(scaleX), transform.localScale.y, transform.localScale.z);
 
         if (equippedWeapon)
         equippedWeapon.UpdateGun();
@@ -226,14 +231,14 @@ public class PlayerController : MonoBehaviour
 
     private bool OnRamp()
     {
-        rampHit = Physics2D.Raycast(transform.position, Vector3.down, 100);
+        rampHit = Physics2D.Raycast(transform.position, Vector3.down, minGroundDist, groundLayer);
 
         if (rampHit)
         {
             float angle = Vector3.Angle(Vector3.up, rampHit.normal);
             return angle < 90 && angle > 3;
         }
-        
+
         return false;
     }
 

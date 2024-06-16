@@ -17797,7 +17797,7 @@ Transform:
   m_GameObject: {fileID: 288469979}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 405.89, y: 17.89, z: -10}
+  m_LocalPosition: {x: -11.4, y: 5.7, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21690,7 +21690,7 @@ Transform:
   m_GameObject: {fileID: 1124641624}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 405.89, y: 17.89, z: -10}
+  m_LocalPosition: {x: -11.4, y: 5.7, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -31132,7 +31132,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.3
   m_AngularDrag: 5
   m_GravityScale: 0.6
   m_Material: {fileID: 0}
@@ -31161,7 +31161,7 @@ MonoBehaviour:
   speed: 1
   speedLimit: 9
   brakeForce: 8
-  jumpForce: 5.25
+  jumpForce: 5.5
   rotationSpeed: 8
   rotationAirForce: 4.3
   minGroundDist: 1.5
@@ -31172,14 +31172,14 @@ MonoBehaviour:
   itemStats: {fileID: 11400000, guid: 77167db11ac7d094a84655d88055015b, type: 2}
   minFallAngle: 150
   maxFallAngle: 270
-  isGrounded: 1
+  isGrounded: 0
   WeaponList:
   - {fileID: 1406792898}
-  - {fileID: 462805278}
   - {fileID: 12000290}
-  - {fileID: 1185879647}
-  - {fileID: 76258093}
   - {fileID: 1049946195}
+  - {fileID: 76258093}
+  - {fileID: 462805278}
+  - {fileID: 1185879647}
   - {fileID: 995110575}
 --- !u!212 &2027420430
 SpriteRenderer:
@@ -31242,7 +31242,7 @@ Transform:
   m_GameObject: {fileID: 2027420423}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 405.89, y: 17.89, z: 0}
+  m_LocalPosition: {x: -11.4, y: 5.7, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
