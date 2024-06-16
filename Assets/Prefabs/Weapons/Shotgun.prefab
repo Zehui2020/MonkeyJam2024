@@ -105,7 +105,8 @@ MonoBehaviour:
   projectileType: 0
   barrel: {fileID: 7664873737554185843}
   range: 15
-  UpgradeLevel: 0
+  autoReloadTime: 2
+  damageMultiplier: 1
 --- !u!1 &7664873737554185843
 GameObject:
   m_ObjectHideFlags: 0

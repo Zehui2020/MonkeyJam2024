@@ -105,6 +105,8 @@ MonoBehaviour:
   projectileType: 1
   barrel: {fileID: 7226811031874441979}
   range: 15
+  autoReloadTime: 3
+  damageMultiplier: 1
 --- !u!1 &7226811031874441979
 GameObject:
   m_ObjectHideFlags: 0

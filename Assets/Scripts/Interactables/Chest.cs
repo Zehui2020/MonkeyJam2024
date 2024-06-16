@@ -5,6 +5,7 @@ using TMPro;
 
 public class Chest : MonoBehaviour, IInteractable
 {
+    [SerializeField] private TutorialItemPickup tutorialItemPickup;
     [SerializeField] private List<ItemPickup> itemPickups = new List<ItemPickup>();
 
     [SerializeField] private int cost;
@@ -12,7 +13,19 @@ public class Chest : MonoBehaviour, IInteractable
     [SerializeField] private TextMeshProUGUI costText;
     [SerializeField] private float itemLaunchForce;
 
+    public enum ChestType 
+    {
+        TutorialChest,
+        NormalChest
+    }
+    public ChestType chestType;
+
     private bool isOpened = false;
+
+    private void Start()
+    {
+        InitInteractable();
+    }
 
     public void InitInteractable()
     {
@@ -35,9 +48,18 @@ public class Chest : MonoBehaviour, IInteractable
         if (isOpened)
             return;
 
-        int randNum = Random.Range(0, itemPickups.Count);
-        Rigidbody2D item = Instantiate(itemPickups[randNum], transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
-        item.AddForce(transform.up * itemLaunchForce, ForceMode2D.Impulse);
+        if (chestType == ChestType.TutorialChest)
+        {
+            Rigidbody2D item = Instantiate(tutorialItemPickup, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
+            item.AddForce(transform.up * itemLaunchForce, ForceMode2D.Impulse);
+        }
+        else if (chestType == ChestType.NormalChest)
+        {
+            int randNum = Random.Range(0, itemPickups.Count);
+            Rigidbody2D item = Instantiate(itemPickups[randNum], transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
+            item.AddForce(transform.up * itemLaunchForce, ForceMode2D.Impulse);
+        }
+
         isOpened = true;
         costUI.SetActive(false);
     }

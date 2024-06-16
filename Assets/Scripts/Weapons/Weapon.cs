@@ -28,10 +28,15 @@ public abstract class Weapon : MonoBehaviour
     //To detect range to attack player (enemy)
     [SerializeField] public float range;
 
+    //For automatic reload
+    [SerializeField] protected float autoReloadTime;
+    protected float currAutoReloadTime;
     //Upgrade levels for different weapon levela
     //remove serializefield after debuggin
     protected int UpgradeLevel;
 
+    //damage multiplier
+    [SerializeField] protected float damageMultiplier;
     //script starts here
 
     //initialise weapon
@@ -70,6 +75,11 @@ public abstract class Weapon : MonoBehaviour
             UpgradeLevel++;
             Reload();
         }
+        else
+        {
+            UpgradeLevel++;
+            AddDamageMultiplier(0.1f);
+        }
     }
 
     //Getting weapon name
@@ -87,5 +97,13 @@ public abstract class Weapon : MonoBehaviour
     public virtual void Reload()
     {
         currAmmo = ammo;
+    }
+    public void StartReload()
+    {
+        currReloadTime = reloadTime;
+    }
+    public void AddDamageMultiplier(float _increment)
+    {
+        damageMultiplier += _increment;
     }
 }

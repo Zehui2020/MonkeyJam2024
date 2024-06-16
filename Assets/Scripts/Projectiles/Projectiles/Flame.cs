@@ -30,7 +30,7 @@ public class Flame : Projectile
         {
             if (other.gameObject.CompareTag("Enemy"))
             {
-                other.gameObject.GetComponent<EnemyEntity>().Damage(damage);
+                other.gameObject.GetComponent<EnemyEntity>().Damage(currDamage);
                 if (!setFalseWhenHitEnemy)
                 {
                     return;

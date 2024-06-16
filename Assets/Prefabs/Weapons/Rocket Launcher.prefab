@@ -105,6 +105,8 @@ MonoBehaviour:
   projectileType: 2
   barrel: {fileID: 6412478992002544284}
   range: 15
+  autoReloadTime: 3
+  damageMultiplier: 1
   moveBackForce: 3
 --- !u!1 &6412478992002544284
 GameObject:

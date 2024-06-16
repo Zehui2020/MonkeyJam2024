@@ -25,7 +25,7 @@ public class Bullet : Projectile
         {
             if (other.gameObject.CompareTag("Enemy"))
             {
-                other.gameObject.GetComponent<EnemyEntity>().Damage(damage);
+                other.gameObject.GetComponent<EnemyEntity>().Damage(currDamage);
             }
             else if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {

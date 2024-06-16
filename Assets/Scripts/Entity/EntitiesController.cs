@@ -10,9 +10,8 @@ public class EntitiesController : MonoBehaviour
     [SerializeField] protected GameObject[] _weapons;
     //Variables
     //List of entities
-    private List<Entity> _entities;
+    public List<Entity> _entities;
     private List<Entity> _entitiesToDelete;
-
 
     //Singleton Instance
     public static EntitiesController instance;
