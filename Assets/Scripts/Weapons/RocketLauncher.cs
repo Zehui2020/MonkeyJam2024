@@ -25,8 +25,16 @@ public class RocketLauncher : Weapon
             }
             Projectile proj = ProjectileManager.instance.GetProjectile(projectileType);
             proj.Shoot(ownerName, transform.right * ((transform.lossyScale.x < 0) ? 1 : -1), barrel.transform.position);
+            if (UpgradeLevel > 0)
+            {
+                proj.GetComponent<Rocket>().SetSpeed(6);
+                if (UpgradeLevel > 1)
+                {
+                    proj.GetComponent<Rocket>().SetExplosionRadius(25);
+                }
+            }
             currAttackInterval = attackInterval;
-            GetComponentInParent<Rigidbody2D>().AddForce((transform.parent.position - transform.position).normalized * moveBackForce, ForceMode2D.Impulse);
+            GetComponentInParent<Rigidbody2D>().AddForce((transform.parent.position - (transform.position + transform.right * ((transform.lossyScale.x < 0) ? 1 : -1))).normalized * moveBackForce, ForceMode2D.Impulse);
         }
     }
 }

@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] List<Weapon> WeaponList;
     private Weapon equippedWeapon;
 
+    //debug
+    [SerializeField] WeaponType weaponType;
     public enum WeaponType
     {
         Rifle,
@@ -57,6 +59,8 @@ public class PlayerController : MonoBehaviour
     public void Initialise()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        equippedWeapon = null;
+        EquipWeapon(weaponType);
     }
 
     //Code to update player in Game Controller
@@ -269,17 +273,18 @@ public class PlayerController : MonoBehaviour
     //Equipping a new weapon
     public void EquipWeapon(WeaponType newweapon)
     {
-        if (equippedWeapon.GetName().Equals(WeaponList[(int)newweapon].GetName()))
+        if (equippedWeapon)
         {
-            equippedWeapon.Upgrade();
-        }
-        else
-        {
+            if (equippedWeapon && equippedWeapon.GetName().Equals(WeaponList[(int)newweapon].GetName()))
+            {
+                equippedWeapon.Upgrade();
+                return;
+            }
             equippedWeapon.gameObject.SetActive(false);
-            equippedWeapon = WeaponList[(int)newweapon];
-            equippedWeapon.Initialise();
-            equippedWeapon.gameObject.SetActive(true);
         }
+        equippedWeapon = WeaponList[(int)newweapon];
+        equippedWeapon.Initialise();
+        equippedWeapon.gameObject.SetActive(true);
     }
 
     //Getting isGrounded
