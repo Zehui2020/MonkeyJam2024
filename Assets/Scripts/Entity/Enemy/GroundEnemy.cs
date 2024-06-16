@@ -8,7 +8,7 @@ public class GroundEnemy : EnemyEntity
 {
     [Header("Ground Enemy")]
     [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private float groundDistCheck;
+    private float groundDistCheck;
 
     [SerializeField] private float stepTimer;
     private float stepTime;
@@ -32,6 +32,12 @@ public class GroundEnemy : EnemyEntity
         stepTime = 0;
 
         isGrounded = false;
+
+        iFrames = 0;
+
+        //set original scale
+        ogScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        groundDistCheck = ogScale.y / 2 + 0.5f;
 
         //sound
         entityAudioController = GetComponent<EntityAudioController>();
@@ -82,6 +88,12 @@ public class GroundEnemy : EnemyEntity
                 return;
             }
         }
+        //iframes update
+        if (iFrames > 0)
+        {
+            iFrames -= Time.deltaTime * _distortTime;
+        }
+
         //update weapon
         _weapon.UpdateGun();
         
@@ -131,12 +143,12 @@ public class GroundEnemy : EnemyEntity
                     if (dir.x > 0.1f)
                     {
                         //_spriteRenderer.flipX = true;
-                        transform.localScale = new Vector3(-1, 1, 1);
+                        transform.localScale = new Vector3(-ogScale.x, ogScale.y, ogScale.z);
                     }
                     else if (dir.x < -0.1f)
                     {
                         //_spriteRenderer.flipX = false;
-                        transform.localScale = new Vector3(1, 1, 1);
+                        transform.localScale = new Vector3(ogScale.x, ogScale.y, ogScale.z);
                     }
                 }
                 else
@@ -200,7 +212,7 @@ public class GroundEnemy : EnemyEntity
                     //rotate weapon towards target
                     Vector3 aimDir = (targetTransform.position - transform.position).normalized;
                     float angle = Mathf.Atan2(aimDir.y, aimDir.x) * Mathf.Rad2Deg;
-                    _weapon.gameObject.transform.eulerAngles = new Vector3(0, 0, angle + (transform.localScale.x == -1 ? 0 : 180));
+                    _weapon.gameObject.transform.eulerAngles = new Vector3(0, 0, angle + (transform.localScale.x <= 0 ? 0 : 180));
 
                     //check if obstacles in the way of enemy and player
                     if (Physics2D.Raycast(_weapon.gameObject.transform.position, aimDir, 50, shootLayerCheck).collider.gameObject.tag == "Player")
@@ -208,8 +220,12 @@ public class GroundEnemy : EnemyEntity
                         //check to attack target
                         CheckAttackTarget();
                     }
-                    
-                    
+                    //check distance
+                    if ((_weapon.range > 5 && Vector3.Distance(transform.position, targetTransform.position) <= 3) || // range
+                        (_weapon.range < 5) && Vector3.Distance(transform.position, targetTransform.position) <= 0.5f) // melee
+                    {
+                        break;
+                    }
                 }
                 //Scream and start chasing
                 //go to last player position
@@ -244,12 +260,12 @@ public class GroundEnemy : EnemyEntity
                     if (direction.x > 0.1f)
                     {
                         //_spriteRenderer.flipX = true;
-                        transform.localScale = new Vector3(-1, 1, 1);
+                        transform.localScale = new Vector3(-ogScale.x, ogScale.y, ogScale.z);
                     }
                     else if (direction.x < -0.1f)
                     {
                         //_spriteRenderer.flipX = false;
-                        transform.localScale = new Vector3(1, 1, 1);
+                        transform.localScale = new Vector3(ogScale.x, ogScale.y, ogScale.z);
                     }
                 }
                 else
@@ -279,6 +295,15 @@ public class GroundEnemy : EnemyEntity
                     currentChaseWaypoint++;
                 }
 
+                break;
+            //Attack
+            case EnemyStates.Attack:
+                //wait 1 sec
+                counter += Time.deltaTime * _distortTime;
+                if (counter >= 1)
+                {
+                    state = EnemyStates.Chase;
+                }
                 break;
             //Death
             case EnemyStates.Death:

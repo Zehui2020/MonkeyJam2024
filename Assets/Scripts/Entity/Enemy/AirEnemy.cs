@@ -21,6 +21,11 @@ public class AirEnemy : EnemyEntity
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
 
+        iFrames = 0;
+
+        //set original scale
+        ogScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
+
         //sound
         entityAudioController = GetComponent<EntityAudioController>();
         //check if don't have component
@@ -75,7 +80,13 @@ public class AirEnemy : EnemyEntity
                 flapTime = 0;
             }
         }
-        
+
+        //iframes update
+        if (iFrames > 0)
+        {
+            iFrames -= Time.deltaTime * _distortTime;
+        }
+
 
         //update weapon
         _weapon.UpdateGun();
@@ -118,12 +129,12 @@ public class AirEnemy : EnemyEntity
                 if (dir.x > 0.1f)
                 {
                     //_spriteRenderer.flipX = true;
-                    transform.localScale = new Vector3(-1, 1, 1);
+                    transform.localScale = new Vector3(-ogScale.x, ogScale.y, ogScale.z);
                 }
                 else if (dir.x < -0.1f)
                 {
                     //_spriteRenderer.flipX = false;
-                    transform.localScale = new Vector3(1, 1, 1);
+                    transform.localScale = new Vector3(ogScale.x, ogScale.y, ogScale.z);
                 }
                 dir.Normalize();
                 //move towards waypoint
@@ -164,7 +175,7 @@ public class AirEnemy : EnemyEntity
                     //rotate weapon towards target
                     Vector3 aimDir = (targetTransform.position - transform.position).normalized;
                     float angle = Mathf.Atan2(aimDir.y, aimDir.x) * Mathf.Rad2Deg;
-                    _weapon.gameObject.transform.eulerAngles = new Vector3(0, 0, angle + (transform.localScale.x == -1 ? 0: 180));
+                    _weapon.gameObject.transform.eulerAngles = new Vector3(0, 0, angle + (transform.localScale.x <= 0 ? 0: 180));
 
                     if (Physics2D.Raycast(_weapon.gameObject.transform.position, aimDir, 50, shootLayerCheck).collider.gameObject.tag == "Player")
                     {
@@ -199,12 +210,12 @@ public class AirEnemy : EnemyEntity
                 if (direction.x > 0.1f)
                 {
                     //_spriteRenderer.flipX = true;
-                    transform.localScale = new Vector3(-1, 1, 1);
+                    transform.localScale = new Vector3(-ogScale.x, ogScale.y, ogScale.z);
                 }
                 else if (direction.x < -0.1f)
                 {
                     //_spriteRenderer.flipX = false;
-                    transform.localScale = new Vector3(1, 1, 1);
+                    transform.localScale = new Vector3(ogScale.x, ogScale.y, ogScale.z);
                 }
                 direction.Normalize();
                 //rb.position += direction * speed * Time.deltaTime;
@@ -217,6 +228,15 @@ public class AirEnemy : EnemyEntity
                     currentChaseWaypoint++;
                 }
 
+                break;
+            //Attack
+            case EnemyStates.Attack:
+                //wait 1 sec
+                counter += Time.deltaTime * _distortTime;
+                if (counter >= 1)
+                {
+                    state = EnemyStates.Chase;
+                }
                 break;
             //Death
             case EnemyStates.Death:

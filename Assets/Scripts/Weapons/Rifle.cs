@@ -24,10 +24,12 @@ public class Rifle : Weapon
             }
         }
     }
-    public override void Use(string ownerName)
+    public override bool Use(string ownerName)
     {
+        bool hasAttacked = false;
         if (currAttackInterval <= 0 && currAmmo > 0)
         {
+            hasAttacked = true;
             entityAudioController.PlayAudio("rifle", true);
             currAmmo--;
             if (currAmmo == 0)
@@ -61,5 +63,6 @@ public class Rifle : Weapon
             }
         }
         currAutoReloadTime = autoReloadTime;
+        return hasAttacked;
     }
 }

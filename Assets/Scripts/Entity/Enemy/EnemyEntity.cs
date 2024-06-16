@@ -25,6 +25,7 @@ public abstract class EnemyEntity : Entity
         Idle,
         Patrol,
         Chase,
+        Attack,
         Death,
         TotalStates
     }
@@ -43,6 +44,7 @@ public abstract class EnemyEntity : Entity
 
     protected float counter;
     protected float idleTimer;
+    protected float iFrames;
 
     //Pathfinding
     protected Path path;
@@ -50,6 +52,9 @@ public abstract class EnemyEntity : Entity
     protected bool reachedEndOfPath = false;
     protected Seeker seeker;
     protected Rigidbody2D rb;
+
+    //original scale
+    protected Vector3 ogScale;
 
     //Animation
     protected SpriteRenderer _spriteRenderer;
@@ -62,61 +67,68 @@ public abstract class EnemyEntity : Entity
     //Fixed Data
     protected float STUNNEDDURATION = 3;
     protected float DEATHDURATION = 0.5f;
+    protected float IFRAMESDURATION = 0.5f;
 
     public void Damage(int _amt)
     {
-        // Check for crit hit
-        int randNum = Random.Range(0, 100);
-        if (randNum < itemStats.critRate)
+        //check if iFrames active
+        if (iFrames <= 0)
         {
-            _amt = Mathf.CeilToInt(_amt * itemStats.critDamage);
+            iFrames = IFRAMESDURATION;
 
-            // Safety Helmet Effect (heal on crit)
+            // Check for crit hit
+            int randNum = Random.Range(0, 100);
+            if (randNum < itemStats.critRate)
+            {
+                _amt = Mathf.CeilToInt(_amt * itemStats.critDamage);
+
+                // Safety Helmet Effect (heal on crit)
+                randNum = Random.Range(0, 100);
+                if (randNum < itemStats.critHealChance)
+                    GameController.Instance._playerHealth.AddHealth(1);
+            }
+
+            // Check for metal pipe item (deal more damage at close range)
+            float distance = Vector3.Distance(PlayerController.Instance.transform.position, transform.position);
+            if (distance <= itemStats.minDistance)
+                _amt = (int)(_amt * itemStats.distanceDamageModifier);
+
+            health -= _amt;
+
+            // Check for gamba load item (% chance to instantly reload on damaging enemy)
             randNum = Random.Range(0, 100);
-            if (randNum < itemStats.critHealChance)
-                GameController.Instance._playerHealth.AddHealth(1);
-        }
+            if (randNum < itemStats.gambaReloadChance)
+                PlayerController.Instance.InstantlyReload();
 
-        // Check for metal pipe item (deal more damage at close range)
-        float distance = Vector3.Distance(PlayerController.Instance.transform.position, transform.position);
-        if (distance <= itemStats.minDistance)
-            _amt = (int)(_amt * itemStats.distanceDamageModifier);
 
-        health -= _amt;
 
-        // Check for gamba load item (% chance to instantly reload on damaging enemy)
-        randNum = Random.Range(0, 100);
-        if (randNum < itemStats.gambaReloadChance)
-            PlayerController.Instance.InstantlyReload();
+            //check health amount
+            if (health <= 0 && state != EnemyStates.Death)
+            {
+                //death sound
+                entityAudioController.PlayAudio("enemydeath");
 
-        
+                //to death state
+                state = EnemyStates.Death;
+                counter = 0;
+                //death anim
+                _animator.SetBool("ISDEAD", true);
 
-        //check health amount
-        if (health <= 0 && state != EnemyStates.Death)
-        {
-            //death sound
-            entityAudioController.PlayAudio("enemydeath");
+                // Oug. Oug. Oug. item (spawn banana rockets)
+                if (itemStats.rocketBananaAmount == 0)
+                    return;
 
-            //to death state
-            state = EnemyStates.Death;
-            counter = 0;
-            //death anim
-            _animator.SetBool("ISDEAD", true);
+                CrateOfBananaRockets crate = Instantiate(crateOfBananaRockets,
+                    transform.position,
+                    Quaternion.identity);
 
-            // Oug. Oug. Oug. item (spawn banana rockets)
-            if (itemStats.rocketBananaAmount == 0)
-                return;
-
-            CrateOfBananaRockets crate = Instantiate(crateOfBananaRockets,
-                transform.position, 
-                Quaternion.identity);
-
-            crate.SetupCrate(itemStats.rocketBananaAmount);
-        }
-        else
-        {
-            //damage sound
-            entityAudioController.PlayAudio("enemyhurt");
+                crate.SetupCrate(itemStats.rocketBananaAmount);
+            }
+            else
+            {
+                //damage sound
+                entityAudioController.PlayAudio("enemyhurt");
+            }
         }
     }
 
@@ -185,7 +197,12 @@ public abstract class EnemyEntity : Entity
         if (distanceToTarget <= _weapon.range)
         {
             //attack
-            _weapon.Use("Enemy");
+            if (_weapon.Use("Enemy"))
+            {
+                //go to attack cd
+                state = EnemyStates.Attack;
+                counter = 0;
+            }
         }
     }
 }

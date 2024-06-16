@@ -79,7 +79,7 @@ public abstract class Weapon : MonoBehaviour
     }
 
     //When any entity uses the Gun
-    public abstract void Use(string ownerName);
+    public abstract bool Use(string ownerName);
 
     //upgrading weapon
     public virtual void Upgrade()
