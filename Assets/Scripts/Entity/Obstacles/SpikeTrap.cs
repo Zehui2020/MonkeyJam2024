@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpikeTrap : Entity
 {
+    [SerializeField] private int damage = 1;
     enum TrapMode
     {
         Flicker,
@@ -20,12 +21,18 @@ public class SpikeTrap : Entity
     //Mode
     [SerializeField] private TrapMode trapMode;
 
+    //animator
+    Animator _animator;
+
     public override void Init()
     {
         hasInit = true;
         isActive = false;
         hasPreasurePlateTriggered = false;
         counter = 0;
+
+        //get animator
+        _animator = GetComponentInChildren<Animator>();
     }
 
     public override void HandleUpdate(float _distortTime)
@@ -73,6 +80,8 @@ public class SpikeTrap : Entity
             default:
                 break;
         }
+
+        _animator.SetBool("ISACTIVE", isActive);
     }
 
     //check collision
@@ -89,7 +98,7 @@ public class SpikeTrap : Entity
         if (isActive && other.gameObject.tag == "Player")
         {
             //deal damage
-            //collision.gameObject.GetComponent<PlayerHealth>().AddHealth(-damage);
+            other.gameObject.GetComponent<PlayerHealth>().AddHealth(-damage);
         }
     }
 }
