@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995a58dd4911cd24bbb75ecda64978a1, type: 3}
+  m_Name: Sword
+  m_EditorClassIdentifier: 
+  itemStats: {fileID: 11400000, guid: 77167db11ac7d094a84655d88055015b, type: 2}
+  itemRarity: 1
+  itemType: 0
+  spriteIcon: {fileID: 21300000, guid: 3112a70b126801844aa14374801666d8, type: 3}
+  title: Sword
+  description: Melee weapon that swings an arc
+  itemStack: 0
+  weaponType: 6
+  description1: Damage increase by 50% (from 10 to 15)
+  description2: Fire interval decreased by 50% (From 0.5s to 0.25)
+  description3: 

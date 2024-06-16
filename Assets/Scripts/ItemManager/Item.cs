@@ -27,4 +27,21 @@ public class Item : ScriptableObject
     public virtual void DecrementStack() { itemStack--; }
 
     public void SetCount(int newCount) { itemStack = newCount; }
+
+    public string GetTitle() 
+    {
+        switch (itemRarity)
+        {
+            case Rarity.Common:
+                return title;
+            case Rarity.Uncommon:
+                return "<color=#4AFF2E>" + title + "</color>";
+            case Rarity.Legendary:
+                return "<color=#FF0F0F>" + title + "</color>";
+        }
+
+        return string.Empty;
+    }
+
+    public virtual string GetDescription() { return description; }
 }

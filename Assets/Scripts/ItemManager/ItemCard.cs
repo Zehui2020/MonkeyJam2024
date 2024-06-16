@@ -18,8 +18,8 @@ public class ItemCard : MonoBehaviour
     {
         cardItem = item;
         itemImage.sprite = item.spriteIcon;
-        itemName.text = item.title;
-        itemDescription.text = item.description;
+        itemName.text = item.GetTitle();
+        itemDescription.text = item.GetDescription();
     }
 
     public void SetSelectCardAnimation(bool select)

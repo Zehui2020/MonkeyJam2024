@@ -7,20 +7,21 @@ using UnityEngine;
 public class ItemTable : ScriptableObject
 {
     public List<Item> itemTable = new List<Item>();
+    public List<Item> weaponTable = new List<Item>();
 
     [NonSerialized]
     public int totalWeight = -1;
 
-    private void CalculateTotalWeight()
+    private void CalculateTotalWeight(List<Item> table)
     {
         totalWeight = 0;
-        for (int i = 0; i < itemTable.Count; i++)
-            totalWeight += (int)itemTable[i].itemRarity;
+        for (int i = 0; i < table.Count; i++)
+            totalWeight += (int)table[i].itemRarity;
     }
 
     private Item GetNewItem(List<Item> itemTable)
     {
-        CalculateTotalWeight();
+        CalculateTotalWeight(itemTable);
         int roll = UnityEngine.Random.Range(0, totalWeight);
 
         for (int i = 0; i < itemTable.Count; i++)
@@ -52,5 +53,25 @@ public class ItemTable : ScriptableObject
         }
 
         return uniqueItems;
+    }
+
+    public List<Item> GetUniqueWeapons(int count)
+    {
+        List<Item> weaponTableCopy = new List<Item>();
+        weaponTableCopy.AddRange(weaponTable);
+
+        List<Item> uniqueWeapons = new List<Item>();
+
+        if (count > weaponTable.Count)
+            count = weaponTable.Count;
+
+        for (int i = 0; i < count; i++)
+        {
+            Item item = GetNewItem(weaponTableCopy);
+            weaponTableCopy.Remove(item);
+            uniqueWeapons.Add(item);
+        }
+
+        return uniqueWeapons;
     }
 }

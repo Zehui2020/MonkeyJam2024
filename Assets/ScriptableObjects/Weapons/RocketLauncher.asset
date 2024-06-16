@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995a58dd4911cd24bbb75ecda64978a1, type: 3}
+  m_Name: RocketLauncher
+  m_EditorClassIdentifier: 
+  itemStats: {fileID: 11400000, guid: 77167db11ac7d094a84655d88055015b, type: 2}
+  itemRarity: 1
+  itemType: 0
+  spriteIcon: {fileID: 21300000, guid: 7fa7ba18ec8417940909bb08ca70d940, type: 3}
+  title: Rocket Launcher
+  description: Shoots a rocket that explodes. High recoil.
+  itemStack: 0
+  weaponType: 4
+  description1: Bullet Speed increased by 100% (from 3 to 6)
+  description2: Blast Diameter increased by 25% (from 20 to 25)
+  description3: 

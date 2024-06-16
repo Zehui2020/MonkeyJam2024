@@ -5,6 +5,8 @@ using UnityEngine;
 //Class that handles player movement, inputs & physics
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance;
+
     //SerializeField Speed of Bike, BrakeForce, Jump Force, rotation AirForce & RotationSpeed of bike
     [SerializeField] float speed;
     [SerializeField] float speedLimit;
@@ -61,6 +63,7 @@ public class PlayerController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         equippedWeapon = null;
         EquipWeapon(weaponType);
+        Instance = this;
     }
 
     //Code to update player in Game Controller

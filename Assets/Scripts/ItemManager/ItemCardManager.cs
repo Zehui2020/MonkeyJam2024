@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ItemCardManager : MonoBehaviour
 {
     [SerializeField] private ItemTable itemTable;
     [SerializeField] private List<ItemCard> itemCards = new List<ItemCard>();
+    [SerializeField] private TextMeshProUGUI header;
 
     private ItemCard chosenCard;
 
-    public void SetupCards()
+    public void SetupItemCards()
     {
         List<Item> items = itemTable.GetUniqueItems(itemCards.Count);
 
@@ -18,6 +20,21 @@ public class ItemCardManager : MonoBehaviour
             itemCards[i].SetupCard(items[i]);
             itemCards[i].OnSelectEvent += SetChosenItem;
         }
+
+        header.text = "Select Your Item";
+    }
+
+    public void SetupWeaponCards()
+    {
+        List<Item> items = itemTable.GetUniqueWeapons(itemCards.Count);
+
+        for (int i = 0; i < itemCards.Count; i++)
+        {
+            itemCards[i].SetupCard(items[i]);
+            itemCards[i].OnSelectEvent += SetChosenItem;
+        }
+
+        header.text = "Select Your Weapon";
     }
 
     public void SetChosenItem(ItemCard card)
@@ -46,10 +63,5 @@ public class ItemCardManager : MonoBehaviour
 
         chosenCard = null;
         gameObject.SetActive(false);
-    }
-
-    private void OnEnable()
-    {
-        SetupCards();
     }
 }
