@@ -215,7 +215,7 @@ public class GroundEnemy : EnemyEntity
                     _weapon.gameObject.transform.eulerAngles = new Vector3(0, 0, angle + (transform.localScale.x <= 0 ? 0 : 180));
 
                     //check if obstacles in the way of enemy and player
-                    if (Physics2D.Raycast(_weapon.gameObject.transform.position, aimDir, 50, shootLayerCheck).collider.gameObject.tag == "Player")
+                    if (Physics2D.Raycast(_weapon.gameObject.transform.position, aimDir, 50, shootLayerCheck).collider && Physics2D.Raycast(_weapon.gameObject.transform.position, aimDir, 50, shootLayerCheck).collider.gameObject.tag == "Player")
                     {
                         //check to attack target
                         CheckAttackTarget();
