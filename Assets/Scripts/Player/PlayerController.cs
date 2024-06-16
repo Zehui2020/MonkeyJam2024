@@ -42,9 +42,6 @@ public class PlayerController : MonoBehaviour
     //setting weapons
     [SerializeField] List<Weapon> WeaponList;
     private Weapon equippedWeapon;
-
-    //debug
-    [SerializeField] WeaponType weaponType;
     public enum WeaponType
     {
         Rifle,
@@ -63,7 +60,6 @@ public class PlayerController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         Instance = this;
         equippedWeapon = null;
-        EquipWeapon(weaponType);
     }
 
     //Code to update player in Game Controller
