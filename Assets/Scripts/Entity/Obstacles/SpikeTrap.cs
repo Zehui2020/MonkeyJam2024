@@ -14,7 +14,7 @@ public class SpikeTrap : Entity
     //Timers for when trap is active
     [SerializeField] private float deactiveTime = 2;
     [SerializeField] private float activeTime = 2;
-    private bool isActive;
+    [SerializeField] private bool isActive;
     private float counter;
     private bool hasPreasurePlateTriggered;
 
@@ -27,12 +27,21 @@ public class SpikeTrap : Entity
     public override void Init()
     {
         hasInit = true;
-        isActive = false;
+        //isActive = false;
         hasPreasurePlateTriggered = false;
         counter = 0;
 
         //get animator
         _animator = GetComponentInChildren<Animator>();
+
+        //sound
+        entityAudioController = GetComponent<EntityAudioController>();
+        //check if don't have component
+        if (entityAudioController == null)
+        {
+            //add component
+            entityAudioController = gameObject.AddComponent<EntityAudioController>();
+        }
     }
 
     public override void HandleUpdate(float _distortTime)
@@ -48,6 +57,8 @@ public class SpikeTrap : Entity
                     counter = 0;
                     //activate
                     isActive = true;
+                    //activate sound
+                    entityAudioController.PlayAudio("spike");
                 }
                 //deactivate if active and hit deactivate time
                 else if (isActive && counter >= deactiveTime)
@@ -56,6 +67,8 @@ public class SpikeTrap : Entity
                     counter = 0;
                     //deactivate
                     isActive = false;
+                    //activate sound
+                    entityAudioController.PlayAudio("spike");
                 }
                     break;
             case TrapMode.PressurePlate:
@@ -68,12 +81,17 @@ public class SpikeTrap : Entity
                     {
                         isActive = true;
                         counter = 0;
+                        //activate sound
+                        entityAudioController.PlayAudio("spike");
                     }
                     else if (isActive && counter >= deactiveTime)
                     {
+                        //deactivate
                         counter = 0;
                         isActive = false;
                         hasPreasurePlateTriggered = false;
+                        //activate sound
+                        entityAudioController.PlayAudio("spike");
                     }
                 }
                 break;

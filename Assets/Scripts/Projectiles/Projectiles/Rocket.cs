@@ -16,6 +16,8 @@ public class Rocket : Projectile
         currAliveTime -= Time.deltaTime;
         if (!hasExploded)
         {
+            //fire rocket sound
+            entityAudioController.PlayAudio("rocket");
             if (currAliveTime <= 0)
             {
 
@@ -23,6 +25,8 @@ public class Rocket : Projectile
                 explosionGO.GetComponent<Explosion>().Explode(currExplosionRadius, transform.position, ownerName, currDamage);
                 hasExploded = true;
                 currExplodeEffectTime = explodeEffectTime;
+                //explode sound
+                entityAudioController.PlayAudio("explode");
             }
             transform.position += currSpeed * Time.deltaTime * direction;
         }

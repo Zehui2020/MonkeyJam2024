@@ -19,6 +19,22 @@ public abstract class Projectile : MonoBehaviour
     protected int currDamage;
     [SerializeField] protected bool shouldBeFlipped;
     //updates the projectile (each projectile has their own update function)
+
+    //sound
+    protected EntityAudioController entityAudioController;
+
+    private void Start()
+    {
+        //sound
+        entityAudioController = GetComponent<EntityAudioController>();
+        //check if don't have component
+        if (entityAudioController == null)
+        {
+            //add component
+            entityAudioController = gameObject.AddComponent<EntityAudioController>();
+        }
+    }
+
     public abstract void UpdateProjectile();
 
     //when the weapon shoots this projectile and all relevant info

@@ -13,6 +13,7 @@ public class EntitiesController : MonoBehaviour
     public List<Entity> _entities;
     private List<Entity> _entitiesToDelete;
 
+
     //Singleton Instance
     public static EntitiesController instance;
     public static EntitiesController Instance { get { return instance; } private set { instance = value; } }
@@ -74,7 +75,7 @@ public class EntitiesController : MonoBehaviour
         foreach (Entity e in _entitiesToDelete)
         {
             _entities.Remove(e);
-            Destroy(e);
+            Destroy(e.gameObject);
             clear = true;
         }
         if (clear)

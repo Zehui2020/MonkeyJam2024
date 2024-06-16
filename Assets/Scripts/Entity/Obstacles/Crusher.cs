@@ -45,6 +45,15 @@ public class Crusher : Entity
         //collider
         hurtPlayerCollider.SetActive(false);
 
+        //sound
+        entityAudioController = GetComponent<EntityAudioController>();
+        //check if don't have component
+        if (entityAudioController == null)
+        {
+            //add component
+            entityAudioController = gameObject.AddComponent<EntityAudioController>();
+        }
+
         //raycast to find ground
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, 50, groundLayer);
         if (hit.collider != null)
@@ -61,7 +70,7 @@ public class Crusher : Entity
     public override void HandleUpdate(float _distortTime)
     {
         Debug.Log("Update");
-        //Debug.DrawRay(rb.position, -transform.up * 50, Color.red);
+        Debug.DrawRay(rb.position, -transform.up * 1.85f, Color.red);
         switch (state)
         {
             case CrusherState.Idle:
@@ -79,9 +88,15 @@ public class Crusher : Entity
                 break;
             case CrusherState.Fall:
                 //check if reach ground
-                RaycastHit2D hitGround = Physics2D.Raycast(rb.position, -transform.up, 1.45f, groundLayer);
+                RaycastHit2D hitGround = Physics2D.Raycast(rb.position, -transform.up, 1.85f, groundLayer);
                 if (hitGround.collider != null)
                 {
+                    if (counter <= 0)
+                    {
+                        //first time hitting ground
+                        entityAudioController.PlayAudio("crusherfall");
+                    }
+
                     counter += Time.deltaTime * _distortTime;
                     hurtPlayerCollider.SetActive(false);
                     if (counter >= 2)
@@ -93,6 +108,9 @@ public class Crusher : Entity
                         state = CrusherState.Rise;
 
                         counter = 0;
+
+                        //cursher rise sound
+                        entityAudioController.PlayAudio("crusherrise");
                     }
                     
                 }

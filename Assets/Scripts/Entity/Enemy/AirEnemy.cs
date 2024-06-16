@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class AirEnemy : EnemyEntity
 {
+    //sound
+    [SerializeField] private float flapTimer;
+    private float flapTime;
+
     public override void Init()
     {
         hasInit = true;
@@ -12,8 +16,19 @@ public class AirEnemy : EnemyEntity
         idleTimer = Random.Range(4, 6);
         currWaypoint = 0;
 
+        flapTime = 0;
+
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+
+        //sound
+        entityAudioController = GetComponent<EntityAudioController>();
+        //check if don't have component
+        if (entityAudioController == null)
+        {
+            //add component
+            entityAudioController = gameObject.AddComponent<EntityAudioController>();
+        }
 
         //animation
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -47,6 +62,20 @@ public class AirEnemy : EnemyEntity
                 return;
             }
         }
+        //check if not dead
+        if (state != EnemyStates.Death)
+        {
+            //sound
+            flapTime += Time.deltaTime * _distortTime;
+            if (flapTime < flapTimer)
+            {
+                //play sound
+                entityAudioController.PlayAudio("flap");
+                //reset timer
+                flapTime = 0;
+            }
+        }
+        
 
         //update weapon
         _weapon.UpdateGun();

@@ -89,9 +89,14 @@ public abstract class EnemyEntity : Entity
         if (randNum < itemStats.gambaReloadChance)
             PlayerController.Instance.InstantlyReload();
 
+        
+
         //check health amount
         if (health <= 0 && state != EnemyStates.Death)
         {
+            //death sound
+            entityAudioController.PlayAudio("enemydeath");
+
             //to death state
             state = EnemyStates.Death;
             counter = 0;
@@ -108,12 +113,19 @@ public abstract class EnemyEntity : Entity
 
             crate.SetupCrate(itemStats.rocketBananaAmount);
         }
+        else
+        {
+            //damage sound
+            entityAudioController.PlayAudio("enemyhurt");
+        }
     }
 
     public void Stun()
     {
         if (!isStunned)
         {
+            //sound effect stun
+            entityAudioController.PlayAudio("stun");
             isStunned = true;
             counter = 0;
         }

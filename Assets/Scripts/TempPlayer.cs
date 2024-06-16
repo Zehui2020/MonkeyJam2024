@@ -6,9 +6,11 @@ public class TempPlayer : MonoBehaviour
 {
     [SerializeField] private float speed = 10;
     // Start is called before the first frame update
+    private EntityAudioController controller;
+
     void Start()
     {
-        
+        controller = GetComponent<EntityAudioController>();
     }
 
     // Update is called once per frame
@@ -35,6 +37,19 @@ public class TempPlayer : MonoBehaviour
 
 
         Vector3 dir = new Vector3 (horizontalAxis, verticalAxis, 0);
+
+        //if moving
+        if (dir.magnitude > 0)
+        {
+            //play sound
+            controller.PlayAudio("cycling");
+        }
+        else
+        {
+            //stop sound
+            controller.StopAudio("cycling");
+        }
+
         transform.position += dir * speed * Time.deltaTime;
     }
 }
