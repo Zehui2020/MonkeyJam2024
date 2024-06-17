@@ -220,7 +220,7 @@ MonoBehaviour:
   damage: 1
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 16
+    m_Bits: 512
   reloadSlider: {fileID: 3612874523759134059}
   projectile: {fileID: 1038126098125364029, guid: 268f162f59935244c9179ec232e1d4e7, type: 3}
   firePoint: {fileID: 2093287184332597722}

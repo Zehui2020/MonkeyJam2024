@@ -398,7 +398,9 @@ public class PlayerController : MonoBehaviour
                 return;
             }
             equippedWeapon.gameObject.SetActive(false);
+            equippedWeapon.weaponItem.itemStack = 0;
         }
+
         equippedWeapon = WeaponList[(int)newweapon];
         equippedWeapon.Initialise();
         equippedWeapon.gameObject.SetActive(true);

@@ -131,6 +131,8 @@ public class Drone : MonoBehaviour
         GameObject newProjectile = Instantiate(projectile, firePoint.position, Quaternion.identity);
         newProjectile.TryGetComponent<Rigidbody2D>(out Rigidbody2D projectileRB);
         projectileRB.AddForce(-(transform.position - target.transform.position).normalized * 20, ForceMode2D.Impulse);
+        target.TryGetComponent<EnemyEntity>(out EnemyEntity enemy);
+        enemy.Damage(damage);
         ammoCount--;
 
         yield return new WaitForSeconds(fireRate);
