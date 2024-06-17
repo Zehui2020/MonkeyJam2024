@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemStats: {fileID: 11400000, guid: 77167db11ac7d094a84655d88055015b, type: 2}
+  weaponItem: {fileID: 11400000, guid: c51d96ab6630ce24c85d8e4f55a92238, type: 2}
   weaponName: SniperRifle
   ammo: 4
   reloadTime: 2

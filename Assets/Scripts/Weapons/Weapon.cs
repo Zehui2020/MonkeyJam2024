@@ -7,6 +7,7 @@ public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] protected ItemStats itemStats;
 
+    public WeaponItem weaponItem;
     //Identifier of weapon
     [SerializeField] string weaponName;
     //Ammo management
