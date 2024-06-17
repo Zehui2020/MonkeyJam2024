@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemStats: {fileID: 11400000, guid: 77167db11ac7d094a84655d88055015b, type: 2}
+  weaponItem: {fileID: 11400000, guid: e7677a74abcca9b4e8ffca4f7ce2c3d7, type: 2}
   weaponName: Sword
   ammo: 1
   reloadTime: 0

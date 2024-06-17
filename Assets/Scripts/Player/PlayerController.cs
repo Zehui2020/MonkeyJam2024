@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     //UI
     [SerializeField] Image gunImage;
     [SerializeField] private TextMeshProUGUI gunText;
+    [SerializeField] private GameObject weaponUI;
 
     private Coroutine jumpRoutine;
     private Coroutine checkFlipRoutine = null;
@@ -99,7 +100,7 @@ public class PlayerController : MonoBehaviour
         SpeedControl();
         UpdateDustTrailPS();
 
-        moneyText.text = ": " + money.ToString();
+        moneyText.text = money.ToString();
 
         if (itemStats.stunRadius > 0)
             welshFlag.SetActive(true);
@@ -451,12 +452,14 @@ public class PlayerController : MonoBehaviour
             //no gun
             gunImage.sprite = null;
             gunText.text = "";
+            weaponUI.SetActive(false);
         }
         else
         {
             //have gun
-            gunImage.sprite = equippedWeapon.gameObject.GetComponent<SpriteRenderer>().sprite;
-            gunText.text = equippedWeapon.GetName() + "\n" + equippedWeapon.GetUpgradeLevel().ToString() + "\n" + equippedWeapon.GetAmmoString();
+            weaponUI.SetActive(true);
+            gunImage.sprite = equippedWeapon.weaponItem.spriteIcon;
+            gunText.text = equippedWeapon.GetName() + "\nLevel: " + equippedWeapon.GetUpgradeLevel().ToString() + "\n" + equippedWeapon.GetAmmoString();
         }
     }
 }
