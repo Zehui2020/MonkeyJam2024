@@ -70,7 +70,7 @@ public class AudioManager : MonoBehaviour
             newSoundEntity.source.spatialBlend = sound.is3D ? 1 : 0;
             newSoundEntity.source.maxDistance = 10;
             //volume
-            newSoundEntity.source.volume = 0.5f;
+            newSoundEntity.source.volume = sound.volume;
             //add to _entity
             _entity.AddSoundEntity(newSoundEntity);
             return true;
