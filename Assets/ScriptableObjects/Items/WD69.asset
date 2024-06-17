@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemStats: {fileID: 11400000, guid: 77167db11ac7d094a84655d88055015b, type: 2}
   itemRarity: 18
-  itemType: 0
+  itemType: 1
   spriteIcon: {fileID: -2064985205, guid: bf61a3bb98100e54aa5ceccece1940db, type: 3}
   title: WD-69
   description: Increases movement speed by +10%

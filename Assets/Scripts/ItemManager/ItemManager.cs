@@ -72,6 +72,7 @@ public class ItemManager : MonoBehaviour
     public void SpawnDrone()
     {
         drone = Instantiate(dronePrefab, transform.position, Quaternion.identity);
+        Debug.Log(drone);
         drone?.SetupDrone(droneFollowPos);
     }
 

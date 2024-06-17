@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemStats: {fileID: 11400000, guid: 77167db11ac7d094a84655d88055015b, type: 2}
   itemRarity: 18
-  itemType: 0
+  itemType: 4
   spriteIcon: {fileID: -381390796, guid: bf61a3bb98100e54aa5ceccece1940db, type: 3}
   title: Chad Glasses
   description: Crit rate + 10%, Crit damage +5%

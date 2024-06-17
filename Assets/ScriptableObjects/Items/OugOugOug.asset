@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemStats: {fileID: 11400000, guid: 77167db11ac7d094a84655d88055015b, type: 2}
   itemRarity: 1
-  itemType: 0
+  itemType: 6
   spriteIcon: {fileID: 1109542547, guid: bf61a3bb98100e54aa5ceccece1940db, type: 3}
   title: Oug. Oug. Oug.
   description: Killing an enemy summons +5 banana rockets that seeks other enemies.

@@ -10,7 +10,7 @@ public class Item : ScriptableObject
     public enum Rarity { Common = 18 , Uncommon = 10, Legendary = 1 };
     public Rarity itemRarity;
 
-    public enum ItemType {  };
+    public enum ItemType { DroneShot, WD69, MildZero, FullerAuto, ChadGlasses, SafetyHelmet, OugOugOug, GambaLoad, MetalPipe, FlagOfValour };
     public ItemType itemType;
 
     public Sprite spriteIcon;

@@ -125,6 +125,6 @@ public abstract class Weapon : MonoBehaviour
 
     public string GetAmmoString()
     {
-        return currAmmo.ToString() + " / " + (ammo * itemStats.magSizeModifier).ToString();
+        return currAmmo.ToString() + " / " + Mathf.CeilToInt(ammo * itemStats.magSizeModifier).ToString();
     }
 }
