@@ -78,7 +78,6 @@ public class PlayerController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         Instance = this;
         equippedWeapon = null;
-
         isFalling = false;
 
         //sound
