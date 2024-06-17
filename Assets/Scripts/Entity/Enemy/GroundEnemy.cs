@@ -63,7 +63,7 @@ public class GroundEnemy : EnemyEntity
         //Ground check
         isGrounded = Physics2D.Raycast(rb.position, -transform.up, groundDistCheck, groundLayer);
         //Debug.DrawRay(rb.position, -transform.up * groundDistCheck, Color.red, 0.5f);
-        Debug.Log("IsGrounded: " + isGrounded);
+        //Debug.Log("IsGrounded: " + isGrounded);
 
         if (isGrounded && _animator.GetBool("ISFALLING"))
         {
@@ -222,7 +222,7 @@ public class GroundEnemy : EnemyEntity
                     }
                     //check distance
                     if ((_weapon.range > 5 && Vector3.Distance(transform.position, targetTransform.position) <= 3) || // range
-                        (_weapon.range < 5) && Vector3.Distance(transform.position, targetTransform.position) <= 0.5f) // melee
+                        (_weapon.range < 5) && Vector3.Distance(transform.position, targetTransform.position) <= 0.1f) // melee
                     {
                         break;
                     }

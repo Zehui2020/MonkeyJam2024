@@ -107,12 +107,12 @@ public class AirEnemy : EnemyEntity
                 }
                 //see player if player is closer
                 //Can see player if get too close
-                Debug.Log("Scan");
+               // Debug.Log("Scan");
                 Collider2D c = Physics2D.OverlapCircle(transform.position, detectTargetRange + 1, playerLayer);
                 //detected player
                 if (c != null)
                 {
-                    Debug.Log("Detected");
+                    //Debug.Log("Detected");
                     targetTransform = c.transform;
                     //chase player
                     state = EnemyStates.Chase;
@@ -164,7 +164,7 @@ public class AirEnemy : EnemyEntity
                 break;
             //Chase
             case EnemyStates.Chase:
-                Debug.Log("Chase");
+                //Debug.Log("Chase");
 
                 //check target still in range
                 if (Vector3.Distance(targetTransform.position, transform.position) <= detectTargetRange + 2)
@@ -181,6 +181,13 @@ public class AirEnemy : EnemyEntity
                     {
                         //check to attack target
                         CheckAttackTarget();
+                    }
+
+                    //check distance
+                    if ((_weapon.range > 5 && Vector3.Distance(transform.position, targetTransform.position) <= 3) || // range
+                        (_weapon.range < 5) && Vector3.Distance(transform.position, targetTransform.position) <= 0.1f) // melee
+                    {
+                        break;
                     }
                 }
                 //Scream and start chasing

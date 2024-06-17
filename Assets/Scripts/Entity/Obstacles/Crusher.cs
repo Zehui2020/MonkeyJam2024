@@ -69,7 +69,7 @@ public class Crusher : Entity
     }
     public override void HandleUpdate(float _distortTime)
     {
-        Debug.Log("Update");
+        //Debug.Log("Update");
         Debug.DrawRay(rb.position, -transform.up * 1.85f, Color.red);
         switch (state)
         {
