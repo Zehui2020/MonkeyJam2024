@@ -78,8 +78,11 @@ public class Sword : Weapon
             }
             else if (ownerName.Equals("Enemy"))
             {
+                Debug.Log("Enemy Is Using");
+                Debug.Log("Tag " + other.gameObject.tag + " Name" + other.gameObject.name);
                 if (other.gameObject.CompareTag("Player"))
                 {
+                    Debug.Log("Player HIT");
                     other.gameObject.GetComponent<PlayerHealth>().AddHealth(-1);
                 }
             }
