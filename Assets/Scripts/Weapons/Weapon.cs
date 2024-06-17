@@ -106,7 +106,7 @@ public abstract class Weapon : MonoBehaviour
     //Getting weapon upgrade level
     public int GetUpgradeLevel()
     {
-        return UpgradeLevel;
+        return UpgradeLevel + 1;
     }
 
     public virtual void Reload()
