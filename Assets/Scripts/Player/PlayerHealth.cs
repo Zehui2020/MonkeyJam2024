@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+//using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -39,7 +40,7 @@ public class PlayerHealth : MonoBehaviour
         if (currIFrames > 0)
         {
             currIFrames -= Time.deltaTime;
-            playerSprite.color = new Color(0.5f,1,1);
+            playerSprite.color = new Color(1,0.5f,0.5f);
             if (currIFrames <= 0)
             {
                 playerSprite.color = Color.white;
@@ -94,6 +95,6 @@ public class PlayerHealth : MonoBehaviour
 
     void Lose()
     {
-
+        SceneManagment.Instance.LoadScene("EndScreenLose");
     }
 }
