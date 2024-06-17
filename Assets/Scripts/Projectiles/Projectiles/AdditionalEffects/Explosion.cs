@@ -13,19 +13,11 @@ public class Explosion : MonoBehaviour
         col.OverlapCollider(new ContactFilter2D().NoFilter(),cols);
         foreach (Collider2D col in cols)
         {
-            if (col.CompareTag("Weapon")) //ignore all weapons
-            {
-                return;
-            }
             if (ownerName.Equals("Player"))
             {
                 if (col.gameObject.CompareTag("Enemy"))
                 {
                     col.gameObject.GetComponent<EnemyEntity>().Damage(damage);
-                }
-                else if (col.gameObject.layer == LayerMask.NameToLayer("Player"))
-                {
-                    return;
                 }
             }
             else if (ownerName.Equals("Enemy"))
@@ -33,10 +25,6 @@ public class Explosion : MonoBehaviour
                 if (col.gameObject.CompareTag("Player"))
                 {
                     col.gameObject.GetComponent<PlayerHealth>().AddHealth(-1);
-                }
-                else if (col.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-                {
-                    return;
                 }
             }
         }

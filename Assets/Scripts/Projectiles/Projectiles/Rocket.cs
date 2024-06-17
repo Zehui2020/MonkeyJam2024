@@ -46,6 +46,7 @@ public class Rocket : Projectile
         base.Shoot(newOwnerName, newDirection, newPosition);
         currExplosionRadius = explosionRadius;
         currSpeed = speed;
+        hasExploded = false;
         gameObject.SetActive(true);
     }
 
