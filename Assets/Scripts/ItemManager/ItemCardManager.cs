@@ -78,4 +78,9 @@ public class ItemCardManager : MonoBehaviour
         chosenCard = null;
         gameObject.SetActive(false);
     }
+
+    public void UnpauseGame()
+    {
+        Time.timeScale = 1;
+    }
 }
