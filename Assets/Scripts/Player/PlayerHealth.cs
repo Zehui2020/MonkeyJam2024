@@ -63,11 +63,16 @@ public class PlayerHealth : MonoBehaviour
                 entityAudioController.PlayAudio("playerhurt");
             }
 
-            currHealth = (currHealth + _increment) % (maxHealth + 1);
+            currHealth = (currHealth + _increment);
+
             if (currHealth <= 0)
             {
                 Lose();
                 
+            }
+            else if (currHealth > 5)
+            {
+                currHealth = 5;
             }
             HandleUI();
             currIFrames = iframes;
